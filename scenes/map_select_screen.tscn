@@ -143,7 +143,6 @@ size_flags_vertical = 4
 theme_override_constants/separation = 15
 
 [node name="ModeSelect" type="OptionButton" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1829520821]
-visible = false
 custom_minimum_size = Vector2(140, 44)
 layout_mode = 2
 
@@ -158,11 +157,18 @@ texture_disabled = ExtResource("15_f51cf")
 texture_focused = ExtResource("15_f51cf")
 stretch_mode = 0
 
-[node name="PlayButton" type="Button" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1590373513]
-custom_minimum_size = Vector2(140, 44)
+[node name="Control" type="Control" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=415067702]
 layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup/Control" unique_id=1590373513]
+custom_minimum_size = Vector2(140, 44)
+layout_mode = 0
+offset_left = -1344.0
+offset_top = -2.0
+offset_right = -1204.0
+offset_bottom = 52.0
 text = "play"
 
 [connection signal="pressed" from="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/LeftGroup/RandomButton" to="." method="_on_random_button_pressed"]
 [connection signal="pressed" from="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup/Control/PlayButton" to="." method="_on_play_button_pressed"]

@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://kovxmeios3jx"]
 
 [ext_resource type="Script" uid="uid://budpflnlrxs10" path="res://scenes/card.gd" id="1_d81rb"]
+[ext_resource type="Texture2D" uid="uid://by3wq4qweay0" path="res://assets/icons/Class1.png" id="2_4wvaf"]
+[ext_resource type="Texture2D" uid="uid://cktbsrq3xfbxd" path="res://assets/icons/Class2.png" id="3_u8dfr"]
+[ext_resource type="Texture2D" uid="uid://mapgvg1ktc8k" path="res://assets/icons/Class3-2.png" id="4_hpf3o"]
 [ext_resource type="Texture2D" uid="uid://cvpe2wmkq2go2" path="res://assets/sprites/pieces/cards/blank_card.png" id="5_bg"]
+[ext_resource type="Texture2D" uid="uid://dojaswrfwmofe" path="res://assets/icons/Heart-Icon.png" id="5_nvopj"]
+[ext_resource type="Texture2D" uid="uid://yumenwffyoul" path="res://assets/icons/Attack.png" id="6_1yd6c"]
 [ext_resource type="FontFile" uid="uid://bdc0kuo02kiop" path="res://assets/fonts/Thin Sans.ttf" id="6_font"]
+[ext_resource type="Texture2D" uid="uid://crvxo5qa1eln2" path="res://assets/icons/Knockback.png" id="7_we8pq"]
 [ext_resource type="Script" uid="uid://dssvastxdmai6" path="res://scenes/blank_card.gd" id="9_we8pq"]
 [ext_resource type="Script" uid="uid://be4k04rds6i3e" path="res://scenes/card_texture.gd" id="11_4wvaf"]
 
@@ -65,6 +71,12 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(85.5, 120)
 script = ExtResource("1_d81rb")
+tank_icon = ExtResource("3_u8dfr")
+berserker_icon = ExtResource("2_4wvaf")
+util_icon = ExtResource("4_hpf3o")
+hp_icon = ExtResource("5_nvopj")
+atk_icon = ExtResource("6_1yd6c")
+kb_icon = ExtResource("7_we8pq")
 
 [node name="SelectionGlow" type="Panel" parent="." unique_id=988252965]
 visible = false
@@ -140,6 +152,7 @@ tooltip_text = "Health"
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 mouse_filter = 2
+texture = ExtResource("5_nvopj")
 expand_mode = 1
 stretch_mode = 5
 
@@ -162,6 +175,7 @@ tooltip_text = "Attack"
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 mouse_filter = 2
+texture = ExtResource("6_1yd6c")
 expand_mode = 1
 stretch_mode = 5
 
@@ -185,6 +199,7 @@ tooltip_text = "Knockback"
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 mouse_filter = 2
+texture = ExtResource("7_we8pq")
 expand_mode = 1
 stretch_mode = 5
 
