@@ -1,5 +1,7 @@
 extends AbilityEffect
 
+const CLONE_ALPHA := 0.88
+
 func execute(caster: Tile, target_cell: Vector2i, board: BoardManager) -> bool:
 	if not caster or not caster.occupant or not caster.occupant.piece_data:
 		return false
@@ -55,21 +57,29 @@ func execute(caster: Tile, target_cell: Vector2i, board: BoardManager) -> bool:
 		return false
 
 	var ability := caster.occupant.piece_data.active_ability
+	var clones: Array[Sprite2D] = []
+	for cell in spawn_cells:
+		var spawn_tile := board.get_tile_at(cell)
+		clones.append(_create_clone(board, caster, spawn_tile, 0.0))
+
 	var smoke_animations: Array[AnimatedSprite2D] = []
+	var smoke_duration := 0.0
 	for cell in spawn_cells:
 		var spawn_tile := board.get_tile_at(cell)
 		var smoke := _create_spawn_smoke(board, caster, spawn_tile, ability)
 		if smoke:
 			smoke_animations.append(smoke)
+			smoke_duration = maxf(smoke_duration, _animation_duration(smoke.sprite_frames, "cast"))
 	if not smoke_animations.is_empty():
+		for clone in clones:
+			clone.create_tween().tween_property(clone, "modulate:a", CLONE_ALPHA, smoke_duration) \
+				.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		await smoke_animations[0].animation_finished
 		for smoke in smoke_animations:
 			smoke.queue_free()
-
-	var clones: Array[Sprite2D] = []
-	for i in range(spawn_cells.size()):
-		var spawn_tile := board.get_tile_at(spawn_cells[i])
-		clones.append(_create_clone(board, caster, spawn_tile))
+	else:
+		for clone in clones:
+			clone.modulate.a = CLONE_ALPHA
 
 	await board.get_tree().create_timer(0.12).timeout
 	var dash := board.create_tween().set_parallel(true)
@@ -141,7 +151,7 @@ func _flash_invalid_tiles(board: BoardManager, tiles: Array[Tile]) -> void:
 func _tile_visual_position(tile: Tile) -> Vector2:
 	return tile.position
 
-func _create_clone(board: BoardManager, caster: Tile, spawn_tile: Tile) -> Sprite2D:
+func _create_clone(board: BoardManager, caster: Tile, spawn_tile: Tile, alpha: float) -> Sprite2D:
 	var clone := Sprite2D.new()
 	var source := caster.occupant.sprite
 	clone.texture = source.texture
@@ -151,7 +161,7 @@ func _create_clone(board: BoardManager, caster: Tile, spawn_tile: Tile) -> Sprit
 	clone.flip_h = source.flip_h
 	clone.flip_v = source.flip_v
 	clone.position = _tile_visual_position(spawn_tile)
-	clone.modulate = Color(0.8, 0.9, 1.0, 0.88) if caster.occupant.player == 1 else Color(1.0, 0.82, 0.88, 0.88)
+	clone.modulate = Color(0.8, 0.9, 1.0, alpha) if caster.occupant.player == 1 else Color(1.0, 0.82, 0.88, alpha)
 	clone.z_index = 4096
 	board.add_child(clone)
 	return clone
@@ -170,6 +180,7 @@ func _create_spawn_smoke(
 	smoke.position = _tile_visual_position(spawn_tile)
 	smoke.scale = caster.occupant.ability_sprite.scale
 	smoke.centered = false
+	smoke.scale = Vector2i(2,2)
 	smoke.z_index = 4095
 	var first_texture := frames.get_frame_texture("cast", 0)
 	if first_texture:
@@ -177,6 +188,12 @@ func _create_spawn_smoke(
 	board.add_child(smoke)
 	smoke.play("cast")
 	return smoke
+
+func _animation_duration(frames: SpriteFrames, animation: StringName) -> float:
+	var speed := frames.get_animation_speed(animation)
+	if speed <= 0.0:
+		return 0.1
+	return frames.get_frame_count(animation) / speed
 
 func _dissolve_clone(clone: Sprite2D) -> void:
 	var tween := clone.create_tween().set_parallel(true)
