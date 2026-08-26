@@ -11,6 +11,8 @@ const GRID_SIZE := 8
 @export var show_base: bool = true
 #@export var piece_data: PieceData
 
+var battle_manager: BattleManager
+
 var tiles: Dictionary = {}  # Vector2i(x,y) -> Tile
 var occupants: Dictionary = {}  # occupant_node -> Vector2i(grid_pos)
 var selected_tile: Tile = null
@@ -166,10 +168,10 @@ func is_within_bounds(x: int, y: int) -> bool:
 	return x >= 0 and x < GRID_SIZE and y >= 0 and y < GRID_SIZE
 
 func is_cell_empty(grid_pos: Vector2i):
-	var tile = tiles[grid_pos] as Tile
+	var tile = tiles.get(grid_pos) as Tile
 	if tile:
 		return tile.occupant.piece_data == null
-	return false
+	return true
 	
 func get_surrounding_cells(grid_pos: Vector2i, cell_range: int) -> Array[Vector2i]:
 	var results: Array[Vector2i] = []
@@ -181,7 +183,7 @@ func get_surrounding_cells(grid_pos: Vector2i, cell_range: int) -> Array[Vector2
 				continue
 			
 			var pos = grid_pos + offset
-			if pos in tiles:
+			if tiles.has(pos):
 				results.append(pos)
 	return results
 

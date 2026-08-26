@@ -64,8 +64,13 @@ func take_turn(board: BoardManager) -> void:
 		)
 		
 		AudioManager.play_sfx(preload("res://assets/sound/دمیج دادن به مهره ی مقابل.mp3"))
-		var died = await target_occupant.take_damage(damage)
-		
+		var died = await CombatRules.apply_combat_damage(
+			best_enemy.occupant,
+			target_occupant.occupant,
+			damage, 
+			board, 
+			board.battle_manager
+		)
 		if died:
 			battle_manager._handle_died(best_move_tile)
 			battle_manager._execute_dictionary_move(best_enemy, best_move_tile)

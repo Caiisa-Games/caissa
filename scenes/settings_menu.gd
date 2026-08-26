@@ -59,3 +59,8 @@ func _on_mute_toggled(toggled_on: bool, bus_name: String) -> void:
 func _on_language_pressed(locale: String) -> void:
 	SettingsManager.set_locale(locale)
 	_sync_ui_with_settings()
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if visible and not is_animating and event.is_pressed() and not event.is_echo() and event.keycode == KEY_ESCAPE:
+		close()
+		get_viewport().set_input_as_handled()

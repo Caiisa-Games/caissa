@@ -162,58 +162,60 @@ mouse_filter = 1
 theme = ExtResource("3_lpir7")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_gam43")
 
-[node name="P1Box" type="HBoxContainer" parent="UI/BottomPanel" unique_id=1218417975]
+[node name="P1Box" type="VBoxContainer" parent="UI/BottomPanel" unique_id=1727259013]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -8.0
-offset_right = 218.0
-offset_bottom = 56.137634
+offset_left = 6.0
+offset_top = -266.0
+offset_right = 56.0
+offset_bottom = -8.0
 grow_vertical = 0
-rotation = -1.5707964
+
+[node name="AbilityBtn" type="Button" parent="UI/BottomPanel/P1Box" unique_id=946036721]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "E"
 
 [node name="EnergyBar" type="ProgressBar" parent="UI/BottomPanel/P1Box" unique_id=1516234563]
-custom_minimum_size = Vector2(200, 50)
-custom_maximum_size = Vector2(-1, 50)
+custom_minimum_size = Vector2(50, 200)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_6ni85")
 theme_override_styles/fill = SubResource("StyleBoxFlat_22uqi")
 value = 50.0
+fill_mode = 3
 show_percentage = false
 
-[node name="AbilityBtn" type="Button" parent="UI/BottomPanel/P1Box" unique_id=946036721]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="P2Box" type="HBoxContainer" parent="UI/BottomPanel" unique_id=1789328657]
+[node name="P2Box" type="VBoxContainer" parent="UI/BottomPanel" unique_id=2110599022]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -62.68799
-offset_top = -8.0
-offset_right = 191.31201
-offset_bottom = 54.690186
+offset_left = -56.0
+offset_top = -266.0
+offset_right = -6.0
+offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
-rotation = -1.5707964
+
+[node name="AbilityBtn" type="Button" parent="UI/BottomPanel/P2Box" unique_id=778240681]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "E"
 
 [node name="EnergyBar" type="ProgressBar" parent="UI/BottomPanel/P2Box" unique_id=1375992409]
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(50, 200)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_vceff")
 theme_override_styles/fill = SubResource("StyleBoxFlat_22uqi")
 value = 50.0
+fill_mode = 3
 show_percentage = false
-
-[node name="AbilityBtn" type="Button" parent="UI/BottomPanel/P2Box" unique_id=778240681]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
 
 [node name="BoardLayer" type="CanvasLayer" parent="." unique_id=562889155]
 

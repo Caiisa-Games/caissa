@@ -51,7 +51,9 @@ generate,Generate,تولید
 win,YOU WIN!,بردی!
 lose,YOU LOSE!,باختی!
 next_stage,Next Stage,مرحله بعد
-replay,Replay,بازی دوباره
+not_enough_energy,Need %d energy (have %d),برای این توانایی به %d انرژی نیاز داری (فعلاً %d داری)
+no_ability_targets,No valid targets,هدف معتبری وجود ندارد
+select_piece_for_ability,Select a piece to use its ability,برای استفاده از توانایی یک مهره را انتخاب کن
 option1_stage_15,Increase maximum piece selection limit by 6,افزایش ۶ تایی سقف انتخاب مهره
 option2_stage_15,Increase attack power of all pieces by 15,افزایش ۱۵ واحدی قدرت حمله تمام مهره‌ها
 option1_stage_11,Increase HP of all pieces by 30,افزایش ۳۰ واحدی جان (HP) تمام مهره‌ها

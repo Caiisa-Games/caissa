@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityResource" format=3 uid="uid://burnfxua3enk6"]
+
+[ext_resource type="Script" uid="uid://cc3f7klb6j3p" path="res://scripts/ability_resource.gd" id="1_siyyp"]
+[ext_resource type="Script" uid="uid://b3agvcqcg67go" path="res://scripts/abilities/active/bash.gd" id="2_mdxok"]
+
+[resource]
+script = ExtResource("1_siyyp")
+id = "bash"
+name = "Bash"
+description = "Strike an enemy, stun it for one turn, then move into the tile behind it."
+energy_cost = 5
+target_type = 1
+range = 2
+script_effect = ExtResource("2_mdxok")
+metadata/_custom_type_script = "uid://cc3f7klb6j3p"

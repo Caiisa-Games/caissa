@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="PieceData" format=3 uid="uid://dvlbi4nhupb2m"]
 
+[ext_resource type="Resource" uid="uid://ft5ohpao4hs3" path="res://data/abilities/swarm.tres" id="1_1q7a2"]
 [ext_resource type="Texture2D" uid="uid://dvqe8awmn1xrh" path="res://assets/sprites/pieces/black/pawn_black.png" id="1_nhnax"]
 [ext_resource type="Script" uid="uid://divct8m8b0k67" path="res://scripts/piece_data.gd" id="1_s30mb"]
+[ext_resource type="Resource" path="res://data/passives/pawn.tres" id="2_passive"]
 [ext_resource type="Script" uid="uid://yiknnlycdli6" path="res://scripts/movement_data.gd" id="2_yt1lp"]
 [ext_resource type="Texture2D" uid="uid://bed8s7vu4xwac" path="res://assets/sprites/pieces/cards/pawn_card.png" id="3_yt1lp"]
 [ext_resource type="Texture2D" uid="uid://cwftrdxcl2gj4" path="res://assets/sprites/pieces/white/pawn_white.png" id="4_1q7a2"]
@@ -22,4 +24,6 @@ power = 15
 defense = 50
 movement = SubResource("Resource_1q7a2")
 piece_class = 1
+active_ability = ExtResource("1_1q7a2")
+passive_ability = ExtResource("2_passive")
 metadata/_custom_type_script = "uid://divct8m8b0k67"

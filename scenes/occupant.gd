@@ -3,6 +3,7 @@ extends Node2D
 
 signal hp_changed(current_hp: int, max_hp: int)
 signal died
+signal cast_impact_reached
 
 @export var piece_data: PieceData = null
 var current_hp: int = 0
@@ -10,10 +11,13 @@ var max_hp: int = 0
 var player: int = 0
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var ability_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_ui: Node2D = $HealthUI
 @onready var health_bar: ProgressBar = $HealthUI/HealthBar
 @onready var hp_label: Label = $HealthUI/HPLabel
 @onready var orb: AnimatedSprite2D = $Orb
+
+var statuses: Dictionary = {} # "stunned" / "guarded"
 
 var _hovered := false
 var _selected := false
@@ -148,6 +152,28 @@ func promote_to(new_data: PieceData) -> void:
 	burst.tween_property(self, "modulate", Color.WHITE, 0.5)
 	
 	_update_hp()
+	
+func apply_status(status_name: String, duration: int, data: Dictionary = {}) -> void:
+	statuses[status_name] = {"duration": duration, "data": data}
+
+func has_status(status_name: String) -> bool:
+	return statuses.has(status_name)
+
+func get_status_data(status_name: String) -> Dictionary:
+	return statuses.get(status_name, {}).get("data", {})
+
+func clear_status(status_name: String) -> void:
+	statuses.erase(status_name)
+	
+func tick_statuses() -> void:
+	for key in statuses.keys().duplicate():
+		statuses[key].duration -= 1
+		if statuses[key].duration <= 0:
+			statuses.erase(key)
+
+func consume_status_on_hit(status_name: String) -> void:
+	if statuses.has(status_name):
+		statuses.erase(status_name)
 
 func _update_stats() -> void:
 	if piece_data == null:
@@ -202,16 +228,69 @@ func _flash_damage() -> void:
 	tween.tween_interval(0.1)
 	tween.tween_property(self, "modulate", Color.WHITE, 0.0)
 	
-func can_cast_active_ability(energy: int) -> bool:
+func can_cast_active_ability(player_energy: int) -> bool:
 	if piece_data and piece_data.active_ability:
-		return energy >= piece_data.active_ability.energy_cost
+		return player_energy >= piece_data.active_ability.energy_cost
 	return false
-	
-func cast_active_ability(board: BoardManager, target_pos: Vector2i) -> bool:
-	if not piece_data and piece_data.active_ability:
+
+func execute_active_ability(target_tile: Tile, board: BoardManager) -> bool:
+	if not piece_data or not piece_data.active_ability:
 		return false
+		
 	var effect = piece_data.active_ability.create_effect_instance()
 	if effect:
-		effect.execute(self.get_parent(), target_pos, board)
-		return true
+		return await effect.execute(get_parent().get_parent() as Tile, target_tile.grid_position, board)
+		
 	return false
+
+func play_aseprite_ability(ability: AbilityResource) -> void:
+	if not ability or ability_sprite == null:
+		cast_impact_reached.emit()
+		return
+
+	var frames: SpriteFrames = ability.anim_frames_white if player == 1 else ability.anim_frames_black
+	if frames == null:
+		print_debug("NO FRAME ", player)
+		frames = ability.anim_frames_white if ability.anim_frames_white else ability.anim_frames_black
+
+	if frames == null or not frames.has_animation("cast"):
+		cast_impact_reached.emit()
+		return
+
+	ability_sprite.sprite_frames = frames
+	
+	var first_tex = frames.get_frame_texture("cast", 0)
+	var tex_height := first_tex.get_height()
+	var tex_width := first_tex.get_width()
+	if first_tex:
+		ability_sprite.offset = Vector2(-tex_width / 2.0, -tex_height)
+
+	sprite.hide()
+	ability_sprite.show()
+	ability_sprite.frame = 0
+
+	var impact_emitted := false
+	var target_frame := ability.impact_frame_index
+
+	var frame_listener = func():
+		if ability_sprite.frame >= target_frame and not impact_emitted:
+			impact_emitted = true
+			cast_impact_reached.emit()
+
+	ability_sprite.frame_changed.connect(frame_listener)
+
+	ability_sprite.play("cast")
+	await ability_sprite.animation_finished
+	await get_tree().create_timer(0.25).timeout
+	ability_sprite.speed_scale = -1.0
+	ability_sprite.play("cast")
+	await ability_sprite.animation_finished
+
+	if ability_sprite.frame_changed.is_connected(frame_listener):
+		ability_sprite.frame_changed.disconnect(frame_listener)
+
+	if not impact_emitted:
+		cast_impact_reached.emit()
+
+	ability_sprite.hide()
+	sprite.show()

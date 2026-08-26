@@ -1,0 +1,67 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="Caiisa"
+run/main_scene="uid://5lb0il0rj8or"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/show_image=false
+boot_splash/stretch_mode=0
+boot_splash/use_filter=false
+config/icon="uid://d0ohufcky2hi5"
+
+[autoload]
+
+GameState="*res://scripts/game_state.gd"
+SettingsManager="*res://scripts/settings_manager.gd"
+LocaleManager="*res://scripts/locale_manager.gd"
+AudioManager="*res://scripts/audio.gd"
+SaveManager="*uid://ck2wxube2xpsg"
+BuffManager="*uid://relwlrcc2scd"
+
+[display]
+
+window/size/mode=4
+window/size/resizable=false
+window/stretch/mode="canvas_items"
+
+[dotnet]
+
+project/assembly_name="Caiisa"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
+[file_customization]
+
+folder_colors={
+"res://shader/": "red"
+}
+
+[internationalization]
+
+locale/translation_remaps={
+"res://assets/fonts/Thin Sans.ttf": PackedStringArray("res://assets/fonts/Raqami.ttf:fa")
+}
+locale/translations=PackedStringArray("res://locale/translations.en.translation", "res://locale/translations.fa.translation")
+locale/locale_filter_mode=0
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

@@ -1,7 +1,7 @@
 class_name BattleManager
 extends Node2D
 
-enum Phase { SELECT, MOVE }
+enum Phase { SELECT, MOVE, ABILITY }
 enum Turn { PLAYER_1, PLAYER_2 }
 
 @export var mini_queen_data: PieceData
@@ -45,6 +45,7 @@ var current_turn: Turn = Turn.PLAYER_1
 var current_phase: Phase = Phase.SELECT
 var selected_piece: Tile = null
 var valid_moves: Array[Tile] = []
+var valid_ability_targets: Array[Tile] = []
 var round_number: int = 1
 var winner: int = 0
 
@@ -54,7 +55,9 @@ var current_wave: int = 0
 var enemy_ai: EnemyAI
 var turn_locked := false
 
-var moves_made_this_turn: int = 0
+var extra_turn_pending := false
+var ability_feedback_token := 0
+var ability_failure_message := ""
 
 func _ready() -> void:
 	if _is_singleplayer():
@@ -64,26 +67,13 @@ func _ready() -> void:
 		var idx = GameState.current_stage - 1
 		if idx >= 0 and idx < stages.size():
 			stage = stages[idx]
+			
+		enemy_ai = EnemyAI.new()
+		add_child(enemy_ai)
 
+	
 	_prepare_scene()
-	_connect_button_signals()
 	_start_intro_sequence()
-
-	enemy_ai = EnemyAI.new()
-	add_child(enemy_ai)
-
-func _connect_button_signals() -> void:
-	if end_turn_btn and not end_turn_btn.pressed.is_connected(_on_end_turn_button_pressed):
-		end_turn_btn.pressed.connect(_on_end_turn_button_pressed)
-		
-	if top_menu_btn and not top_menu_btn.pressed.is_connected(_on_menu_button_pressed):
-		top_menu_btn.pressed.connect(_on_menu_button_pressed)
-		
-	if gm_menu_button and not gm_menu_button.pressed.is_connected(_on_menu_button_pressed):
-		gm_menu_button.pressed.connect(_on_menu_button_pressed)
-		
-	if replay_button and not replay_button.pressed.is_connected(_on_replay_button_pressed):
-		replay_button.pressed.connect(_on_replay_button_pressed)
 
 func _prepare_scene() -> void:
 	if ui_layer: ui_layer.show()
@@ -148,6 +138,7 @@ func _initialize_game_logic() -> void:
 func _setup_board() -> void:
 	if not board: return
 	board.board_data = GameState.board
+	board.battle_manager = self
 	if not board.board_data:
 		return
 	board.generate()
@@ -178,16 +169,24 @@ func _on_tile_clicked(grid_pos: Vector2i) -> void:
 			_handle_selection(tile, p_idx)
 		Phase.MOVE:
 			_handle_move(tile)
+		Phase.ABILITY:
+			_handle_ability_target(tile)
 
 func _handle_selection(tile: Tile, p_idx: int) -> void:
 	if not tile.occupant.piece_data or tile.occupant.player != p_idx:
 		_clear_selection()
 		return
+	if tile.occupant.has_status("stunned"):
+		_clear_selection()
+		_show_ability_feedback("This piece is stunned.")
+		return
+
 	AudioManager.play_sfx(preload("res://assets/sound/سلکت کردن مهره برای قبل از حرکت.mp3"))
 	selected_piece = tile
 	tile.occupant.set_selected(true)
 	current_phase = Phase.MOVE
 	_update_valid_moves()
+	_update_ui()
 	board.highlight_tile(tile, Tile.HighlightColor.SELF)
 
 func _handle_move(tile: Tile) -> void:
@@ -210,7 +209,6 @@ func _handle_move(tile: Tile) -> void:
 			_execute_dictionary_move(selected_piece, tile)
 			board._move_occupant(selected_piece, tile)
 			await _check_promotion(tile)
-			moves_made_this_turn += 1
 			_end_turn()
 			turn_locked = false
 	else:
@@ -225,13 +223,20 @@ func _handle_attack(tile: Tile) -> void:
 	var target_occupant = tile.occupant
 
 	var attacker_power = attacker_tile.occupant.piece_data.power
-	var damage = CombatRules.calculate_damage(
+	var base_damage = CombatRules.calculate_damage(
 		attacker_power,
 		attacker_tile.height_level - tile.height_level,
 		false
 	)
 
-	var died = await target_occupant.take_damage(damage)
+	var died = await CombatRules.apply_combat_damage(
+		attacker_tile.occupant, 
+		target_occupant, 
+		base_damage, 
+		board, 
+		self
+	)
+	
 	AudioManager.play_sfx(preload("res://assets/sound/دمیج دادن به مهره ی مقابل.mp3"))
 
 	gain_energy(current_turn, ENERGY_REWARD_ATTACK)
@@ -245,8 +250,6 @@ func _handle_attack(tile: Tile) -> void:
 			await _check_promotion(tile)
 	else:
 		await _apply_knockback(attacker_tile, tile)
-
-	moves_made_this_turn += 1
 
 	if winner != 0:
 		GameState.winner = winner
@@ -350,6 +353,145 @@ func _handle_died(target_tile: Tile) -> void:
 		winner = 1
 		GameState.winner = winner
 		_handle_game_over()
+		
+func _trigger_ability_mode(turn: Turn) -> void:
+	if turn_locked or current_turn != turn or selected_piece == null or selected_piece.occupant == null:
+		return
+		
+	var occupant = selected_piece.occupant
+	var piece_data = occupant.piece_data
+	if not piece_data or not piece_data.active_ability:
+		return
+
+	var ability: AbilityResource = piece_data.active_ability
+
+	if player_energy[turn] < ability.energy_cost:
+		_show_ability_feedback(tr("not_enough_energy") % [ability.energy_cost, player_energy[turn]])
+		return
+
+	valid_ability_targets = _get_valid_ability_targets(selected_piece, ability)
+	if valid_ability_targets.is_empty():
+		_show_ability_feedback(tr("no_ability_targets"))
+		return
+
+	if ability.target_type == AbilityResource.TargetType.SELF \
+	or ability.target_type == AbilityResource.TargetType.AOE_RADIUS \
+	or ability.target_type == AbilityResource.TargetType.AOE_CROSS:
+		_execute_ability_on_target(selected_piece)
+	else:
+		current_phase = Phase.ABILITY
+		_highlight_ability_targets()
+
+
+func _get_valid_ability_targets(caster_tile: Tile, ability: AbilityResource) -> Array[Tile]:
+	var targets: Array[Tile] = []
+	var caster_pos := caster_tile.grid_position
+	var caster_player := caster_tile.occupant.player
+
+	match ability.target_type:
+		AbilityResource.TargetType.SELF, AbilityResource.TargetType.AOE_RADIUS, AbilityResource.TargetType.AOE_CROSS:
+			targets.append(caster_tile)
+
+		AbilityResource.TargetType.SINGLE_ENEMY:
+			if ability.id == "swarm":
+				var forward := Vector2i(0, -1 if caster_player == 1 else 1)
+				var forward_tile := board.get_tile_at(caster_pos + forward)
+				if forward_tile and forward_tile.occupant.piece_data \
+				and forward_tile.occupant.player != caster_player:
+					targets.append(forward_tile)
+				return targets
+
+			for t in board.tiles.values():
+				if t.occupant.piece_data and t.occupant.player != caster_player:
+					if ability.range <= 0:
+						targets.append(t)
+					else:
+						var dist = abs(t.grid_position.x - caster_pos.x) + abs(t.grid_position.y - caster_pos.y)
+						if dist <= ability.range:
+							targets.append(t)
+
+		AbilityResource.TargetType.SINGLE_ALLY:
+			for t in board.tiles.values():
+				if t.occupant.piece_data and t.occupant.player == caster_player:
+					if ability.range <= 0:
+						targets.append(t)
+					else:
+						var dist = abs(t.grid_position.x - caster_pos.x) + abs(t.grid_position.y - caster_pos.y)
+						if dist <= ability.range:
+							targets.append(t)
+
+	return targets
+
+
+func _execute_ability_on_target(target_tile: Tile) -> void:
+	if not _is_valid_ability_target(target_tile):
+		return
+
+	var occupant = selected_piece.occupant
+	var ability: AbilityResource = occupant.piece_data.active_ability
+	turn_locked = true
+	ability_failure_message = ""
+
+	var success = await occupant.execute_active_ability(target_tile, board)
+
+	var feedback_message := ""
+	if success:
+		spend_energy(current_turn, ability.energy_cost)
+		AudioManager.play_sfx(preload("res://assets/sound/سلکت کردن مهره برای قبل از حرکت.mp3"))
+		_cancel_ability_targeting()
+		await _end_turn()
+	else:
+		feedback_message = ability_failure_message if not ability_failure_message.is_empty() else "Ability could not be used."
+		_cancel_ability_targeting()
+
+	turn_locked = false
+	if not feedback_message.is_empty():
+		_show_ability_feedback(feedback_message)
+
+
+func _cancel_ability_targeting() -> void:
+	valid_ability_targets.clear()
+	if selected_piece and selected_piece.occupant and selected_piece.occupant.piece_data:
+		current_phase = Phase.MOVE
+		_update_valid_moves()
+	else:
+		_clear_selection()
+
+func _highlight_ability_targets() -> void:
+	board.clear_all_highlights()
+	for tile in valid_ability_targets:
+		if tile.occupant.piece_data and tile.occupant.player != selected_piece.occupant.player:
+			tile.set_highlight_color(Tile.HighlightColor.ATTACK)
+		else:
+			tile.set_highlight_color(Tile.HighlightColor.SELF)
+
+
+func _handle_ability_target(tile: Tile) -> void:
+	if _is_valid_ability_target(tile):
+		_execute_ability_on_target(tile)
+	else:
+		_show_ability_feedback(tr("no_ability_targets"))
+
+
+func _is_valid_ability_target(tile: Tile) -> bool:
+	if tile == null or selected_piece == null or selected_piece.occupant == null:
+		return false
+	if selected_piece.occupant.piece_data == null or not tile in valid_ability_targets:
+		return false
+
+	var ability: AbilityResource = selected_piece.occupant.piece_data.active_ability
+	if ability == null:
+		return false
+
+	match ability.target_type:
+		AbilityResource.TargetType.SINGLE_ENEMY:
+			return tile.occupant != null and tile.occupant.piece_data != null \
+				and tile.occupant.player != selected_piece.occupant.player
+		AbilityResource.TargetType.SINGLE_ALLY:
+			return tile.occupant != null and tile.occupant.piece_data != null \
+				and tile.occupant.player == selected_piece.occupant.player
+		_:
+			return tile == selected_piece
 
 func get_valid_moves_for_tile(from_tile: Tile) -> Array[Tile]:
 	var moves: Array[Tile] = []
@@ -358,6 +500,10 @@ func get_valid_moves_for_tile(from_tile: Tile) -> Array[Tile]:
 
 	var piece = from_tile.occupant.piece_data
 	var move_data = piece.movement if piece.movement else board.default_movement
+	var passive = piece.passive_ability.create_effect_instance() if piece.passive_ability else null
+	var can_jump_over := false
+	if passive:
+		can_jump_over = passive.allows_jump_over()
 	var dirs: Array = []
 
 	match move_data.movement_type:
@@ -378,7 +524,10 @@ func get_valid_moves_for_tile(from_tile: Tile) -> Array[Tile]:
 			if target.occupant.piece_data:
 				if target.occupant.player != from_tile.occupant.player:
 					moves.append(target)
-				break
+				if not can_jump_over:
+					break
+				else:
+					continue
 			moves.append(target)
 
 	return moves
@@ -400,23 +549,29 @@ func _update_valid_moves() -> void:
 func _end_turn() -> void:
 	if winner != 0:
 		return
-
-	moves_made_this_turn = 0
 	_clear_selection()
-
+	for tile in board.tiles.values():
+		if tile.occupant and tile.occupant.player == current_turn:
+			tile.occupant.tick_statuses()
+			
+	if extra_turn_pending:
+		extra_turn_pending = false
+		_update_ui()
+		return
+	
 	if _is_singleplayer():
 		current_turn = Turn.PLAYER_2
-		_update_ui()
 		await enemy_ai.take_turn(board)
 		current_turn = Turn.PLAYER_1
 		round_number += 1
-		
 	else:
 		if current_turn == Turn.PLAYER_1:
 			current_turn = Turn.PLAYER_2
 		else:
 			current_turn = Turn.PLAYER_1
 			round_number += 1
+	
+	_update_ui()
 
 func _clear_selection() -> void:
 	if selected_piece and selected_piece.occupant:
@@ -435,8 +590,8 @@ func _update_ui() -> void:
 	if player_1_energybar: player_1_energybar.value = player_energy[Turn.PLAYER_1] * 10
 	if player_2_energybar: player_2_energybar.value = player_energy[Turn.PLAYER_2] * 10
 	
-	player_1_ability_btn.disabled = p_idx == 1
-	player_2_ability_btn.disabled = p_idx == 2
+	_update_ability_button(player_1_ability_btn, Turn.PLAYER_1)
+	_update_ability_button(player_2_ability_btn, Turn.PLAYER_2)
 
 	if _is_singleplayer():
 		if end_turn_btn: end_turn_btn.visible = false
@@ -454,6 +609,58 @@ func _update_ui() -> void:
 					t.occupant.hide_orb()
 
 	if round_label: round_label.text = tr("current_round") % round_number
+
+func _update_ability_button(button: Button, turn: Turn) -> void:
+	if not button:
+		return
+
+	var can_act := current_turn == turn and selected_piece != null and selected_piece.occupant != null
+	var ability: AbilityResource = null
+	if can_act and selected_piece.occupant.piece_data:
+		ability = selected_piece.occupant.piece_data.active_ability
+
+	if ability == null:
+		button.disabled = true
+		button.tooltip_text = tr("select_piece_for_ability")
+		return
+
+	button.disabled = player_energy[turn] < ability.energy_cost
+	button.tooltip_text = _get_ability_tooltip(ability)
+	if button.disabled:
+		button.tooltip_text = tr("not_enough_energy") % [ability.energy_cost, player_energy[turn]]
+
+func _get_ability_tooltip(ability: AbilityResource) -> String:
+	var target_text := "Self"
+	match ability.target_type:
+		AbilityResource.TargetType.SINGLE_ENEMY:
+			target_text = "Enemy"
+		AbilityResource.TargetType.SINGLE_ALLY:
+			target_text = "Ally"
+		AbilityResource.TargetType.AOE_CROSS:
+			target_text = "Cross area"
+		AbilityResource.TargetType.AOE_RADIUS:
+			target_text = "Radius area"
+
+	var range_text := "Unlimited" if ability.range <= 0 else "Range %d" % ability.range
+	var details := ability.description.strip_edges()
+	if details.is_empty():
+		details = "No description available."
+	return "%s\n%s\n%d energy · %s · %s" % [ability.name, details, ability.energy_cost, target_text, range_text]
+
+func _show_ability_feedback(message: String) -> void:
+	if round_label:
+		round_label.text = message
+	ability_feedback_token += 1
+	_restore_round_label_after_feedback(ability_feedback_token)
+	push_warning(message)
+
+func report_ability_failure(message: String) -> void:
+	ability_failure_message = message
+
+func _restore_round_label_after_feedback(token: int) -> void:
+	await get_tree().create_timer(1.8).timeout
+	if token == ability_feedback_token and winner == 0:
+		_update_ui()
 
 func gain_energy(player: Turn, amount: int) -> void:
 	player_energy[player] = clamp(player_energy[player] + amount, 0, MAX_ENERGY)
@@ -487,19 +694,19 @@ func _handle_game_over() -> void:
 
 	if is_win:
 		AudioManager.play_sfx(preload("res://assets/sound/صفحه ی ویکتوری و برد.mp3"))
-		if winner_label: winner_label.text = "YOU WIN!"
+		if winner_label: winner_label.text = tr("win")
 
 		if _is_singleplayer() and replay_button:
-			replay_button.text = "Next Stage"
+			replay_button.text = tr("next_stage")
 	else:
-		if winner_label: winner_label.text = "YOU LOSE!"
-		if replay_button: replay_button.text = "Replay"
+		if winner_label: winner_label.text = tr("lose")
+		if replay_button: replay_button.text = tr("replay")
 
-	if round_label_gm: round_label_gm.text = "Round: %d" % round_number
+	if round_label_gm: round_label_gm.text = tr("current_round") % round_number
 
 func _on_replay_button_pressed() -> void:
 	if not _is_singleplayer():
-		get_tree().change_scene_to_file("res://scenes/battle.tscn")
+		get_tree().change_scene_to_file("res://scenes/piece_selection.tscn")
 		return
 
 	if winner != 1:
@@ -509,13 +716,41 @@ func _on_replay_button_pressed() -> void:
 	GameState.set_current_stage(GameState.current_stage + 1)
 
 	if GameState.current_stage > stages.size():
-		get_tree().change_scene_to_file("res://Stage/StageSelection.tscn")
+		get_tree().change_scene_to_file("res://scenes/singleplayer/stage_selection.tscn")
 	else:
 		get_tree().change_scene_to_file("res://scenes/battle.tscn")
 
+func handle_ability_kill(tile: Tile) -> void:
+	if tile == null or tile.occupant == null or tile.occupant.piece_data == null:
+		return
 
-func _on_p2_ability_pressed() -> void:
-	print("P2 Ability")
+	gain_energy(current_turn, ENERGY_REWARD_KILL)
+	_handle_died(tile)
+
+	if winner != 0:
+		GameState.winner = winner
+		_handle_game_over()
+
+func grant_extra_turn() -> void:
+	extra_turn_pending = true
 
 func _on_p1_ability_pressed() -> void:
-	print("P1 Ability")
+	if turn_locked or current_turn != Turn.PLAYER_1:
+		return
+	_trigger_ability_mode(Turn.PLAYER_1)
+
+func _on_p2_ability_pressed() -> void:
+	if turn_locked or current_turn != Turn.PLAYER_2:
+		return
+	_trigger_ability_mode(Turn.PLAYER_2)
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not event.is_pressed() or event.is_echo() or winner != 0:
+		return
+
+	if event.keycode == KEY_ESCAPE and current_phase != Phase.SELECT:
+		_clear_selection()
+		get_viewport().set_input_as_handled()
+	elif event.keycode == KEY_E:
+		_trigger_ability_mode(current_turn)
+		get_viewport().set_input_as_handled()

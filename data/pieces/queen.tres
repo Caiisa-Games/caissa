@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="PieceData" format=3 uid="uid://b6asab88n3akv"]
 
 [ext_resource type="Texture2D" uid="uid://bakscc3sa3dcq" path="res://assets/sprites/pieces/cards/queen_card.png" id="1_bo4sf"]
+[ext_resource type="Resource" uid="uid://dshtpqyqbc8nf" path="res://data/abilities/royal_fury.tres" id="1_kroi7"]
 [ext_resource type="Script" uid="uid://divct8m8b0k67" path="res://scripts/piece_data.gd" id="2_by47r"]
 [ext_resource type="Script" uid="uid://yiknnlycdli6" path="res://scripts/movement_data.gd" id="2_kroi7"]
+[ext_resource type="Resource" path="res://data/passives/queen.tres" id="2_passive"]
 [ext_resource type="Texture2D" uid="uid://bvtu2c07r42wp" path="res://assets/sprites/pieces/black/queen_black.png" id="3_by47r"]
 [ext_resource type="Texture2D" uid="uid://ds86tu5s71hga" path="res://assets/sprites/pieces/white/queen_white.png" id="4_kroi7"]
 
@@ -20,8 +22,10 @@ texture_white = ExtResource("4_kroi7")
 texture_black = ExtResource("3_by47r")
 card_texture = ExtResource("1_bo4sf")
 knockback = 2
-power = 2000
+power = 12
 defense = 80
 movement = SubResource("Resource_47oeh")
 piece_class = 1
+active_ability = ExtResource("1_kroi7")
+passive_ability = ExtResource("2_passive")
 metadata/_custom_type_script = "uid://divct8m8b0k67"

@@ -25,4 +25,4 @@ enum PieceClass { TANK, BERSERKER, UTILITY }
 
 @export_group("Abilities")
 @export var active_ability: AbilityResource
-@export var passive_ability: AbilityResource
+@export var passive_ability: PassiveAbilityResource

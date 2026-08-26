@@ -17,6 +17,7 @@ region_rect = Rect2(61, 79, 135, 97)
 default_font = ExtResource("1_8xrcq")
 default_font_size = 16
 Button/colors/font_color = Color(9.819507, 9.819507, 9.819507, 1)
+Button/colors/font_disabled_color = Color(0.45, 0.45, 0.45, 1)
 Button/styles/disabled = SubResource("StyleBoxTexture_8xrcq")
 Button/styles/hover = SubResource("StyleBoxTexture_8xrcq")
 Button/styles/normal = SubResource("StyleBoxTexture_8xrcq")
