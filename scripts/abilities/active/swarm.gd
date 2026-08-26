@@ -14,14 +14,14 @@ func execute(caster: Tile, target_cell: Vector2i, board: BoardManager) -> bool:
 	if target_cell != caster.grid_position + forward:
 		return false
 
-	var perpendicular := Vector2i(1, 0)
+	var perp := Vector2i(1, 0)
 	var spawn_cells: Array[Vector2i] = [
-		caster.grid_position + perpendicular,
-		caster.grid_position - perpendicular,
+		caster.grid_position + perp,
+		caster.grid_position - perp,
 	]
 	var flank_cells: Array[Vector2i] = [
-		target_cell + perpendicular,
-		target_cell - perpendicular,
+		target_cell + perp,
+		target_cell - perp,
 	]
 
 	var invalid_spawns: Array[Tile] = []
@@ -54,10 +54,21 @@ func execute(caster: Tile, target_cell: Vector2i, board: BoardManager) -> bool:
 		_report_failure(board, "Swarm needs room around its target.")
 		return false
 
+	var ability := caster.occupant.piece_data.active_ability
+	var smoke_animations: Array[AnimatedSprite2D] = []
+	for cell in spawn_cells:
+		var spawn_tile := board.get_tile_at(cell)
+		var smoke := _create_spawn_smoke(board, caster, spawn_tile, ability)
+		if smoke:
+			smoke_animations.append(smoke)
+	if not smoke_animations.is_empty():
+		await smoke_animations[0].animation_finished
+		for smoke in smoke_animations:
+			smoke.queue_free()
+
 	var clones: Array[Sprite2D] = []
 	for i in range(spawn_cells.size()):
 		var spawn_tile := board.get_tile_at(spawn_cells[i])
-		_spawn_smoke(board, spawn_tile, caster.occupant.player)
 		clones.append(_create_clone(board, caster, spawn_tile))
 
 	await board.get_tree().create_timer(0.12).timeout
@@ -128,7 +139,7 @@ func _flash_invalid_tiles(board: BoardManager, tiles: Array[Tile]) -> void:
 	await board.get_tree().create_timer(0.4).timeout
 
 func _tile_visual_position(tile: Tile) -> Vector2:
-	return tile.position + Vector2(0, -tile.height_level * 10.0 + 8.0)
+	return tile.position
 
 func _create_clone(board: BoardManager, caster: Tile, spawn_tile: Tile) -> Sprite2D:
 	var clone := Sprite2D.new()
@@ -145,18 +156,27 @@ func _create_clone(board: BoardManager, caster: Tile, spawn_tile: Tile) -> Sprit
 	board.add_child(clone)
 	return clone
 
-func _spawn_smoke(board: BoardManager, tile: Tile, player: int) -> void:
-	var smoke := Polygon2D.new()
-	smoke.polygon = PackedVector2Array([Vector2(-10, 0), Vector2(-5, -9), Vector2(5, -9), Vector2(10, 0), Vector2(5, 9), Vector2(-5, 9)])
-	smoke.position = _tile_visual_position(tile)
-	smoke.color = Color("8fd3ff") if player == 1 else Color("ff9bb5")
-	smoke.modulate.a = 0.7
+func _create_spawn_smoke(
+	board: BoardManager, caster: Tile, spawn_tile: Tile, ability: AbilityResource
+) -> AnimatedSprite2D:
+	var frames := ability.anim_frames_white if caster.occupant.player == 1 else ability.anim_frames_black
+	if frames == null:
+		frames = ability.anim_frames_white if ability.anim_frames_white else ability.anim_frames_black
+	if frames == null or not frames.has_animation("cast"):
+		return null
+
+	var smoke := AnimatedSprite2D.new()
+	smoke.sprite_frames = frames
+	smoke.position = _tile_visual_position(spawn_tile)
+	smoke.scale = caster.occupant.ability_sprite.scale
+	smoke.centered = false
 	smoke.z_index = 4095
+	var first_texture := frames.get_frame_texture("cast", 0)
+	if first_texture:
+		smoke.offset = Vector2(-first_texture.get_width() / 2.0, -first_texture.get_height())
 	board.add_child(smoke)
-	var tween := smoke.create_tween().set_parallel(true)
-	tween.tween_property(smoke, "scale", Vector2(2.2, 2.2), 0.35)
-	tween.tween_property(smoke, "modulate:a", 0.0, 0.35)
-	tween.chain().tween_callback(smoke.queue_free)
+	smoke.play("cast")
+	return smoke
 
 func _dissolve_clone(clone: Sprite2D) -> void:
 	var tween := clone.create_tween().set_parallel(true)

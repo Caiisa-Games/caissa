@@ -1,7 +1,37 @@
 [gd_resource type="Resource" script_class="AbilityResource" format=3 uid="uid://ft5ohpao4hs3"]
 
 [ext_resource type="Script" uid="uid://cc3f7klb6j3p" path="res://scripts/ability_resource.gd" id="1_cki5o"]
+[ext_resource type="Texture2D" uid="uid://dhgfh0jwjtene" path="res://assets/sprites/ability_anim/pawn_smoke.png" id="1_gxq2o"]
 [ext_resource type="Script" uid="uid://bv0dxsb18x0cu" path="res://scripts/abilities/active/swarm.gd" id="2_5k21q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxq2o"]
+atlas = ExtResource("1_gxq2o")
+region = Rect2(0, 0, 132, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in6co"]
+atlas = ExtResource("1_gxq2o")
+region = Rect2(132, 0, 132, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiv7t"]
+atlas = ExtResource("1_gxq2o")
+region = Rect2(264, 0, 132, 316)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f51cf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxq2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in6co")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiv7t")
+}],
+"loop": 0,
+"name": &"cast",
+"speed": 6.0
+}]
 
 [resource]
 script = ExtResource("1_cki5o")
@@ -11,4 +41,6 @@ description = "Strike the enemy directly ahead and swarm its flanks."
 energy_cost = 3
 target_type = 1
 script_effect = ExtResource("2_5k21q")
+anim_frames_white = SubResource("SpriteFrames_f51cf")
+anim_frames_black = SubResource("SpriteFrames_f51cf")
 metadata/_custom_type_script = "uid://cc3f7klb6j3p"
