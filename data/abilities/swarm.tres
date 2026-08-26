@@ -7,7 +7,7 @@
 script = ExtResource("1_cki5o")
 id = "swarm"
 name = "Swarm"
-description = "Strike a target and the units immediately beside it."
+description = "Strike the enemy directly ahead and swarm its flanks."
 energy_cost = 3
 target_type = 1
 script_effect = ExtResource("2_5k21q")

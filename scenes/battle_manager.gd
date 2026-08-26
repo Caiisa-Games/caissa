@@ -57,6 +57,7 @@ var turn_locked := false
 
 var extra_turn_pending := false
 var ability_feedback_token := 0
+var ability_failure_message := ""
 
 func _ready() -> void:
 	if _is_singleplayer():
@@ -392,6 +393,14 @@ func _get_valid_ability_targets(caster_tile: Tile, ability: AbilityResource) -> 
 			targets.append(caster_tile)
 
 		AbilityResource.TargetType.SINGLE_ENEMY:
+			if ability.id == "swarm":
+				var forward := Vector2i(0, -1 if caster_player == 1 else 1)
+				var forward_tile := board.get_tile_at(caster_pos + forward)
+				if forward_tile and forward_tile.occupant.piece_data \
+				and forward_tile.occupant.player != caster_player:
+					targets.append(forward_tile)
+				return targets
+
 			for t in board.tiles.values():
 				if t.occupant.piece_data and t.occupant.player != caster_player:
 					if ability.range <= 0:
@@ -415,15 +424,13 @@ func _get_valid_ability_targets(caster_tile: Tile, ability: AbilityResource) -> 
 
 
 func _execute_ability_on_target(target_tile: Tile) -> void:
-	# Target clicks can arrive after targeting has been cancelled or a unit has
-	# left the board. Validate again here because this is the point at which
-	# energy is charged.
 	if not _is_valid_ability_target(target_tile):
 		return
 
 	var occupant = selected_piece.occupant
 	var ability: AbilityResource = occupant.piece_data.active_ability
 	turn_locked = true
+	ability_failure_message = ""
 
 	var success = await occupant.execute_active_ability(target_tile, board)
 
@@ -431,10 +438,12 @@ func _execute_ability_on_target(target_tile: Tile) -> void:
 	if success:
 		spend_energy(current_turn, ability.energy_cost)
 		AudioManager.play_sfx(preload("res://assets/sound/سلکت کردن مهره برای قبل از حرکت.mp3"))
+		_cancel_ability_targeting()
+		await _end_turn()
 	else:
-		feedback_message = "Ability could not be used."
+		feedback_message = ability_failure_message if not ability_failure_message.is_empty() else "Ability could not be used."
+		_cancel_ability_targeting()
 
-	_cancel_ability_targeting()
 	turn_locked = false
 	if not feedback_message.is_empty():
 		_show_ability_feedback(feedback_message)
@@ -644,6 +653,9 @@ func _show_ability_feedback(message: String) -> void:
 	ability_feedback_token += 1
 	_restore_round_label_after_feedback(ability_feedback_token)
 	push_warning(message)
+
+func report_ability_failure(message: String) -> void:
+	ability_failure_message = message
 
 func _restore_round_label_after_feedback(token: int) -> void:
 	await get_tree().create_timer(1.8).timeout

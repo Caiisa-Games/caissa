@@ -25,7 +25,8 @@ func execute(caster: Tile, _target_cell: Vector2i, board: BoardManager) -> bool:
 		if tile == null:
 			continue
 
-		_play_tile_divine_effect(tile)
+		var ability = caster.occupant.piece_data.active_ability
+		caster.occupant.play_aseprite_ability(ability)
 
 		var unit: Occupant = tile.occupant
 		if unit and unit.piece_data and unit.player == caster_player:
