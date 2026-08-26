@@ -180,6 +180,14 @@ position = Vector2(0, 8)
 scale = Vector2(0.45, 0.45)
 centered = false
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=120482499]
+position = Vector2(0, 8)
+scale = Vector2(0.45, 0.45)
+animation = &""
+frame = 6
+frame_progress = 0.895022
+centered = false
+
 [node name="Orb" type="AnimatedSprite2D" parent="." unique_id=430376974]
 position = Vector2(0, -32)
 scale = Vector2(0.05, 0.05)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AbilityResource" format=3 uid="uid://cf75bi7y477cm"]
+
+[ext_resource type="Script" uid="uid://cc3f7klb6j3p" path="res://scripts/ability_resource.gd" id="1_ey6yd"]
+[ext_resource type="SpriteFrames" uid="uid://71yp5xrdp73e" path="res://assets/sprites/pieces/white/rook_anim_white.tres" id="1_pd501"]
+[ext_resource type="Script" uid="uid://bpbeadb5xybrt" path="res://scripts/abilities/active/guardian_wall.gd" id="2_rlc5n"]
+
+[resource]
+script = ExtResource("1_ey6yd")
+id = "guardian_wall"
+name = "Guardian Wall"
+description = "Grant an ally Guarded, reducing the next incoming hit by 35%."
+energy_cost = 3
+target_type = 2
+range = 6
+script_effect = ExtResource("2_rlc5n")
+anim_frames_white = ExtResource("1_pd501")
+metadata/_custom_type_script = "uid://cc3f7klb6j3p"

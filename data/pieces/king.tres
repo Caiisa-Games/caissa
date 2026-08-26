@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://yiknnlycdli6" path="res://scripts/movement_data.gd" id="1_fsny8"]
 [ext_resource type="Script" uid="uid://divct8m8b0k67" path="res://scripts/piece_data.gd" id="1_omffe"]
 [ext_resource type="Texture2D" uid="uid://cixmhyyfq88f8" path="res://assets/sprites/pieces/cards/king_card.png" id="1_r6wyx"]
+[ext_resource type="Resource" uid="uid://4lv6yoiex2ko" path="res://data/abilities/royal_slam.tres" id="1_sjgm5"]
+[ext_resource type="Resource" uid="uid://bju0iah21r4kc" path="res://data/passives/king.tres" id="2_passive"]
 [ext_resource type="Texture2D" uid="uid://c6chgl51q35lh" path="res://assets/sprites/pieces/black/king_black.png" id="4_0w8ds"]
 [ext_resource type="Texture2D" uid="uid://c6ghrppxeslwe" path="res://assets/sprites/pieces/white/king_white.png" id="5_m8d1l"]
 
@@ -22,4 +24,6 @@ knockback = 3
 power = 7
 defense = 100
 movement = SubResource("Resource_gku5q")
+active_ability = ExtResource("1_sjgm5")
+passive_ability = ExtResource("2_passive")
 metadata/_custom_type_script = "uid://divct8m8b0k67"

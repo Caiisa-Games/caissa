@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="PieceData" format=3 uid="uid://dhey5alqj4klo"]
 
+[ext_resource type="Resource" uid="uid://burnfxua3enk6" path="res://data/abilities/bash.tres" id="1_dusvo"]
 [ext_resource type="Texture2D" uid="uid://b2k57op0g4apl" path="res://assets/sprites/pieces/cards/knight_card.png" id="1_n5u1o"]
 [ext_resource type="Script" uid="uid://divct8m8b0k67" path="res://scripts/piece_data.gd" id="1_pbags"]
 [ext_resource type="Texture2D" uid="uid://8x7fhc763twe" path="res://assets/sprites/pieces/black/knight_black.png" id="2_igdar"]
+[ext_resource type="Resource" path="res://data/passives/knight.tres" id="2_passive"]
 [ext_resource type="Script" uid="uid://yiknnlycdli6" path="res://scripts/movement_data.gd" id="2_xwehc"]
 [ext_resource type="Texture2D" uid="uid://bapsgomw04rts" path="res://assets/sprites/pieces/white/knight_white.png" id="4_xwehc"]
 
@@ -24,4 +26,6 @@ power = 13
 defense = 60
 movement = SubResource("Resource_dusvo")
 piece_class = 2
+active_ability = ExtResource("1_dusvo")
+passive_ability = ExtResource("2_passive")
 metadata/_custom_type_script = "uid://divct8m8b0k67"
