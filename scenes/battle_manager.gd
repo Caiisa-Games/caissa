@@ -35,6 +35,8 @@ const STARTING_ENERGY := 5
 const END_TURN_ENERGY_COST := 2
 const ENERGY_REWARD_ATTACK := 1
 const ENERGY_REWARD_KILL := 2
+const BATTLE_SIDE_CLEARANCE := 72.0
+const TILE_FOOTPRINT_WIDTH := 128.0
 
 var player_energy := { Turn.PLAYER_1: STARTING_ENERGY, Turn.PLAYER_2: STARTING_ENERGY }
 signal energy_changed(player: Turn, current: int, max: int)
@@ -142,12 +144,23 @@ func _setup_board() -> void:
 	if not board.board_data:
 		return
 	board.generate()
+	_fit_board()
 	board.set_mode(BoardManager.Mode.BATTLE)
 
 	for pos in player_1_pieces:
 		board.place_piece(player_1_pieces[pos], pos.x, pos.y, 1)
 	for pos in player_2_pieces:
 		board.place_piece(player_2_pieces[pos], pos.x, pos.y, 2)
+
+func _fit_board() -> void:
+	board.scale = Vector2.ONE
+	if board.grid_size.x <= BoardManager.DEFAULT_GRID_SIZE:
+		return
+
+	var available_width := get_viewport_rect().size.x - BATTLE_SIDE_CLEARANCE * 2.0
+	var board_width := TILE_FOOTPRINT_WIDTH * board.grid_size.x
+	var fit_scale := minf(1.0, available_width / board_width)
+	board.scale = Vector2.ONE * fit_scale
 
 func _connect_board_signals() -> void:
 	if not board: return
