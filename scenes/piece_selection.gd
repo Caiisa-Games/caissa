@@ -69,6 +69,7 @@ func _ready() -> void:
 	board.set_mode(BoardManager.Mode.PREVIEW)
 	board.board_data = GameState.board
 	board.generate()
+	_position_board_base_at_viewport_bottom()
 	_connect_signals()
 	
 	_start_selection_phase()
@@ -101,6 +102,10 @@ func _setup_singleplayer() -> void:
 func _setup_multiplayer() -> void:
 	max_pieces_p1 = 3
 	max_pieces_p2 = 3
+
+func _position_board_base_at_viewport_bottom() -> void:
+	var required_board_y := get_viewport_rect().size.y - board.get_base_bottom() * board.scale.y
+	board.position.y = maxf(board.position.y, required_board_y)
 
 func _connect_signals() -> void:
 	for tile in board.tiles.values():
@@ -329,12 +334,12 @@ func _get_current_max_pieces() -> int:
 	return max_pieces_p1 if current_player == 1 else max_pieces_p2
 
 func _is_valid_placement_row(y: int) -> bool:
-	return y == (0 if current_player == 2 else board.GRID_SIZE - 1)
+	return y == (0 if current_player == 2 else board.grid_size.y - 1)
 
 func get_valid_placement_tiles(p_idx: int) -> Array[Tile]:
 	var tiles: Array[Tile] = []
-	var y = 0 if p_idx == 2 else board.GRID_SIZE - 1
-	for x in range(board.GRID_SIZE):
+	var y = 0 if p_idx == 2 else board.grid_size.y - 1
+	for x in range(board.grid_size.x):
 		var t = board.get_tile_at(Vector2i(x, y))
 		if t and t.occupant.piece_data == null: tiles.append(t)
 	return tiles

@@ -4,7 +4,10 @@ extends Node2D
 enum Mode { PREVIEW, BATTLE }
 enum State { IDLE, SELECTED }
 
-const GRID_SIZE := 8
+const DEFAULT_GRID_SIZE := 8
+const BASE_SCALE := 0.32
+const ROW_HEIGHT := 29.0
+const BASE_GRID_CENTER_LOCAL_Y := -412.5
 
 @export var tile_scene: PackedScene
 @export var board_data: BoardData
@@ -19,6 +22,7 @@ var selected_tile: Tile = null
 var hovered_tile: Tile = null
 var current_state: State = State.IDLE
 var current_mode: Mode = Mode.BATTLE
+var grid_size := Vector2i(DEFAULT_GRID_SIZE, DEFAULT_GRID_SIZE)
 
 var default_movement := MovementData.new()
 
@@ -37,7 +41,7 @@ func place_piece(piece: PieceData, grid_x: int, grid_y: int, player: int) -> boo
 		return false
 	
 	if current_mode == Mode.PREVIEW:
-		var valid_row = 0 if player == 2 else GRID_SIZE - 1
+		var valid_row = 0 if player == 2 else grid_size.y - 1
 		if grid_y != valid_row:
 			return false
 	var show_health = current_mode == Mode.BATTLE
@@ -72,16 +76,18 @@ func clear_all_highlights() -> void:
 func generate() -> void:
 	if not board_data:
 		return
+	grid_size = Vector2i(maxi(1, board_data.grid_size.x), maxi(1, board_data.grid_size.y))
+	_update_board_base()
 	var container = $TileContainer
 	
-	for y in range(GRID_SIZE):
-		for x in range(GRID_SIZE):
+	for y in range(grid_size.y):
+		for x in range(grid_size.x):
 			var tile: Tile = tile_scene.instantiate()
 			tile.name = "Tile_%d_%d" % [x, y]
 			tile.position = _get_iso_pos(x, y)
 			
-			var cell_index = y * GRID_SIZE + x
-			var height = board_data.cell_heights[cell_index]
+			var cell_index = y * grid_size.x + x
+			var height = board_data.cell_heights[cell_index] if cell_index < board_data.cell_heights.size() else 0
 
 			container.add_child(tile)
 			tile.init()
@@ -141,7 +147,7 @@ func _animate_occupant(occupant: Occupant, target_tile: Tile) -> void:
 	var target_pos = target_tile.occupant.global_position
 	print("CURRENT POS: ", occupant.global_position)
 	print("NEW POS: ", target_pos)
-	var height = board_data.cell_heights[target_tile.grid_position.y * GRID_SIZE + target_tile.grid_position.x]
+	var height = board_data.cell_heights[target_tile.grid_position.y * grid_size.x + target_tile.grid_position.x]
 	target_pos.y -= height * 10
 	occupant.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
 	
@@ -159,13 +165,24 @@ func should_promote(occupant: Occupant, row: int, player: int) -> bool:
 		return false
 	if player == 1 and row == 0:
 		return true
-	if player == 2 and row == GRID_SIZE - 1:
+	if player == 2 and row == grid_size.y - 1:
 		return true
 		
 	return false
 
 func is_within_bounds(x: int, y: int) -> bool:
-	return x >= 0 and x < GRID_SIZE and y >= 0 and y < GRID_SIZE
+	return x >= 0 and x < grid_size.x and y >= 0 and y < grid_size.y
+
+func _update_board_base() -> void:
+	var size_factor := float(maxi(grid_size.x, grid_size.y)) / float(DEFAULT_GRID_SIZE)
+	var base_scale := BASE_SCALE * size_factor
+	var board_center_y := float(grid_size.x + grid_size.y - 2) * ROW_HEIGHT * 0.5
+	$BoardBase.scale = Vector2.ONE * base_scale
+	$BoardBase.position.y = board_center_y - BASE_GRID_CENTER_LOCAL_Y * base_scale
+
+func get_base_bottom() -> float:
+	var base := $BoardBase as Sprite2D
+	return base.position.y + base.get_rect().end.y * base.scale.y
 
 func is_cell_empty(grid_pos: Vector2i):
 	var tile = tiles.get(grid_pos) as Tile

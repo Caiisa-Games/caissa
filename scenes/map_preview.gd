@@ -1,7 +1,6 @@
 class_name MapPreview
 extends Control
 
-## A compact, data-driven terrain diagram for a BoardData resource.
 @export var board_data: BoardData:
 	set(value):
 		board_data = value

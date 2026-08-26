@@ -174,7 +174,6 @@ size_flags_vertical = 4
 theme_override_constants/separation = 15
 
 [node name="ModeSelect" type="OptionButton" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1829520821]
-visible = false
 custom_minimum_size = Vector2(140, 44)
 layout_mode = 2
 

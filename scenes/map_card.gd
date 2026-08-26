@@ -22,7 +22,6 @@ func setup(data: BoardData) -> void:
 	
 	name_label.text = board_data.board_name
 	_fit_name_font(name_label)
-	meta_label.text = "%dx%d" % [data.grid_size.x, data.grid_size.y]
 	preview.board_data = data
 
 func _fit_name_font(name_label: Label) -> void:

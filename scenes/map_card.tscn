@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn2yggx8opi52" path="res://scenes/map_card.gd" id="1_65fb1"]
 [ext_resource type="Theme" uid="uid://dax6cc1pkfyti" path="res://themes/master.tres" id="1_p4c0f"]
-[ext_resource type="Script" path="res://scenes/map_preview.gd" id="3_preview"]
+[ext_resource type="Script" uid="uid://duk0phhixtnej" path="res://scenes/map_preview.gd" id="3_preview"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_niad1"]
 
@@ -53,7 +53,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Preview" type="Control" parent="Panel/VBoxContainer"]
+[node name="Preview" type="Control" parent="Panel/VBoxContainer" unique_id=1541417851]
 custom_minimum_size = Vector2(150, 72)
 layout_mode = 2
 mouse_filter = 2
@@ -66,7 +66,6 @@ theme_override_font_sizes/font_size = 10
 text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 0
 
 [node name="Meta" type="Label" parent="Panel/VBoxContainer" unique_id=2139033975]
 layout_mode = 2

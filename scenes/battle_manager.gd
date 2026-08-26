@@ -103,7 +103,7 @@ func spawn_wave(index: int) -> void:
 		return
 
 	var available_columns: Array[int] = []
-	for x in range(board.GRID_SIZE):
+	for x in range(board.grid_size.x):
 		available_columns.append(x)
 	available_columns.shuffle()
 
@@ -303,7 +303,7 @@ func _check_promotion(tile: Tile) -> void:
 	var player = occupant.player
 	var y_pos = tile.grid_position.y
 
-	var should_promote = (player == 1 and y_pos == 0) or (player == 2 and y_pos == board.GRID_SIZE - 1)
+	var should_promote = (player == 1 and y_pos == 0) or (player == 2 and y_pos == board.grid_size.y - 1)
 	if not should_promote:
 		return
 
