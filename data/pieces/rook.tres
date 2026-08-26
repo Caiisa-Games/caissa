@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://cf75bi7y477cm" path="res://data/abilities/guardian_wall.tres" id="1_jdp0r"]
 [ext_resource type="Script" uid="uid://yiknnlycdli6" path="res://scripts/movement_data.gd" id="2_8b4o5"]
 [ext_resource type="Script" uid="uid://divct8m8b0k67" path="res://scripts/piece_data.gd" id="2_by47r"]
-[ext_resource type="Resource" path="res://data/passives/rook.tres" id="2_passive"]
+[ext_resource type="Resource" uid="uid://tb6jb270gwq6" path="res://data/passives/rook.tres" id="2_passive"]
 [ext_resource type="Texture2D" uid="uid://k13a1mwvijpy" path="res://assets/sprites/pieces/black/rook_black.png" id="3_kroi7"]
 [ext_resource type="Texture2D" uid="uid://cjyv7ax0hwwul" path="res://assets/sprites/pieces/white/rook_white.png" id="5_8b4o5"]
 

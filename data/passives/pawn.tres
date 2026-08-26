@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="PassiveAbilityResource" format=3]
+[gd_resource type="Resource" script_class="PassiveAbilityResource" format=3 uid="uid://gtha456jbyw0"]
 
-[ext_resource type="Script" path="res://scripts/passive_ability_resource.gd" id="1_resource"]
-[ext_resource type="Script" path="res://scripts/abilities/passive/pawn.gd" id="2_effect"]
+[ext_resource type="Script" uid="uid://ds5sa3bcu32e1" path="res://scripts/passive_ability_resource.gd" id="1_resource"]
+[ext_resource type="Script" uid="uid://cghj7qg6m5ups" path="res://scripts/abilities/passive/pawn.gd" id="2_effect"]
 
 [resource]
 script = ExtResource("1_resource")

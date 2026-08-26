@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://dshtpqyqbc8nf" path="res://data/abilities/royal_fury.tres" id="1_kroi7"]
 [ext_resource type="Script" uid="uid://divct8m8b0k67" path="res://scripts/piece_data.gd" id="2_by47r"]
 [ext_resource type="Script" uid="uid://yiknnlycdli6" path="res://scripts/movement_data.gd" id="2_kroi7"]
-[ext_resource type="Resource" path="res://data/passives/queen.tres" id="2_passive"]
+[ext_resource type="Resource" uid="uid://buitro7gfdrx6" path="res://data/passives/queen.tres" id="2_passive"]
 [ext_resource type="Texture2D" uid="uid://bvtu2c07r42wp" path="res://assets/sprites/pieces/black/queen_black.png" id="3_by47r"]
 [ext_resource type="Texture2D" uid="uid://ds86tu5s71hga" path="res://assets/sprites/pieces/white/queen_white.png" id="4_kroi7"]
 

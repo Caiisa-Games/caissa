@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2k57op0g4apl" path="res://assets/sprites/pieces/cards/knight_card.png" id="1_n5u1o"]
 [ext_resource type="Script" uid="uid://divct8m8b0k67" path="res://scripts/piece_data.gd" id="1_pbags"]
 [ext_resource type="Texture2D" uid="uid://8x7fhc763twe" path="res://assets/sprites/pieces/black/knight_black.png" id="2_igdar"]
-[ext_resource type="Resource" path="res://data/passives/knight.tres" id="2_passive"]
+[ext_resource type="Resource" uid="uid://bgd53im4mftkp" path="res://data/passives/knight.tres" id="2_passive"]
 [ext_resource type="Script" uid="uid://yiknnlycdli6" path="res://scripts/movement_data.gd" id="2_xwehc"]
 [ext_resource type="Texture2D" uid="uid://bapsgomw04rts" path="res://assets/sprites/pieces/white/knight_white.png" id="4_xwehc"]
 
