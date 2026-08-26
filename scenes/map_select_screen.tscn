@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://df22irnj3fy3k" path="res://data/boards/x_cross.tres" id="13_2urgw"]
 [ext_resource type="Resource" uid="uid://ceu01b8w2ng85" path="res://data/boards/serpant_coil.tres" id="13_mh7ps"]
 [ext_resource type="Texture2D" uid="uid://dyrktggnqs1af" path="res://assets/Exit.png" id="15_f51cf"]
+[ext_resource type="Script" uid="uid://duk0phhixtnej" path="res://scenes/map_preview.gd" id="16_preview"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xar1i"]
 
@@ -91,6 +92,36 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+
+[node name="Empty" type="Label" parent="Margin/VBoxContainer/MapDetailsPanel/Margin" unique_id=1392785156]
+layout_mode = 2
+text = "Select a board to inspect its terrain"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Content" type="HBoxContainer" parent="Margin/VBoxContainer/MapDetailsPanel/Margin" unique_id=323617524]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Preview" type="Control" parent="Margin/VBoxContainer/MapDetailsPanel/Margin/Content" unique_id=1256446923]
+custom_minimum_size = Vector2(150, 96)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("16_preview")
+
+[node name="Text" type="VBoxContainer" parent="Margin/VBoxContainer/MapDetailsPanel/Margin/Content" unique_id=1599708348]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="Margin/VBoxContainer/MapDetailsPanel/Margin/Content/Text" unique_id=755051471]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Meta" type="Label" parent="Margin/VBoxContainer/MapDetailsPanel/Margin/Content/Text" unique_id=1370653845]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
 
 [node name="BottomButtons" type="Panel" parent="Margin/VBoxContainer" unique_id=1512931280]
 custom_minimum_size = Vector2(0, 100)
