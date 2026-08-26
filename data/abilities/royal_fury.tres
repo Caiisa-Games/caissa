@@ -7,35 +7,35 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i507f"]
 atlas = ExtResource("1_y8xon")
-region = Rect2(0, 0, 147, 372)
+region = Rect2(0, 0, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwp5i"]
 atlas = ExtResource("1_y8xon")
-region = Rect2(147, 0, 147, 372)
+region = Rect2(84, 0, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxrhf"]
 atlas = ExtResource("1_y8xon")
-region = Rect2(294, 0, 147, 372)
+region = Rect2(168, 0, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7upn"]
 atlas = ExtResource("1_y8xon")
-region = Rect2(0, 372, 147, 372)
+region = Rect2(0, 213, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0g3m"]
 atlas = ExtResource("1_y8xon")
-region = Rect2(147, 372, 147, 372)
+region = Rect2(84, 213, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7phav"]
 atlas = ExtResource("1_y8xon")
-region = Rect2(294, 372, 147, 372)
+region = Rect2(168, 213, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1tpy7"]
 atlas = ExtResource("1_y8xon")
-region = Rect2(0, 744, 147, 372)
+region = Rect2(0, 426, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdg07"]
 atlas = ExtResource("1_y8xon")
-region = Rect2(147, 744, 147, 372)
+region = Rect2(84, 426, 84, 213)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i507f"]
 animations = [{
@@ -66,40 +66,40 @@ animations = [{
 }],
 "loop": 0,
 "name": &"cast",
-"speed": 7.0
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8xon"]
 atlas = ExtResource("1_h3y5t")
-region = Rect2(0, 0, 147, 372)
+region = Rect2(0, 0, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2xkr1"]
 atlas = ExtResource("1_h3y5t")
-region = Rect2(147, 0, 147, 372)
+region = Rect2(84, 0, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_txdx7"]
 atlas = ExtResource("1_h3y5t")
-region = Rect2(294, 0, 147, 372)
+region = Rect2(168, 0, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw1au"]
 atlas = ExtResource("1_h3y5t")
-region = Rect2(0, 372, 147, 372)
+region = Rect2(0, 213, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycwui"]
 atlas = ExtResource("1_h3y5t")
-region = Rect2(147, 372, 147, 372)
+region = Rect2(84, 213, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vovx"]
 atlas = ExtResource("1_h3y5t")
-region = Rect2(294, 372, 147, 372)
+region = Rect2(168, 213, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqkr3"]
 atlas = ExtResource("1_h3y5t")
-region = Rect2(0, 744, 147, 372)
+region = Rect2(0, 426, 84, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h21rc"]
 atlas = ExtResource("1_h3y5t")
-region = Rect2(147, 744, 147, 372)
+region = Rect2(84, 426, 84, 213)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ub4kc"]
 animations = [{
@@ -130,7 +130,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"cast",
-"speed": 7.0
+"speed": 10.0
 }]
 
 [resource]
