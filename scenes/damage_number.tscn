@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/damage_number.gd" id="1_damage_number"]
+[ext_resource type="Theme" path="res://themes/master.tres" id="2_theme"]
+
+[node name="DamageNumber" type="Node2D"]
+z_index = 10
+script = ExtResource("1_damage_number")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -10.0
+offset_right = 24.0
+offset_bottom = 10.0
+theme = ExtResource("2_theme")
+theme_override_colors/font_outline_color = Color(0.08, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
