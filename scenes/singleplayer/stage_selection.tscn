@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://dq4mb7xbb4lmq"]
 
 [ext_resource type="Script" uid="uid://bm1spy1inn1rl" path="res://scenes/singleplayer/stage_selection.gd" id="1_4r8xv"]
+[ext_resource type="Texture2D" uid="uid://bknyae1gfrxoy" path="res://assets/1.png" id="2_du3q0"]
 [ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Battle-Background.png" id="2_v5yhs"]
+[ext_resource type="Texture2D" uid="uid://dm1modu6rtuwc" path="res://assets/2.png" id="3_25w30"]
+[ext_resource type="Texture2D" uid="uid://cvqke8w7y1by3" path="res://assets/3.png" id="4_fjgse"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yhwb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io58t"]
 
 [node name="StageSelection" type="Control" unique_id=10854817]
 layout_mode = 3
@@ -13,7 +20,54 @@ grow_vertical = 2
 script = ExtResource("1_4r8xv")
 metadata/_edit_lock_ = true
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=130911309]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_du3q0")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=147334578]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1152.0
+offset_right = 1152.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_25w30")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=385177270]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2304.0
+offset_right = 2304.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fjgse")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=785583683]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3456.0
+offset_right = 3456.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fjgse")
+expand_mode = 1
+
 [node name="Background" type="TextureRect" parent="." unique_id=1731686621]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,109 +77,184 @@ grow_vertical = 2
 texture = ExtResource("2_v5yhs")
 expand_mode = 1
 
-[node name="GridContainer" type="GridContainer" parent="." unique_id=727351037]
+[node name="Button1" type="Button" parent="." unique_id=1681347680]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 91.0
+offset_top = 49.0
+offset_right = 221.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 40
+text = "1"
+
+[node name="Button2" type="Button" parent="." unique_id=1124828004]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 301.0
+offset_top = 49.0
+offset_right = 431.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 40
+text = "2"
+
+[node name="Button3" type="Button" parent="." unique_id=1846058227]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 511.0
+offset_top = 49.0
+offset_right = 641.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 40
+text = "3"
+
+[node name="Button4" type="Button" parent="." unique_id=296261732]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 721.0
+offset_top = 49.0
+offset_right = 851.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 40
+text = "4"
+
+[node name="Button5" type="Button" parent="." unique_id=1235616196]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 931.0
+offset_top = 49.0
+offset_right = 1061.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 40
+text = "5"
+
+[node name="Button6" type="Button" parent="." unique_id=930548812]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 91.0
+offset_top = 259.0
+offset_right = 221.0
+offset_bottom = 389.0
+theme_override_font_sizes/font_size = 40
+text = "6"
+
+[node name="Button7" type="Button" parent="." unique_id=2090108900]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 301.0
+offset_top = 259.0
+offset_right = 431.0
+offset_bottom = 389.0
+theme_override_font_sizes/font_size = 40
+text = "7"
+
+[node name="Button8" type="Button" parent="." unique_id=569873915]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 511.0
+offset_top = 259.0
+offset_right = 641.0
+offset_bottom = 389.0
+theme_override_font_sizes/font_size = 40
+text = "8"
+
+[node name="Button9" type="Button" parent="." unique_id=473224885]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 721.0
+offset_top = 259.0
+offset_right = 851.0
+offset_bottom = 389.0
+theme_override_font_sizes/font_size = 40
+text = "9"
+
+[node name="Button10" type="Button" parent="." unique_id=1246952015]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 931.0
+offset_top = 259.0
+offset_right = 1061.0
+offset_bottom = 389.0
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="Button11" type="Button" parent="." unique_id=1057353147]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 91.0
+offset_top = 469.0
+offset_right = 221.0
+offset_bottom = 599.0
+theme_override_font_sizes/font_size = 40
+text = "11"
+
+[node name="Button12" type="Button" parent="." unique_id=868636793]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 301.0
+offset_top = 469.0
+offset_right = 431.0
+offset_bottom = 599.0
+theme_override_font_sizes/font_size = 40
+text = "12"
+
+[node name="Button13" type="Button" parent="." unique_id=143050521]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 511.0
+offset_top = 469.0
+offset_right = 641.0
+offset_bottom = 599.0
+theme_override_font_sizes/font_size = 40
+text = "13"
+
+[node name="Button14" type="Button" parent="." unique_id=2050982729]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 721.0
+offset_top = 469.0
+offset_right = 851.0
+offset_bottom = 599.0
+theme_override_font_sizes/font_size = 40
+text = "14"
+
+[node name="Button15" type="Button" parent="." unique_id=476195563]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 931.0
+offset_top = 469.0
+offset_right = 1061.0
+offset_bottom = 599.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="GridContainer2" type="GridContainer" parent="." unique_id=1798550761]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -485.0
-offset_top = -275.0
-offset_right = 485.0
-offset_bottom = 275.0
+offset_left = -576.0
+offset_top = -25.0
+offset_right = 576.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 80
-theme_override_constants/v_separation = 80
-columns = 5
+theme_override_constants/h_separation = 1052
+columns = 2
 
-[node name="Button1" type="Button" parent="GridContainer" unique_id=1681347680]
-custom_minimum_size = Vector2(130, 130)
+[node name="Button" type="Button" parent="GridContainer2" unique_id=1805237756]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "1"
+theme_override_styles/normal = SubResource("StyleBoxFlat_4yhwb")
 
-[node name="Button2" type="Button" parent="GridContainer" unique_id=1124828004]
-custom_minimum_size = Vector2(130, 130)
+[node name="Button2" type="Button" parent="GridContainer2" unique_id=720444338]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "2"
+theme_override_styles/normal = SubResource("StyleBoxFlat_io58t")
 
-[node name="Button3" type="Button" parent="GridContainer" unique_id=1846058227]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "3"
+[node name="Camera2D" type="Camera2D" parent="." unique_id=507406233]
+position = Vector2(576, 324)
 
-[node name="Button4" type="Button" parent="GridContainer" unique_id=296261732]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "4"
-
-[node name="Button5" type="Button" parent="GridContainer" unique_id=1235616196]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "5"
-
-[node name="Button6" type="Button" parent="GridContainer" unique_id=930548812]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "6"
-
-[node name="Button7" type="Button" parent="GridContainer" unique_id=2090108900]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "7"
-
-[node name="Button8" type="Button" parent="GridContainer" unique_id=569873915]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "8"
-
-[node name="Button9" type="Button" parent="GridContainer" unique_id=473224885]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "9"
-
-[node name="Button10" type="Button" parent="GridContainer" unique_id=1246952015]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "10"
-
-[node name="Button11" type="Button" parent="GridContainer" unique_id=1057353147]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "11"
-
-[node name="Button12" type="Button" parent="GridContainer" unique_id=868636793]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "12"
-
-[node name="Button13" type="Button" parent="GridContainer" unique_id=143050521]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "13"
-
-[node name="Button14" type="Button" parent="GridContainer" unique_id=2050982729]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "14"
-
-[node name="Button15" type="Button" parent="GridContainer" unique_id=476195563]
-custom_minimum_size = Vector2(130, 130)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "15"
+[connection signal="pressed" from="GridContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GridContainer2/Button2" to="." method="_on_button_2_pressed"]
