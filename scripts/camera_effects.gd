@@ -1,10 +1,8 @@
 class_name CameraEffects
 extends Node
 
-const FULL_SHAKE := 8.0
-const REDUCED_SHAKE := 3.0
-const FULL_FOCUS_NUDGE := 0.16
-const REDUCED_FOCUS_NUDGE := 0.08
+const FULL_SHAKE := 0.4
+const REDUCED_SHAKE := 0.16
 
 var board: Node2D
 
@@ -45,7 +43,7 @@ func play_promotion(target: Tile) -> void:
 
 	await _focus_and_shake(target.global_position, _shake_amount() * 0.35, 0.20)
 
-func _focus_and_shake(focus: Vector2, shake_amount: float, duration: float) -> void:
+func _focus_and_shake(_focus: Vector2, shake_amount: float, duration: float) -> void:
 	if board == null:
 		return
 
@@ -53,8 +51,8 @@ func _focus_and_shake(focus: Vector2, shake_amount: float, duration: float) -> v
 	var token := _effect_token
 	_reset_to_base()
 
-	var viewport_center := get_viewport().get_visible_rect().size * 0.5
-	var focused_position := _base_position + (viewport_center - focus) * _focus_nudge_amount()
+	# Keep impacts local: reframing toward the target made the whole board jump.
+	var focused_position := _base_position
 	var tween := create_tween()
 	tween.tween_property(board, "position", focused_position, duration * 0.38).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	await tween.finished
@@ -92,6 +90,3 @@ func _is_off() -> bool:
 
 func _shake_amount() -> float:
 	return FULL_SHAKE if _is_full() else REDUCED_SHAKE
-
-func _focus_nudge_amount() -> float:
-	return FULL_FOCUS_NUDGE if _is_full() else REDUCED_FOCUS_NUDGE
