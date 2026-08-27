@@ -20,6 +20,4 @@ func on_damage_dealt(owner: Occupant, damage_dealt: int, target: Occupant, board
 				lowest_ally = unit
 
 	if lowest_ally:
-		lowest_ally.current_hp = min(lowest_ally.current_hp + heal_amount, lowest_ally.max_hp)
-		lowest_ally._update_hp()
-		lowest_ally.show_hp_label()
+		lowest_ally.restore_health(heal_amount)

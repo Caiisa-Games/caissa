@@ -5,6 +5,8 @@ signal hp_changed(current_hp: int, max_hp: int)
 signal died
 signal cast_impact_reached
 
+const DAMAGE_NUMBER_SCENE := preload("res://scenes/damage_number.tscn")
+
 @export var piece_data: PieceData = null
 var current_hp: int = 0
 var max_hp: int = 0
@@ -22,6 +24,7 @@ var statuses: Dictionary = {} # "stunned" / "guarded"
 var _hovered := false
 var _selected := false
 var _label_timer := 0.0
+var _combat_number_sequence := 0
 
 func _ready() -> void:
 	if orb:
@@ -106,14 +109,16 @@ func hide_orb() -> void:
 	orb.hide()
 	_update_stats()
 
-func take_damage(amount: int) -> bool:
+func take_damage(amount: int, was_mitigated := false) -> bool:
 	if piece_data == null:
 		return false
 
 	current_hp = max(current_hp - amount, 0)
 	_update_hp()
 	show_hp_label()
-	_flash_damage()
+	show_combat_number(amount, DamageNumber.Result.MITIGATED if was_mitigated and amount > 0 else DamageNumber.Result.BLOCKED if amount <= 0 else DamageNumber.Result.DAMAGE)
+	if amount > 0:
+		_flash_damage()
 
 	if current_hp <= 0:
 		await get_tree().create_timer(0.2).timeout
@@ -137,6 +142,33 @@ func take_damage(amount: int) -> bool:
 		died.emit()
 		return true
 	return false
+
+func restore_health(amount: int) -> int:
+	if piece_data == null or amount <= 0:
+		return 0
+
+	var restored: int = min(amount, max_hp - current_hp)
+	if restored <= 0:
+		return 0
+
+	current_hp += restored
+	_update_hp()
+	show_hp_label()
+	show_combat_number(restored, DamageNumber.Result.HEALING)
+	return restored
+
+func show_combat_number(amount: int, outcome: DamageNumber.Result, is_critical := false) -> void:
+	if not is_inside_tree():
+		return
+
+	var number := DAMAGE_NUMBER_SCENE.instantiate() as DamageNumber
+	if number == null:
+		return
+
+	add_child(number)
+	number.position = health_ui.position + Vector2(0, -18)
+	number.configure(amount, outcome, _combat_number_sequence, is_critical)
+	_combat_number_sequence += 1
 
 func promote_to(new_data: PieceData) -> void:
 	var tween = create_tween().set_parallel(true)

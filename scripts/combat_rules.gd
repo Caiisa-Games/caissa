@@ -34,6 +34,7 @@ static func apply_combat_damage(
 		return false
 
 	var dmg: int = base_damage
+	var mitigated := 0
 
 	if attacker and attacker.piece_data and attacker.piece_data.passive_ability:
 		var atk_passive = attacker.piece_data.passive_ability.create_effect_instance()
@@ -47,14 +48,14 @@ static func apply_combat_damage(
 
 	if target.has_status("guarded"):
 		var guard_data = target.get_status_data("guarded")
-		var mitigated = int(dmg * float(guard_data.get("percent", 0.35)))
+		mitigated = int(dmg * float(guard_data.get("percent", 0.35)))
 		dmg -= mitigated
 		target.consume_status_on_hit("guarded")
 		print_debug("MITIGATED", mitigated)
 
 	dmg = max(dmg, 0)
 
-	var died: bool = await target.take_damage(dmg)
+	var died: bool = await target.take_damage(dmg, mitigated > 0)
 
 	if attacker and attacker.piece_data and attacker.piece_data.passive_ability:
 		var atk_passive2 = attacker.piece_data.passive_ability.create_effect_instance()
