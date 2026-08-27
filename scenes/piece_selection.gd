@@ -266,10 +266,10 @@ func _on_tile_clicked(grid_pos: Vector2i) -> void:
 	if current_step < FlowStep.P1_PLACE: return
 	var tile = board.get_tile_at(grid_pos)
 	
-	if tile.occupant.piece_data != null and tile != selected_tile:
-		_handle_board_piece_click(tile)
-	elif selected_tile != null:
+	if selected_tile != null:
 		_handle_repositioning(tile)
+	elif tile.occupant.piece_data != null:
+		_handle_board_piece_click(tile)
 	elif selected_card != null and _is_valid_placement_row(grid_pos.y):
 		_place_new_piece(grid_pos)
 
@@ -302,18 +302,34 @@ func _handle_board_piece_click(tile: Tile) -> void:
 func _handle_repositioning(target_tile: Tile) -> void:
 	var can_reposition = target_tile != selected_tile and \
 						_is_valid_placement_row(target_tile.grid_position.y) and \
-						target_tile.occupant.piece_data == null and \
 						selected_tile.occupant.player == current_player
 						
 	if can_reposition:
 		var dict = _get_current_placed_dict()
-		dict[target_tile.grid_position] = dict[selected_tile.grid_position]
-		dict.erase(selected_tile.grid_position)
-		board._move_occupant(selected_tile, target_tile)
-		AudioManager.play_sfx(MOVE_SFX)
+		if target_tile.occupant.piece_data == null:
+			dict[target_tile.grid_position] = dict[selected_tile.grid_position]
+			dict.erase(selected_tile.grid_position)
+			board._move_occupant(selected_tile, target_tile)
+			AudioManager.play_sfx(MOVE_SFX)
+		elif target_tile.occupant.player == current_player:
+			var selected_piece = dict[selected_tile.grid_position]
+			dict[selected_tile.grid_position] = dict[target_tile.grid_position]
+			dict[target_tile.grid_position] = selected_piece
+			_swap_placed_occupants(selected_tile, target_tile)
+			AudioManager.play_sfx(MOVE_SFX)
 		
 	selected_tile = null
 	board.clear_all_highlights()
+
+func _swap_placed_occupants(first_tile: Tile, second_tile: Tile) -> void:
+	var first_piece = first_tile.occupant.piece_data
+	var second_piece = second_tile.occupant.piece_data
+	var first_hp = first_tile.occupant.current_hp
+	var second_hp = second_tile.occupant.current_hp
+	var show_health = board.current_mode == BoardManager.Mode.BATTLE
+
+	first_tile.occupant.set_data(second_piece, current_player, second_hp, show_health)
+	second_tile.occupant.set_data(first_piece, current_player, first_hp, show_health)
 
 func _update_ui() -> void:
 	if current_step <= FlowStep.P2_SELECT:

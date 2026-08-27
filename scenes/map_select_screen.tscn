@@ -178,7 +178,6 @@ custom_minimum_size = Vector2(140, 44)
 layout_mode = 2
 
 [node name="BackButton" type="TextureButton" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1047316697]
-visible = false
 custom_minimum_size = Vector2(50, 50)
 custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
