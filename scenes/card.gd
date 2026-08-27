@@ -15,6 +15,8 @@ signal clicked(card: Card)
 
 @onready var blank_card = $BlankCard
 @onready var card_texture: TextureRect = $CardTexture
+@onready var texture_rect: TextureRect = $BlankCard/Margin/Content/Control/ClassIcon
+
 
 var piece_data: PieceData
 var is_selected: bool = false
@@ -50,7 +52,7 @@ func _update_display() -> void:
 	$BlankCard/Margin/Content/StatsGrid/KB_Row/Icon.texture = kb_icon
 
 	var c_icon = _get_class_icon()
-	$BlankCard/Margin/Content/ClassIcon.texture = c_icon
+	$BlankCard/Margin/Content/Control/ClassIcon.texture = c_icon
 
 func _get_class_icon() -> Texture2D:
 	match piece_data.piece_class:
@@ -59,14 +61,61 @@ func _get_class_icon() -> Texture2D:
 		PieceData.PieceClass.UTILITY: return util_icon
 	return null
 
+var is_animating: bool = false
+
 func select() -> void:
-	if is_disabled: return
+	if is_disabled or is_animating or is_selected: return
 	is_selected = true
-	create_tween().tween_property(self, "scale", original_scale * 1.05, 0.1)
+	is_animating = true
+	
+	var tween = create_tween()
+	tween.tween_property(texture_rect, "rotation", texture_rect.rotation + (2 * PI), 0.8)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	await tween.finished
+
+	var scale_tween = create_tween().set_parallel(true)
+	scale_tween.tween_property(self, "scale", original_scale * 1.15, 0.3)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	scale_tween.tween_property(texture_rect, "scale", Vector2(1.2, 1.2), 0.3)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+	await scale_tween.finished
+
+	await get_tree().create_timer(0.5).timeout
+
+	var reset_tween = create_tween().set_parallel(true)
+	reset_tween.tween_property(self, "scale", original_scale * 1.05, 0.3)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	reset_tween.tween_property(texture_rect, "scale", Vector2(1.05, 1.05), 0.3)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+
+	await reset_tween.finished
+	is_animating = false
 
 func deselect() -> void:
+	if is_disabled or is_animating or not is_selected: return
 	is_selected = false
-	create_tween().tween_property(self, "scale", original_scale, 0.1)
+	is_animating = true
+	
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(self, "scale", original_scale * 0.9, 0.2)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(texture_rect, "scale", Vector2(0.8, 0.8), 0.2)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+	await tween.finished
+
+	await get_tree().create_timer(0.5).timeout
+
+	var back_tween = create_tween().set_parallel(true)
+	back_tween.tween_property(self, "scale", original_scale, 0.2)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	back_tween.tween_property(texture_rect, "scale", Vector2(1.0, 1.0), 0.2)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+
+	await back_tween.finished
+	is_animating = false
 
 func _on_mouse_entered() -> void:
 	if is_disabled: return
@@ -96,3 +145,11 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		clicked.emit(self)
 		accept_event()
+
+
+func _on_class_icon_mouse_entered() -> void:
+	if is_disabled: return
+	card_texture.hide()
+	blank_card.show()
+	if blank_card.has_method("start_hover"):
+		blank_card.start_hover()
