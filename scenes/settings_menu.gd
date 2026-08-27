@@ -12,6 +12,7 @@ const ANIM_DURATION := 0.5
 @onready var music_slider: VolumeSlider = $Tray/Margin/Content/AudioSection/MusicMute
 @onready var sfx_slider: VolumeSlider = $Tray/Margin/Content/AudioSection/SFXMute
 @onready var lang_picker: LanguagePicker = $Tray/Margin/Content/LanguageSection/LanguagePicker
+@onready var camera_effects_picker: OptionButton = $Tray/Margin/Content/CameraEffectsSection/CameraEffectsPicker
 
 var is_animating: bool = false
 
@@ -19,11 +20,23 @@ func _ready() -> void:
 	visible = false
 	overlay.modulate.a = 0
 	tray.scale = Vector2.ZERO
+	_configure_camera_effects_picker()
 	_sync_ui_with_settings()
 
 func _sync_ui_with_settings() -> void:
 	music_slider.check_button.button_pressed = not SettingsManager.data.music_muted
 	sfx_slider.check_button.button_pressed = not SettingsManager.data.sfx_muted
+	camera_effects_picker.select(SettingsManager.data.camera_effects_mode)
+
+func _configure_camera_effects_picker() -> void:
+	camera_effects_picker.clear()
+	camera_effects_picker.add_item(tr("camera_effects_full"), SettingsData.CameraEffectsMode.FULL)
+	camera_effects_picker.add_item(tr("camera_effects_reduced"), SettingsData.CameraEffectsMode.REDUCED)
+	camera_effects_picker.add_item(tr("camera_effects_off"), SettingsData.CameraEffectsMode.OFF)
+	camera_effects_picker.item_selected.connect(_on_camera_effects_selected)
+
+func _on_camera_effects_selected(index: int) -> void:
+	SettingsManager.set_camera_effects_mode(camera_effects_picker.get_item_id(index))
 
 func open() -> void:
 	if is_animating: return

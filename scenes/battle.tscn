@@ -29,6 +29,7 @@
 [ext_resource type="Resource" uid="uid://cl5dtfwm83btj" path="res://data/stages/Stage15.tres" id="18_sattt"]
 [ext_resource type="Shader" uid="uid://bg5fcxi10vmwb" path="res://shader/Victory scene background/shader_2.gdshader" id="27_eivww"]
 [ext_resource type="Texture2D" uid="uid://yumenwffyoul" path="res://assets/icons/Attack.png" id="28_rwtbh"]
+[ext_resource type="Script" uid="uid://8p4p22avn8ra" path="res://scripts/camera_effects.gd" id="29_camera"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4k1nj"]
 
@@ -323,6 +324,9 @@ limit_left = 0
 limit_top = 0
 limit_right = 1152
 limit_bottom = 648
+
+[node name="CameraEffects" type="Node" parent="." unique_id=1321463465]
+script = ExtResource("29_camera")
 
 [connection signal="pressed" from="UI/TopBar/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="UI/TopBar/EndTurnButton" to="." method="_on_end_turn_button_pressed"]

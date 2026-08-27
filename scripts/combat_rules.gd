@@ -54,6 +54,10 @@ static func apply_combat_damage(
 		print_debug("MITIGATED", mitigated)
 
 	dmg = max(dmg, 0)
+	var target_tile := target.get_parent().get_parent() as Tile
+	var is_kill := dmg > 0 and dmg >= target.current_hp
+	if dmg > 0 and battle_manager and target_tile:
+		await battle_manager.play_damage_impact(target_tile, is_kill)
 
 	var died: bool = await target.take_damage(dmg, mitigated > 0)
 

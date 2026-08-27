@@ -10,6 +10,7 @@ enum Turn { PLAYER_1, PLAYER_2 }
 @onready var board_layer: CanvasLayer = $BoardLayer
 @onready var game_over_layer: CanvasLayer = $GameOverLayer
 @onready var board: BoardManager = $BoardLayer/Board
+@onready var camera_effects: CameraEffects = $CameraEffects
 @onready var round_label: Label = $UI/TopBar/RoundLabel
 
 @onready var top_bar: Panel = $UI/TopBar
@@ -287,6 +288,8 @@ func _apply_knockback(attacker_tile: Tile, target_tile: Tile) -> void:
 
 	if end_pos != target_tile.grid_position:
 		var end_tile = board.get_tile_at(end_pos)
+		if camera_effects:
+			await camera_effects.play_knockback(target_tile, end_tile)
 		_execute_dictionary_move(target_tile, end_tile)
 		board._move_occupant(target_tile, end_tile)
 		_execute_dictionary_move(attacker_tile, target_tile)
@@ -327,7 +330,13 @@ func _check_promotion(tile: Tile) -> void:
 		player_2_pieces[tile.grid_position] = mini_queen_data
 
 	if occupant.has_method("promote_to"):
+		if camera_effects:
+			await camera_effects.play_promotion(tile)
 		await occupant.promote_to(mini_queen_data)
+
+func play_damage_impact(target_tile: Tile, is_kill: bool) -> void:
+	if camera_effects:
+		await camera_effects.play_damage_impact(target_tile, is_kill)
 
 func _handle_died(target_tile: Tile) -> void:
 	var target = target_tile.occupant

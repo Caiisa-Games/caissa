@@ -19,6 +19,10 @@ close,CLOSE,بستن
 Master,Master,صدای کل
 Music,Music,موسیقی
 SFX,SFX,جلوه های صوتی
+camera_effects,Camera Effects,جلوه‌های دوربین
+camera_effects_full,Full,کامل
+camera_effects_reduced,Reduced,کاهش‌یافته
+camera_effects_off,Off,خاموش
 play,Play,شروع
 back,Back,بازگشت
 reset,Reset,بازنشانی
