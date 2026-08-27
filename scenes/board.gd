@@ -82,7 +82,7 @@ func generate() -> void:
 	
 	for y in range(grid_size.y):
 		for x in range(grid_size.x):
-			var tile: Tile = tile_scene.instantiate()
+			var tile :Tile = tile_scene.instantiate()
 			tile.name = "Tile_%d_%d" % [x, y]
 			tile.position = _get_iso_pos(x, y)
 			

@@ -16,7 +16,12 @@ extends Control
 	12: get_node_or_null("Button12"),
 	13: get_node_or_null("Button13"),
 	14: get_node_or_null("Button14"),
-	15: get_node_or_null("Button15")
+	15: get_node_or_null("Button15"),
+	16: get_node_or_null("Button16"),
+	17: get_node_or_null("Button17"),
+	18: get_node_or_null("Button18"),
+	19: get_node_or_null("Button19"),
+	20: get_node_or_null("Button20")
 }
 
 @onready var safe_btn_5: Button = get_node_or_null("SafeButton5")
