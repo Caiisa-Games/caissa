@@ -252,7 +252,7 @@ func _handle_move(tile: Tile) -> void:
 			_execute_dictionary_move(selected_piece, tile)
 			board._move_occupant(selected_piece, tile)
 			await _check_promotion(tile)
-			_end_turn()
+			await _end_turn()
 			turn_locked = false
 	else:
 		_clear_selection()
@@ -298,7 +298,7 @@ func _handle_attack(tile: Tile) -> void:
 		GameState.winner = winner
 		_handle_game_over()
 	else:
-		_end_turn()
+		await _end_turn()
 
 func _apply_knockback(attacker_tile: Tile, target_tile: Tile) -> void:
 	var knock_power = attacker_tile.occupant.piece_data.knockback
@@ -613,6 +613,9 @@ func _end_turn() -> void:
 	if _is_singleplayer():
 		current_turn = Turn.PLAYER_2
 		await enemy_ai.take_turn(board)
+		for tile in board.tiles.values():
+			if tile.occupant and tile.occupant.piece_data and tile.occupant.player == Turn.PLAYER_2:
+				tile.occupant.tick_statuses()
 		current_turn = Turn.PLAYER_1
 		round_number += 1
 	else:
