@@ -18,6 +18,7 @@ var player: int = 0
 @onready var health_bar: ProgressBar = $HealthUI/HealthBar
 @onready var hp_label: Label = $HealthUI/HPLabel
 @onready var orb: AnimatedSprite2D = $Orb
+@onready var piece_shadow: Node2D = $PieceShadow
 
 var statuses: Dictionary = {} # "stunned" / "guarded"
 
@@ -29,6 +30,8 @@ var _combat_number_sequence := 0
 func _ready() -> void:
 	if orb:
 		orb.hide()
+		
+	piece_shadow.visible = false
 	
 	if health_ui:
 		health_ui.visible = false
@@ -76,7 +79,8 @@ func set_data(data: PieceData, _player: int, _current_hp: int, show_health = tru
 		sprite.texture = data.texture_white
 	elif player == 2:
 		sprite.texture = data.texture_black
-		
+	
+	piece_shadow.visible = true
 	health_ui.visible = show_health
 	_align_sprite()
 	_update_label_visibility()
@@ -84,6 +88,7 @@ func set_data(data: PieceData, _player: int, _current_hp: int, show_health = tru
 
 func clear_data() -> void:
 	piece_data = null
+	piece_shadow.visible = false
 	sprite.texture = null
 	player = 0
 	current_hp = 0
