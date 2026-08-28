@@ -38,6 +38,9 @@ const ENERGY_REWARD_ATTACK := 1
 const ENERGY_REWARD_KILL := 2
 const BATTLE_SIDE_CLEARANCE := 72.0
 const TILE_FOOTPRINT_WIDTH := 128.0
+const BOARD_ENTRY_FOCUS_LOCAL := Vector2(0.0, 205.0)
+const BOARD_ENTRY_DURATION_FULL := 0.45
+const BOARD_ENTRY_DURATION_REDUCED := 0.25
 
 var player_energy := { Turn.PLAYER_1: STARTING_ENERGY, Turn.PLAYER_2: STARTING_ENERGY }
 signal energy_changed(player: Turn, current: int, max: int)
@@ -61,6 +64,7 @@ var turn_locked := false
 var extra_turn_pending := false
 var ability_feedback_token := 0
 var ability_failure_message := ""
+var _board_entry_tween: Tween
 
 func _ready() -> void:
 	if _is_singleplayer():
@@ -86,6 +90,31 @@ func _prepare_scene() -> void:
 func _start_intro_sequence() -> void:
 	if board_layer: board_layer.show()
 	_initialize_game_logic()
+	_play_board_entry()
+
+func _play_board_entry() -> void:
+	if not board or SettingsManager.data.camera_effects_mode == SettingsData.CameraEffectsMode.OFF:
+		return
+
+	if _board_entry_tween and _board_entry_tween.is_valid():
+		_board_entry_tween.kill()
+
+	var final_scale := board.scale
+	var final_position := board.position
+	var zoom_factor := 0.90 if SettingsManager.data.camera_effects_mode == SettingsData.CameraEffectsMode.FULL else 0.96
+	var start_scale := final_scale * zoom_factor
+	var start_position := final_position + (final_scale - start_scale) * BOARD_ENTRY_FOCUS_LOCAL
+
+	board.scale = start_scale
+	board.position = start_position
+	board.modulate.a = 0.94
+
+	var duration := BOARD_ENTRY_DURATION_FULL if SettingsManager.data.camera_effects_mode == SettingsData.CameraEffectsMode.FULL else BOARD_ENTRY_DURATION_REDUCED
+	_board_entry_tween = create_tween().set_parallel()
+	_board_entry_tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	_board_entry_tween.tween_property(board, "scale", final_scale, duration)
+	_board_entry_tween.tween_property(board, "position", final_position, duration)
+	_board_entry_tween.tween_property(board, "modulate:a", 1.0, duration * 0.65)
 
 func _is_singleplayer() -> bool:
 	return GameState.game_mode == GameState.GameMode.SINGLEPLAYER
