@@ -304,6 +304,7 @@ func play_aseprite_ability(ability: AbilityResource) -> void:
 
 	sprite.hide()
 	ability_sprite.show()
+	ability_sprite.speed_scale = 1.0
 	ability_sprite.frame = 0
 
 	var impact_emitted := false
@@ -316,10 +317,6 @@ func play_aseprite_ability(ability: AbilityResource) -> void:
 
 	ability_sprite.frame_changed.connect(frame_listener)
 
-	ability_sprite.play("cast")
-	await ability_sprite.animation_finished
-	await get_tree().create_timer(0.25).timeout
-	ability_sprite.speed_scale = -1.0
 	ability_sprite.play("cast")
 	await ability_sprite.animation_finished
 

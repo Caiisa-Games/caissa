@@ -13,6 +13,10 @@ func execute(caster: Tile, target_cell: Vector2i, board: BoardManager) -> bool:
 	if target_unit.player == caster.occupant.player:
 		return false
 
+	var ability := caster.occupant.piece_data.active_ability
+	caster.occupant.play_aseprite_ability(ability)
+	await caster.occupant.cast_impact_reached
+
 	var base_power: int = caster.occupant.piece_data.power
 	var missing_hp: int = max(0, target_unit.max_hp - target_unit.current_hp)
 	var execute_bonus: int = int(missing_hp * 0.20)

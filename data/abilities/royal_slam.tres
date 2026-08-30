@@ -108,7 +108,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"cast",
-"speed": 7.0
+"speed": 20.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6bno1"]
@@ -214,7 +214,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"cast",
-"speed": 7.0
+"speed": 20.0
 }]
 
 [resource]
@@ -227,4 +227,5 @@ target_type = 4
 script_effect = ExtResource("2_f2dlh")
 anim_frames_white = SubResource("SpriteFrames_gwp5i")
 anim_frames_black = SubResource("SpriteFrames_nxrhf")
+impact_frame_index = 10
 metadata/_custom_type_script = "uid://cc3f7klb6j3p"

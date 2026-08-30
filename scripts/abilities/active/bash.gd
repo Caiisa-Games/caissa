@@ -19,6 +19,10 @@ func execute(caster: Tile, target_cell: Vector2i, board: BoardManager) -> bool:
 	if landing_tile == null or not board.is_cell_empty(landing_cell):
 		return false
 
+	var ability := caster.occupant.piece_data.active_ability
+	caster.occupant.play_aseprite_ability(ability)
+	await caster.occupant.cast_impact_reached
+
 	var base_power: int = caster.occupant.piece_data.power
 	var total_damage: int = int(base_power * 1.5)
 	var died = await CombatRules.apply_combat_damage(caster.occupant, target_unit, total_damage, board, board.battle_manager)
