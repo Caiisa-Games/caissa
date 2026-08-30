@@ -186,18 +186,11 @@ func _on_card_interacted(card: Card) -> void:
 func _handle_draft_interaction(card: Card) -> void:
 	var hand = _get_current_hand()
 	var max_pieces = _get_current_max_pieces()
-	var is_single = GameState.game_mode == GameState.GameMode.SINGLEPLAYER
 	
 	if card.is_selected:
 		card.deselect()
 		hand.erase(card.piece_data)
 	else:
-		if not is_single:
-			var existing_of_class = _get_piece_by_class(hand, card.piece_data.piece_class)
-			if existing_of_class:
-				hand.erase(existing_of_class)
-				_deselect_card_by_data(selection_grid, existing_of_class)
-
 		if hand.size() < max_pieces:
 			card.select()
 			hand.append(card.piece_data)
@@ -359,11 +352,6 @@ func get_valid_placement_tiles(p_idx: int) -> Array[Tile]:
 		var t = board.get_tile_at(Vector2i(x, y))
 		if t and t.occupant.piece_data == null: tiles.append(t)
 	return tiles
-
-func _get_piece_by_class(hand: Array[PieceData], p_class: PieceData.PieceClass) -> PieceData:
-	for piece in hand:
-		if piece.piece_class == p_class: return piece
-	return null
 
 func _deselect_card_by_data(container: Control, data: PieceData) -> void:
 	for child in container.get_children():
