@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_bwg3p")
+id = "shattered_divide"
 board_name = "The Shattered Divide"
 cell_heights = Array[int]([1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0])
 metadata/_custom_type_script = "uid://dx7eqwrwq2vjk"
