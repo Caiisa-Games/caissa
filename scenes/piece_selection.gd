@@ -360,4 +360,4 @@ func _deselect_card_by_data(container: Control, data: PieceData) -> void:
 			return
 
 func _on_exit_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/map_select_screen.tscn")
