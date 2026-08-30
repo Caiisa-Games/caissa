@@ -32,6 +32,7 @@ func execute(caster: Tile, target_cell: Vector2i, board: BoardManager) -> bool:
 	else:
 		target_unit.apply_status("stunned", 1)
 
+	board.battle_manager._execute_dictionary_move(caster, landing_tile)
 	board._move_occupant(caster, landing_tile)
 
 	return true

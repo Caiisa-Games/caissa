@@ -39,7 +39,9 @@ func execute(caster: Tile, _target_cell: Vector2i, board: BoardManager) -> bool:
 				continue
 				
 			if board.is_cell_empty(push_target):
-				board._move_occupant(cell_tile, board.get_tile_at(push_target))
+				var push_tile := board.get_tile_at(push_target)
+				board.battle_manager._execute_dictionary_move(cell_tile, push_tile)
+				board._move_occupant(cell_tile, push_tile)
 			else:
 				var blocking_unit = board.get_tile_at(push_target).occupant as Occupant
 				if blocking_unit and blocking_unit.piece_data:
