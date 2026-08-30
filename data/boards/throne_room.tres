@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_bwg3p")
+id = "throne_room"
 board_name = "The Throne Room"
 cell_heights = Array[int]([2, 0, 0, 0, 0, 0, 0, 2, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 2, 2, 2, 2, 1, 0, 0, 1, 2, 3, 3, 2, 1, 0, 0, 1, 2, 3, 3, 2, 1, 0, 0, 1, 2, 2, 2, 2, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 2, 0, 0, 0, 0, 0, 0, 2])
 metadata/_custom_type_script = "uid://dx7eqwrwq2vjk"

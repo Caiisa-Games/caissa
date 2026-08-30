@@ -611,13 +611,17 @@ func _end_turn() -> void:
 		return
 	
 	if _is_singleplayer():
+		turn_locked = true
 		current_turn = Turn.PLAYER_2
 		await enemy_ai.take_turn(board)
+		if winner != 0:
+			return
 		for tile in board.tiles.values():
 			if tile.occupant and tile.occupant.piece_data and tile.occupant.player == Turn.PLAYER_2:
 				tile.occupant.tick_statuses()
 		current_turn = Turn.PLAYER_1
 		round_number += 1
+		turn_locked = false
 	else:
 		if current_turn == Turn.PLAYER_1:
 			current_turn = Turn.PLAYER_2
