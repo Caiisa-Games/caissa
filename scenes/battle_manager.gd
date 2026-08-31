@@ -719,7 +719,7 @@ func _handle_game_over() -> void:
 
 func _on_replay_button_pressed() -> void:
 	if not _is_singleplayer():
-		get_tree().change_scene_to_file("res://scenes/piece_selection.tscn")
+		get_tree().change_scene_to_file("res://scenes/map_selection.tscn")
 		return
 
 	if winner != 1:
@@ -731,7 +731,15 @@ func _on_replay_button_pressed() -> void:
 	if GameState.current_stage > stages.size():
 		get_tree().change_scene_to_file("res://scenes/singleplayer/stage_selection.tscn")
 	else:
-		get_tree().change_scene_to_file("res://scenes/battle.tscn")
+		var next_stage = GameState.current_stage
+		if next_stage == 5:
+			get_tree().change_scene_to_file("res://scenes/singleplayer/stage_buff_screen.tscn")
+		elif next_stage == 10:
+			get_tree().change_scene_to_file("res://scenes/singleplayer/stage_buff_screen.tscn")
+		elif next_stage == 15:
+			get_tree().change_scene_to_file("res://scenes/singleplayer/stage_buff_screen.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/piece_selection.tscn")
 
 func handle_ability_kill(tile: Tile) -> void:
 	if tile == null or tile.occupant == null or tile.occupant.piece_data == null:

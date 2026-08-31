@@ -227,6 +227,56 @@ offset_bottom = 599.0
 theme_override_font_sizes/font_size = 40
 text = "15"
 
+[node name="Button16" type="Button" parent="." unique_id=778174290]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 1206.0
+offset_top = 32.0
+offset_right = 1336.0
+offset_bottom = 162.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button17" type="Button" parent="." unique_id=1685687110]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 1413.0
+offset_top = 24.0
+offset_right = 1543.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button18" type="Button" parent="." unique_id=1561664928]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 1682.0
+offset_top = 22.0
+offset_right = 1812.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button19" type="Button" parent="." unique_id=444968058]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 1883.0
+offset_top = 22.0
+offset_right = 2013.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button20" type="Button" parent="." unique_id=1866161970]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 2074.0
+offset_top = 20.0
+offset_right = 2204.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
 [node name="GridContainer2" type="GridContainer" parent="." unique_id=1798550761]
 layout_mode = 1
 anchors_preset = 8

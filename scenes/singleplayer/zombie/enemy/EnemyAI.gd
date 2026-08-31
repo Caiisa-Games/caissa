@@ -29,7 +29,7 @@ func take_turn(board: BoardManager) -> void:
 		var moves = battle_manager.get_valid_moves_for_tile(enemy)
 		
 		for move_tile in moves:
-			var is_attack = (move_tile.occupant.piece_data != null and move_tile.occupant.player == 1)
+			var is_attack = (move_tile.occupant and move_tile.occupant.piece_data != null and move_tile.occupant.player == 1)
 			
 			var nearest_player = _find_nearest_player(board, move_tile)
 			if not nearest_player:
@@ -53,10 +53,9 @@ func take_turn(board: BoardManager) -> void:
 	if best_enemy == null or best_move_tile == null:
 		return
 
-
 	var target_occupant = best_move_tile.occupant
 	
-	if target_occupant.piece_data and target_occupant.player == 1:
+	if target_occupant and target_occupant.piece_data and target_occupant.player == 1:
 		var damage = CombatRules.calculate_damage(
 			best_enemy.occupant.piece_data.power,
 			best_enemy.height_level - best_move_tile.height_level,
@@ -64,9 +63,10 @@ func take_turn(board: BoardManager) -> void:
 		)
 		
 		AudioManager.play_sfx(preload("res://assets/sound/دمیج دادن به مهره ی مقابل.mp3"))
+		
 		var died = await CombatRules.apply_combat_damage(
 			best_enemy.occupant,
-			target_occupant.occupant,
+			target_occupant,
 			damage, 
 			board, 
 			board.battle_manager
@@ -87,7 +87,6 @@ func take_turn(board: BoardManager) -> void:
 
 	await get_tree().create_timer(0.3).timeout
 	print("--- Enemy Turn Finished ---")
-
 
 func _find_nearest_player(board: BoardManager, reference_tile: Tile) -> Tile:
 	var nearest: Tile = null

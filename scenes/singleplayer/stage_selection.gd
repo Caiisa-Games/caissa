@@ -16,7 +16,12 @@ extends Control
 	12: get_node_or_null("Button12"),
 	13: get_node_or_null("Button13"),
 	14: get_node_or_null("Button14"),
-	15: get_node_or_null("Button15")
+	15: get_node_or_null("Button15"),
+	16: get_node_or_null("Button16"),
+	17: get_node_or_null("Button17"),
+	18: get_node_or_null("Button18"),
+	19: get_node_or_null("Button19"),
+	20: get_node_or_null("Button20")
 }
 
 @onready var safe_btn_5: Button = get_node_or_null("SafeButton5")
@@ -42,16 +47,20 @@ func update_navigation_buttons() -> void:
 	if camera_x <= 576.0:
 		button_1_a.modulate.a = 0.0
 		button_1_a.disabled = true
+		print(2)
 	else:
 		button_1_a.modulate.a = 1.0
 		button_1_a.disabled = false
+		print(3)
 	
 	if camera_x >= 4032.0:
 		button_2_b.modulate.a = 0.0
 		button_2_b.disabled = true
+		print(8)
 	else:
 		button_2_b.modulate.a = 1.0
 		button_2_b.disabled = false
+		print(9)
 
 
 func _update_stage_buttons() -> void:

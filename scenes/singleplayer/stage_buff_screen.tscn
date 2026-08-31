@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://crrqbwe0cvhfh"]
 
 [ext_resource type="Script" uid="uid://drs7jmwq5t1db" path="res://scenes/singleplayer/stage_buff_screen.gd" id="1_yklil"]
+[ext_resource type="Texture2D" uid="uid://mapgvg1ktc8k" path="res://assets/icons/Class3-2.png" id="2_s8g27"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io58t"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
 
 [node name="StageBuffPopup" type="Control" unique_id=1863109357]
 z_index = 40
@@ -11,6 +20,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yklil")
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=611118388]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 326.0
+offset_right = -270.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_io58t")
 
 [node name="Option1Btn" type="Button" parent="." unique_id=1760130470]
 layout_mode = 1
@@ -19,9 +41,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -70.0
-offset_bottom = 70.0
+offset_left = -481.0
+offset_top = -128.0
+offset_right = -281.0
+offset_bottom = 12.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "+5 اتک مهره خودی"
@@ -31,11 +54,43 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -66.0
-offset_right = 200.0
-offset_bottom = 74.0
+offset_left = 339.0
+offset_top = -120.0
+offset_right = 539.0
+offset_bottom = 20.0
 grow_vertical = 2
 text = "کاهش 10% نیروی دشمن"
 
+[node name="ConfirmBtn" type="Button" parent="." unique_id=501692542]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.5
+offset_top = -122.0
+offset_right = 124.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Confirm"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1080425030]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 110.0
+offset_right = 778.0
+offset_bottom = 430.0
+texture = ExtResource("2_s8g27")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1531662518]
+layout_mode = 0
+offset_left = 333.0
+offset_top = 7.0
+offset_right = 875.0
+offset_bottom = 522.0
+
 [connection signal="pressed" from="Option1Btn" to="." method="_on_option1_pressed"]
 [connection signal="pressed" from="Option2Btn" to="." method="_on_option2_pressed"]
+[connection signal="pressed" from="ConfirmBtn" to="." method="_on_confirm_btn_pressed"]
