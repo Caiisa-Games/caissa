@@ -35,8 +35,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1152.0
-offset_right = 1152.0
+offset_left = -1152.0
+offset_right = -1152.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_25w30")
@@ -47,8 +47,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2304.0
-offset_right = 2304.0
+offset_left = -2304.0
+offset_right = -2304.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_fjgse")
@@ -59,8 +59,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3456.0
-offset_right = 3456.0
+offset_left = -3456.0
+offset_right = -3456.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_fjgse")
@@ -230,50 +230,50 @@ text = "15"
 [node name="Button16" type="Button" parent="." unique_id=778174290]
 custom_minimum_size = Vector2(130, 130)
 layout_mode = 0
-offset_left = 1206.0
-offset_top = 32.0
-offset_right = 1336.0
-offset_bottom = 162.0
+offset_left = -1042.0
+offset_top = 100.0
+offset_right = -912.0
+offset_bottom = 230.0
 theme_override_font_sizes/font_size = 40
 text = "15"
 
 [node name="Button17" type="Button" parent="." unique_id=1685687110]
 custom_minimum_size = Vector2(130, 130)
 layout_mode = 0
-offset_left = 1413.0
-offset_top = 24.0
-offset_right = 1543.0
-offset_bottom = 154.0
+offset_left = -835.0
+offset_top = 92.0
+offset_right = -705.0
+offset_bottom = 222.0
 theme_override_font_sizes/font_size = 40
 text = "15"
 
 [node name="Button18" type="Button" parent="." unique_id=1561664928]
 custom_minimum_size = Vector2(130, 130)
 layout_mode = 0
-offset_left = 1682.0
-offset_top = 22.0
-offset_right = 1812.0
-offset_bottom = 152.0
+offset_left = -566.0
+offset_top = 90.0
+offset_right = -436.0
+offset_bottom = 220.0
 theme_override_font_sizes/font_size = 40
 text = "15"
 
 [node name="Button19" type="Button" parent="." unique_id=444968058]
 custom_minimum_size = Vector2(130, 130)
 layout_mode = 0
-offset_left = 1883.0
-offset_top = 22.0
-offset_right = 2013.0
-offset_bottom = 152.0
+offset_left = -365.0
+offset_top = 90.0
+offset_right = -235.0
+offset_bottom = 220.0
 theme_override_font_sizes/font_size = 40
 text = "15"
 
 [node name="Button20" type="Button" parent="." unique_id=1866161970]
 custom_minimum_size = Vector2(130, 130)
 layout_mode = 0
-offset_left = 2074.0
-offset_top = 20.0
-offset_right = 2204.0
-offset_bottom = 150.0
+offset_left = -174.0
+offset_top = 88.0
+offset_right = -44.0
+offset_bottom = 218.0
 theme_override_font_sizes/font_size = 40
 text = "15"
 
