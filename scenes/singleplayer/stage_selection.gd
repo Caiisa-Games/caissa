@@ -73,13 +73,13 @@ func _update_stage_buttons() -> void:
 	var unlocked_stage = GameState.highest_unlocked_stage
 	for stage_num in buttons:
 		var btn = buttons[stage_num]
-		if btn:
-			if stage_num <= unlocked_stage:
-				btn.disabled = false
-				if not btn.pressed.is_connected(_on_stage_pressed):
-					btn.pressed.connect(_on_stage_pressed.bind(stage_num))
-			else:
-				btn.disabled = true
+		#if btn:
+			#if stage_num <= unlocked_stage:
+				#btn.disabled = false
+				#if not btn.pressed.is_connected(_on_stage_pressed):
+		btn.pressed.connect(_on_stage_pressed.bind(stage_num))
+			#else:
+				#btn.disabled = true
 	camera()
 
 
