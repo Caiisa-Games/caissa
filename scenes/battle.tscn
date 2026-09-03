@@ -27,6 +27,11 @@
 [ext_resource type="Resource" uid="uid://5hodu1bacna8" path="res://data/stages/Stage13.tres" id="16_r0ctv"]
 [ext_resource type="Resource" uid="uid://bcyxlqxc6ib8" path="res://data/stages/Stage14.tres" id="17_4gblq"]
 [ext_resource type="Resource" uid="uid://cl5dtfwm83btj" path="res://data/stages/Stage15.tres" id="18_sattt"]
+[ext_resource type="Resource" uid="uid://dstx20qqhnabv" path="res://data/stages/Stage16.tres" id="19_4u087"]
+[ext_resource type="Resource" uid="uid://b3lf24jo0vo37" path="res://data/stages/Stage17.tres" id="20_fqtyt"]
+[ext_resource type="Resource" uid="uid://bbjfjbxe8f5oe" path="res://data/stages/Stage18.tres" id="21_8a2ah"]
+[ext_resource type="Resource" uid="uid://qd6x15rvnt34" path="res://data/stages/Stage19.tres" id="22_ikjs2"]
+[ext_resource type="Resource" uid="uid://d0umqhsn7wkj6" path="res://data/stages/Stage20.tres" id="23_1rdfn"]
 [ext_resource type="Shader" uid="uid://bg5fcxi10vmwb" path="res://shader/Victory scene background/shader_2.gdshader" id="27_eivww"]
 [ext_resource type="Texture2D" uid="uid://yumenwffyoul" path="res://assets/icons/Attack.png" id="28_rwtbh"]
 [ext_resource type="Script" uid="uid://8p4p22avn8ra" path="res://scripts/camera_effects.gd" id="29_camera"]
@@ -81,7 +86,7 @@ shader_parameter/g_rot_max_speed = 1.0
 auto_translate_mode = 1
 script = ExtResource("1_th188")
 mini_queen_data = ExtResource("2_6vh42")
-stages = Array[ExtResource("3_1m01a")]([ExtResource("4_lv4so"), ExtResource("5_eivww"), ExtResource("6_rwtbh"), ExtResource("7_f0g0v"), ExtResource("8_at2n2"), ExtResource("9_e50ek"), ExtResource("10_mpb26"), ExtResource("11_4u087"), ExtResource("12_fqtyt"), ExtResource("13_8a2ah"), ExtResource("14_ikjs2"), ExtResource("15_1rdfn"), ExtResource("16_r0ctv"), ExtResource("17_4gblq"), ExtResource("18_sattt")])
+stages = Array[ExtResource("3_1m01a")]([ExtResource("4_lv4so"), ExtResource("5_eivww"), ExtResource("6_rwtbh"), ExtResource("7_f0g0v"), ExtResource("8_at2n2"), ExtResource("9_e50ek"), ExtResource("10_mpb26"), ExtResource("11_4u087"), ExtResource("12_fqtyt"), ExtResource("13_8a2ah"), ExtResource("14_ikjs2"), ExtResource("15_1rdfn"), ExtResource("16_r0ctv"), ExtResource("17_4gblq"), ExtResource("18_sattt"), ExtResource("19_4u087"), ExtResource("20_fqtyt"), ExtResource("21_8a2ah"), ExtResource("22_ikjs2"), ExtResource("23_1rdfn")])
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1385510363]
 

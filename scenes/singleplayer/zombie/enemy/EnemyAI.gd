@@ -9,6 +9,7 @@ func take_turn(board: BoardManager) -> void:
 
 	var battle_manager: BattleManager = get_parent() as BattleManager
 	if not battle_manager:
+		print("--- Enemy Turn Finished (No BattleManager) ---")
 		return
 
 	var enemies: Array[Tile] = []
@@ -18,6 +19,7 @@ func take_turn(board: BoardManager) -> void:
 			enemies.append(tile)
 
 	if enemies.is_empty():
+		print("--- Enemy Turn Finished (No Enemies Left) ---")
 		return
 
 	var best_enemy: Tile = null
@@ -51,8 +53,17 @@ func take_turn(board: BoardManager) -> void:
 					best_move_tile = move_tile
 
 	if best_enemy == null or best_move_tile == null:
-		return
+		for enemy in enemies:
+			var moves = battle_manager.get_valid_moves_for_tile(enemy)
+			if not moves.is_empty():
+				best_enemy = enemy
+				best_move_tile = moves[0]
+				break
 
+	if best_enemy == null or best_move_tile == null:
+		print("--- Enemy Turn Finished (No Valid Move At All) ---")
+		await get_tree().create_timer(0.3).timeout
+		return
 
 	var target_occupant = best_move_tile.occupant
 	
@@ -64,6 +75,8 @@ func take_turn(board: BoardManager) -> void:
 		)
 		
 		AudioManager.play_sfx(preload("res://assets/sound/دمیج دادن به مهره ی مقابل.mp3"))
+		var attacked_tile = best_move_tile
+		
 		var died = await CombatRules.apply_combat_damage(
 			best_enemy.occupant, 
 			target_occupant, 
@@ -72,12 +85,12 @@ func take_turn(board: BoardManager) -> void:
 			board.battle_manager
 		)
 		if died:
-			battle_manager._handle_died(best_move_tile)
-			battle_manager._execute_dictionary_move(best_enemy, best_move_tile)
-			board._move_occupant(best_enemy, best_move_tile)
-			await battle_manager._check_promotion(best_move_tile)
+			battle_manager._handle_died(attacked_tile)
+			battle_manager._execute_dictionary_move(best_enemy, attacked_tile)
+			board._move_occupant(best_enemy, attacked_tile)
+			await battle_manager._check_promotion(attacked_tile)
 		else:
-			await battle_manager._apply_knockback(best_enemy, best_move_tile)
+			await battle_manager._apply_knockback(best_enemy, attacked_tile)
 
 	else:
 		AudioManager.play_sfx(preload("res://assets/sound/فرود اومدن مهره بعد از حرکت.mp3"))

@@ -42,7 +42,7 @@ func _ready() -> void:
 
 func _animate_options_entrance_with_delay() -> void:
 	is_animating = true
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	
 	var tween = create_tween()
 	tween.set_parallel(true)

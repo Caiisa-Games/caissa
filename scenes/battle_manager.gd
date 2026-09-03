@@ -291,6 +291,14 @@ func _handle_attack(tile: Tile) -> void:
 			board._move_occupant(attacker_tile, tile)
 			gain_energy(current_turn, ENERGY_REWARD_KILL)
 			await _check_promotion(tile)
+			
+		if winner != 0:
+			GameState.winner = winner
+			_handle_game_over()
+		else:
+			await _end_turn()
+		return  
+
 	else:
 		await _apply_knockback(attacker_tile, tile)
 
@@ -617,6 +625,7 @@ func _end_turn() -> void:
 		current_turn = Turn.PLAYER_2
 		await enemy_ai.take_turn(board)
 		if winner != 0:
+			turn_locked = false
 			return
 		for tile in board.tiles.values():
 			if tile.occupant and tile.occupant.piece_data and tile.occupant.player == Turn.PLAYER_2:
