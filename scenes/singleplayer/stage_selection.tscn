@@ -35,8 +35,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1152.0
-offset_right = 1152.0
+offset_left = -1152.0
+offset_right = -1152.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_25w30")
@@ -47,8 +47,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2304.0
-offset_right = 2304.0
+offset_left = -2304.0
+offset_right = -2304.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_fjgse")
@@ -59,8 +59,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3456.0
-offset_right = 3456.0
+offset_left = -3456.0
+offset_right = -3456.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_fjgse")
@@ -224,6 +224,56 @@ offset_left = 931.0
 offset_top = 469.0
 offset_right = 1061.0
 offset_bottom = 599.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button16" type="Button" parent="." unique_id=2109176614]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = 1462.0
+offset_top = 252.0
+offset_right = 1592.0
+offset_bottom = 382.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button17" type="Button" parent="." unique_id=278892016]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = -363.0
+offset_top = 53.0
+offset_right = -233.0
+offset_bottom = 183.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button18" type="Button" parent="." unique_id=1030311792]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = -559.0
+offset_top = 73.0
+offset_right = -429.0
+offset_bottom = 203.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button19" type="Button" parent="." unique_id=1729434280]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = -762.0
+offset_top = 55.0
+offset_right = -632.0
+offset_bottom = 185.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button20" type="Button" parent="." unique_id=204283389]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = -1003.0
+offset_top = 60.0
+offset_right = -873.0
+offset_bottom = 190.0
 theme_override_font_sizes/font_size = 40
 text = "15"
 
