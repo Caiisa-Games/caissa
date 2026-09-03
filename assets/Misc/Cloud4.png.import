@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4sjemnkv52a6"
-path="res://.godot/imported/Battle-Background.png-5ebb005be0b01ae633639afee9a68d00.ctex"
+uid="uid://bml7od6can3qo"
+path="res://.godot/imported/Cloud4.png-ad6ecdaa6a463dc4d5aeb80f1828da9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Battle-Background.png"
-dest_files=["res://.godot/imported/Battle-Background.png-5ebb005be0b01ae633639afee9a68d00.ctex"]
+source_file="res://assets/Misc/Cloud4.png"
+dest_files=["res://.godot/imported/Cloud4.png-ad6ecdaa6a463dc4d5aeb80f1828da9a.ctex"]
 
 [params]
 

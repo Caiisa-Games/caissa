@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3xjebivvk0sc"
-path="res://.godot/imported/isometric_dark.png-db1d955129064d37b4a189ebd06ef84e.ctex"
+uid="uid://joxiu01wkl58"
+path="res://.godot/imported/Credit.png-69f03d4c13bc9dfdb15f73f2cbbf2173.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/isometric_dark.png"
-dest_files=["res://.godot/imported/isometric_dark.png-db1d955129064d37b4a189ebd06ef84e.ctex"]
+source_file="res://assets/Misc/Credit.png"
+dest_files=["res://.godot/imported/Credit.png-69f03d4c13bc9dfdb15f73f2cbbf2173.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btd6irgtnxmki"
-path="res://.godot/imported/Cloud2.png-3da35207f02e97ffae42f38121efa1e1.ctex"
+uid="uid://dkj2jp6eh0cns"
+path="res://.godot/imported/isometric.png-bdc4774c6e57af577ea9a9c49c727d21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Cloud2.png"
-dest_files=["res://.godot/imported/Cloud2.png-3da35207f02e97ffae42f38121efa1e1.ctex"]
+source_file="res://assets/Misc/isometric.png"
+dest_files=["res://.godot/imported/isometric.png-bdc4774c6e57af577ea9a9c49c727d21.ctex"]
 
 [params]
 

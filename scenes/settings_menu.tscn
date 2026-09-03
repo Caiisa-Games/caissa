@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgpuuvbgesr4j"]
+[gd_scene format=3 uid="uid://cgpuuvbgesr4j"]
 
 [ext_resource type="Script" uid="uid://j66uos7jy171" path="res://scenes/settings_menu.gd" id="1_wswnh"]
 [ext_resource type="PackedScene" uid="uid://ddf21rj0jqydy" path="res://scenes/UI/volume_slider.tscn" id="2_wswnh"]
 [ext_resource type="PackedScene" uid="uid://kjlmqy88dkpv" path="res://scenes/UI/lang_picker.tscn" id="3_labj1"]
 [ext_resource type="FontFile" uid="uid://bdc0kuo02kiop" path="res://assets/fonts/Thin Sans.ttf" id="3_lwwgp"]
-[ext_resource type="Texture2D" uid="uid://cw11h6w4t6bmp" path="res://assets/Sprite-0001.png" id="14_x0dr5"]
+[ext_resource type="Texture2D" uid="uid://cw11h6w4t6bmp" path="res://assets/Misc/Sprite-0001.png" id="14_x0dr5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_overlay"]
 bg_color = Color(0, 0, 0, 0.470588)

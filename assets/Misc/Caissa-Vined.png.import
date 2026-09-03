@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bknyae1gfrxoy"
-path="res://.godot/imported/1.png-c9a8e694d0d275633d567702fb508122.ctex"
+uid="uid://bs5h21qirhylf"
+path="res://.godot/imported/Caissa-Vined.png-e34b8e6345f269def50b5776d92ae3a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/1.png"
-dest_files=["res://.godot/imported/1.png-c9a8e694d0d275633d567702fb508122.ctex"]
+source_file="res://assets/Misc/Caissa-Vined.png"
+dest_files=["res://.godot/imported/Caissa-Vined.png-e34b8e6345f269def50b5776d92ae3a7.ctex"]
 
 [params]
 

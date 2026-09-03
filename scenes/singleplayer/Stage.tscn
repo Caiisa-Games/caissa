@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://nwnp102iuwa3"]
 
-[ext_resource type="Script" uid="uid://hyupccm21asq" path="res://scenes/singleplayer/stage.gd" id="1_cngqf"]
+[ext_resource type="Script" path="res://scenes/singleplayer/stage.gd" id="1_cngqf"]
 [ext_resource type="Script" uid="uid://dx7eqwrwq2vjk" path="res://scripts/board_data.gd" id="2_xl3lm"]
 [ext_resource type="Resource" uid="uid://cxxqwatboudch" path="res://data/boards/central_peak.tres" id="3_w32v7"]
 [ext_resource type="Resource" uid="uid://dg2y788a8dytt" path="res://data/boards/defensive_gauntlet.tres" id="4_h3ull"]
@@ -18,11 +18,11 @@
 [ext_resource type="Resource" uid="uid://btkjhpj0fm5vg" path="res://data/pieces/rook.tres" id="16_3f51o"]
 [ext_resource type="Resource" uid="uid://bk06pb3x532an" path="res://data/pieces/king.tres" id="17_y1smw"]
 [ext_resource type="Resource" uid="uid://b6asab88n3akv" path="res://data/pieces/queen.tres" id="18_84a4j"]
-[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Battle-Background.png" id="19_s4h3i"]
+[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Misc/Battle-Background.png" id="19_s4h3i"]
 [ext_resource type="PackedScene" uid="uid://b6yyr6n4ljotv" path="res://scenes/board.tscn" id="20_u0v1u"]
 [ext_resource type="Theme" uid="uid://dax6cc1pkfyti" path="res://themes/master.tres" id="21_bvqst"]
 [ext_resource type="FontFile" uid="uid://bdc0kuo02kiop" path="res://assets/fonts/Thin Sans.ttf" id="22_agpf5"]
-[ext_resource type="Texture2D" uid="uid://dyrktggnqs1af" path="res://assets/Exit.png" id="23_53c82"]
+[ext_resource type="Texture2D" uid="uid://dyrktggnqs1af" path="res://assets/Misc/Exit.png" id="23_53c82"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mpvpx"]
 

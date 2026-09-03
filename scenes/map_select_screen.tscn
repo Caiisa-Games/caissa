@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://pehtcp4eclu8"]
 
 [ext_resource type="Theme" uid="uid://dax6cc1pkfyti" path="res://themes/master.tres" id="1_6ymlp"]
-[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Battle-Background.png" id="1_l7k42"]
+[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Misc/Battle-Background.png" id="1_l7k42"]
 [ext_resource type="Script" uid="uid://ctfokxx762uoa" path="res://scenes/map_select_screen.gd" id="2_xar1i"]
 [ext_resource type="Script" uid="uid://dx7eqwrwq2vjk" path="res://scripts/board_data.gd" id="3_a6uev"]
 [ext_resource type="Resource" uid="uid://cxxqwatboudch" path="res://data/boards/central_peak.tres" id="4_niad1"]
@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://cv3dexuawbi0y" path="res://data/boards/twin_bastions.tres" id="12_7hhq3"]
 [ext_resource type="Resource" uid="uid://df22irnj3fy3k" path="res://data/boards/x_cross.tres" id="13_2urgw"]
 [ext_resource type="Resource" uid="uid://ceu01b8w2ng85" path="res://data/boards/serpant_coil.tres" id="13_mh7ps"]
-[ext_resource type="Texture2D" uid="uid://dyrktggnqs1af" path="res://assets/Exit.png" id="15_f51cf"]
+[ext_resource type="Texture2D" uid="uid://dyrktggnqs1af" path="res://assets/Misc/Exit.png" id="15_f51cf"]
 [ext_resource type="Script" uid="uid://duk0phhixtnej" path="res://scenes/map_preview.gd" id="16_preview"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xar1i"]

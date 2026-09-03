@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn6hnfsc5dhtq"
-path="res://.godot/imported/Caissa.png-3b0ac1c1d2b1c0dfcd86a8f6dc3713f8.ctex"
+uid="uid://c8sm7pm0e0hvq"
+path="res://.godot/imported/Base-1.png-55719b72ce40e318f8130fe7575a50ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Caissa.png"
-dest_files=["res://.godot/imported/Caissa.png-3b0ac1c1d2b1c0dfcd86a8f6dc3713f8.ctex"]
+source_file="res://assets/Misc/Base-1.png"
+dest_files=["res://.godot/imported/Base-1.png-55719b72ce40e318f8130fe7575a50ca.ctex"]
 
 [params]
 

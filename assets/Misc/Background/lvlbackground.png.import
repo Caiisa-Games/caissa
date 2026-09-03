@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://joxiu01wkl58"
-path="res://.godot/imported/Credit.png-fb58476e8a67b12b50f9b845a7941d8c.ctex"
+uid="uid://d4itjpngkadwv"
+path="res://.godot/imported/lvlbackground.png-1a93ad89fec35acef704c627af13db71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Credit.png"
-dest_files=["res://.godot/imported/Credit.png-fb58476e8a67b12b50f9b845a7941d8c.ctex"]
+source_file="res://assets/Misc/Background/lvlbackground.png"
+dest_files=["res://.godot/imported/lvlbackground.png-1a93ad89fec35acef704c627af13db71.ctex"]
 
 [params]
 

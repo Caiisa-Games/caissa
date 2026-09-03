@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djtwy4upv31ax"
-path="res://.godot/imported/Background-6.png-e79dac6ec15172f27e9ca7a5feaa8976.ctex"
+uid="uid://b318w5cvpxr1s"
+path="res://.godot/imported/LENIN.png-10fbb5174c9d36e23947d2da335dcf21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background-6.png"
-dest_files=["res://.godot/imported/Background-6.png-e79dac6ec15172f27e9ca7a5feaa8976.ctex"]
+source_file="res://assets/Misc/Background/LENIN.png"
+dest_files=["res://.godot/imported/LENIN.png-10fbb5174c9d36e23947d2da335dcf21.ctex"]
 
 [params]
 
