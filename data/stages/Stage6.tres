@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_2ey5x"]
 script = ExtResource("2_6ma3t")
-zombies = Array[ExtResource("3_u426i")]([ExtResource("4_350uo"), ExtResource("4_350uo"), ExtResource("5_u426i")])
+zombies = Array[ExtResource("3_u426i")]([ExtResource("4_350uo"), ExtResource("5_u426i"), ExtResource("5_u426i")])
 metadata/_custom_type_script = "uid://xwf6c7g6kkff"
 
 [resource]

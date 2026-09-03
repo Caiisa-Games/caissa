@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://cny50vln1wqld" path="res://scripts/stage_data.gd" id="1_wftpq"]
 [ext_resource type="Script" uid="uid://xwf6c7g6kkff" path="res://scripts/wave_data.gd" id="2_3k81r"]
 [ext_resource type="Script" uid="uid://divct8m8b0k67" path="res://scripts/piece_data.gd" id="3_ing08"]
-[ext_resource type="Resource" uid="uid://bk06pb3x532an" path="res://data/pieces/king.tres" id="4_kbj25"]
 [ext_resource type="Resource" uid="uid://425mbxscserg" path="res://data/pieces/bishop.tres" id="5_s6lvo"]
 [ext_resource type="Resource" uid="uid://btkjhpj0fm5vg" path="res://data/pieces/rook.tres" id="6_pt4qv"]
 [ext_resource type="Resource" uid="uid://dhey5alqj4klo" path="res://data/pieces/knight.tres" id="7_7vta3"]
 
 [sub_resource type="Resource" id="Resource_2ey5x"]
 script = ExtResource("2_3k81r")
-zombies = Array[ExtResource("3_ing08")]([ExtResource("4_kbj25"), ExtResource("5_s6lvo"), ExtResource("6_pt4qv"), ExtResource("6_pt4qv"), ExtResource("7_7vta3"), ExtResource("7_7vta3")])
+zombies = Array[ExtResource("3_ing08")]([ExtResource("5_s6lvo"), ExtResource("6_pt4qv"), ExtResource("6_pt4qv"), ExtResource("7_7vta3"), ExtResource("7_7vta3")])
 metadata/_custom_type_script = "uid://xwf6c7g6kkff"
 
 [resource]
