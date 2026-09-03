@@ -21,6 +21,8 @@ var highest_unlocked_stage: int = 1
 
 var saved_extra_pieces_limit: int = 0
 
+var post_buff_destination: String = "next_stage" # "next_stage" یا "menu"
+
 func reset() -> void:
 	player_1_pieces.clear()
 	player_2_pieces.clear()

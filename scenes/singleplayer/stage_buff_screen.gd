@@ -141,7 +141,18 @@ func _save_choice(choice: int) -> void:
 	BuffManager.apply_stage_buff(current_stage, choice)
 
 func _redirect() -> void:
-	get_tree().change_scene_to_file("res://scenes/piece_selection.tscn")
+	if GameState.post_buff_destination == "next_stage":
+		GameState.set_current_stage(GameState.current_stage + 1)
+		if GameState.current_stage > 15: 
+			get_tree().change_scene_to_file("res://scenes/singleplayer/stage_selection.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/battle.tscn")
+	else:
+		GameState.reset()
+		if GameState.game_mode == GameState.GameMode.SINGLEPLAYER:
+			get_tree().change_scene_to_file("res://scenes/singleplayer/stage_selection.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/map_select_screen.tscn")
 
 func _on_confirm_btn_pressed() -> void:
 	if is_first_confirm and selected_choice == 0:

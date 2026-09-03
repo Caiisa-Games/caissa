@@ -380,9 +380,11 @@ func _handle_died(target_tile: Tile) -> void:
 			_handle_game_over()
 			return
 
-		var any_enemy_alive := board.tiles.values().any(
-			func(t): return t.occupant.piece_data != null and t.occupant.player == 2
-		)
+		var any_enemy_alive := false
+		for t in board.tiles.values():
+			if t and t.occupant and t.occupant.piece_data != null and t.occupant.player == 2:
+				any_enemy_alive = true
+				break
 
 		if not any_enemy_alive:
 			current_wave += 1
@@ -739,10 +741,6 @@ func _on_end_turn_button_pressed() -> void:
 			player_energy[current_turn] -= END_TURN_ENERGY_COST
 			_end_turn()
 
-func _on_menu_button_pressed() -> void:
-	GameState.reset()
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-
 func _handle_game_over() -> void:
 	if game_over_layer: game_over_layer.show()
 	if top_bar: top_bar.hide()
@@ -771,12 +769,29 @@ func _on_replay_button_pressed() -> void:
 		get_tree().reload_current_scene()
 		return
 
+	if GameState.current_stage in [5, 10, 15] and not BuffManager.has_shown_popup(GameState.current_stage):
+		GameState.post_buff_destination = "next_stage"
+		get_tree().change_scene_to_file("res://scenes/singleplayer/stage_buff_screen.tscn")
+		return
+
 	GameState.set_current_stage(GameState.current_stage + 1)
 
 	if GameState.current_stage > stages.size():
 		get_tree().change_scene_to_file("res://scenes/singleplayer/stage_selection.tscn")
 	else:
 		get_tree().change_scene_to_file("res://scenes/battle.tscn")
+
+func _on_menu_button_pressed() -> void:
+	if _is_singleplayer() and winner == 1 and GameState.current_stage in [5, 10, 15] and not BuffManager.has_shown_popup(GameState.current_stage):
+		GameState.post_buff_destination = "menu"
+		get_tree().change_scene_to_file("res://scenes/singleplayer/stage_buff_screen.tscn")
+		return
+
+	GameState.reset()
+	if _is_singleplayer():
+		get_tree().change_scene_to_file("res://scenes/singleplayer/stage_selection.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scenes/map_select_screen.tscn") 
 
 func handle_ability_kill(tile: Tile) -> void:
 	if tile == null or tile.occupant == null or tile.occupant.piece_data == null:

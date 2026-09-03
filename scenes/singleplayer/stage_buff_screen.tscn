@@ -43,9 +43,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 317.0
-offset_top = -147.0
+offset_top = -135.0
 offset_right = 517.0
-offset_bottom = -7.0
+offset_bottom = 5.0
 grow_vertical = 2
 text = "کاهش 10% نیروی دشمن"
 
@@ -57,11 +57,18 @@ offset_right = 613.0
 offset_bottom = 623.0
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=749851881]
-layout_mode = 0
-offset_left = 503.0
-offset_top = 88.0
-offset_right = 685.0
-offset_bottom = 271.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -91.5
+offset_right = 91.0
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="Option1Btn" to="." method="_on_option1_pressed"]
 [connection signal="pressed" from="Option2Btn" to="." method="_on_option2_pressed"]
