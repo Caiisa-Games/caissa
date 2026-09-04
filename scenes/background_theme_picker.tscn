@@ -1,0 +1,323 @@
+[gd_scene format=3 uid="uid://yfenfq011uah"]
+
+[ext_resource type="Script" uid="uid://ewkklos4j50e" path="res://scenes/background_theme_picker.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://dax6cc1pkfyti" path="res://themes/master.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://cw11h6w4t6bmp" path="res://assets/Misc/Sprite-0001.png" id="3_sprite"]
+[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Misc/Background/Battle-Background.png" id="4_classic"]
+[ext_resource type="Texture2D" uid="uid://befedjdorg7bb" path="res://assets/Misc/Background/lvlbackground.png" id="5_level"]
+[ext_resource type="Texture2D" uid="uid://c6rtpd8alxdpf" path="res://assets/Misc/Background/LENIN.png" id="6_lenin"]
+[ext_resource type="Texture2D" uid="uid://b1g7bv65kaaxy" path="res://assets/Misc/Background/Greek Architecture.png" id="7_greek"]
+[ext_resource type="Texture2D" uid="uid://bn71rc327f6pi" path="res://assets/Misc/Background/Renaissance.png" id="8_renaissance"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mh7ps"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
+texture = ExtResource("3_sprite")
+texture_margin_left = 7.0
+texture_margin_top = 8.0
+texture_margin_right = 7.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(61, 79, 135, 97)
+
+[node name="ThemePicker" type="Control" unique_id=577164795]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="Popup" type="PopupPanel" parent="." unique_id=863570014]
+oversampling_override = 1.0
+size = Vector2i(532, 195)
+visible = true
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mh7ps")
+
+[node name="Panel" type="PanelContainer" parent="Popup" unique_id=1066011988]
+offset_right = 532.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+
+[node name="Margin" type="MarginContainer" parent="Popup/Panel" unique_id=514163487]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="Content" type="VBoxContainer" parent="Popup/Panel/Margin" unique_id=1832714551]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Popup/Panel/Margin/Content" unique_id=1074153433]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "arena_theme"
+
+[node name="ThemeRow" type="HBoxContainer" parent="Popup/Panel/Margin/Content" unique_id=1106428292]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Classic" type="Button" parent="Popup/Panel/Margin/Content/ThemeRow" unique_id=852819118]
+custom_minimum_size = Vector2(90, 98)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Preview" type="TextureRect" parent="Popup/Panel/Margin/Content/ThemeRow/Classic" unique_id=96374574]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_classic")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CaptionBackdrop" type="ColorRect" parent="Popup/Panel/Margin/Content/ThemeRow/Classic" unique_id=2041663434]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -28.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.02, 0.04, 0.07, 0.78)
+
+[node name="Caption" type="Label" parent="Popup/Panel/Margin/Content/ThemeRow/Classic" unique_id=1575010709]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -29.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 11
+text = "theme_classic"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Button" parent="Popup/Panel/Margin/Content/ThemeRow" unique_id=1244571311]
+custom_minimum_size = Vector2(90, 98)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Preview" type="TextureRect" parent="Popup/Panel/Margin/Content/ThemeRow/Level" unique_id=33899498]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_level")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CaptionBackdrop" type="ColorRect" parent="Popup/Panel/Margin/Content/ThemeRow/Level" unique_id=1892806667]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -28.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.02, 0.04, 0.07, 0.78)
+
+[node name="Caption" type="Label" parent="Popup/Panel/Margin/Content/ThemeRow/Level" unique_id=264193283]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -29.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 11
+text = "theme_level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lenin" type="Button" parent="Popup/Panel/Margin/Content/ThemeRow" unique_id=314037592]
+custom_minimum_size = Vector2(90, 98)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Preview" type="TextureRect" parent="Popup/Panel/Margin/Content/ThemeRow/Lenin" unique_id=750650195]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_lenin")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CaptionBackdrop" type="ColorRect" parent="Popup/Panel/Margin/Content/ThemeRow/Lenin" unique_id=735669103]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -28.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.02, 0.04, 0.07, 0.78)
+
+[node name="Caption" type="Label" parent="Popup/Panel/Margin/Content/ThemeRow/Lenin" unique_id=646065816]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -29.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 11
+text = "theme_lenin"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Greek" type="Button" parent="Popup/Panel/Margin/Content/ThemeRow" unique_id=334671223]
+custom_minimum_size = Vector2(90, 98)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Preview" type="TextureRect" parent="Popup/Panel/Margin/Content/ThemeRow/Greek" unique_id=1076937373]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_greek")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CaptionBackdrop" type="ColorRect" parent="Popup/Panel/Margin/Content/ThemeRow/Greek" unique_id=2139519709]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -28.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.02, 0.04, 0.07, 0.78)
+
+[node name="Caption" type="Label" parent="Popup/Panel/Margin/Content/ThemeRow/Greek" unique_id=948687075]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -29.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 11
+text = "theme_greek"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Renaissance" type="Button" parent="Popup/Panel/Margin/Content/ThemeRow" unique_id=15823317]
+custom_minimum_size = Vector2(90, 98)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Preview" type="TextureRect" parent="Popup/Panel/Margin/Content/ThemeRow/Renaissance" unique_id=2003519422]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_renaissance")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CaptionBackdrop" type="ColorRect" parent="Popup/Panel/Margin/Content/ThemeRow/Renaissance" unique_id=8535822]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -28.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.02, 0.04, 0.07, 0.78)
+
+[node name="Caption" type="Label" parent="Popup/Panel/Margin/Content/ThemeRow/Renaissance" unique_id=1574343038]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -29.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 11
+text = "theme_renaissance"
+horizontal_alignment = 1
+vertical_alignment = 1

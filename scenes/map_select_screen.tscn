@@ -16,13 +16,8 @@
 [ext_resource type="Resource" uid="uid://ceu01b8w2ng85" path="res://data/boards/serpant_coil.tres" id="13_mh7ps"]
 [ext_resource type="Texture2D" uid="uid://5ivdrw57xmbt" path="res://assets/buttons/Dicet.png" id="16_7hhq3"]
 [ext_resource type="Script" uid="uid://duk0phhixtnej" path="res://scenes/map_preview.gd" id="16_preview"]
-[ext_resource type="Texture2D" uid="uid://bfoy4qua27u0t" path="res://assets/Misc/Background/Battle-Background_icon.png" id="17_m1275"]
+[ext_resource type="PackedScene" uid="uid://yfenfq011uah" path="res://scenes/background_theme_picker.tscn" id="17_theme_picker"]
 [ext_resource type="Texture2D" uid="uid://bt8sh46qn7r5m" path="res://assets/buttons/Back.png" id="17_tvlk0"]
-[ext_resource type="Texture2D" uid="uid://d4itjpngkadwv" path="res://assets/Misc/Background/lvlbackground_icon.png" id="17_x7p7o"]
-[ext_resource type="Texture2D" uid="uid://b318w5cvpxr1s" path="res://assets/Misc/Background/LENIN_icon.png" id="18_m1275"]
-[ext_resource type="Texture2D" uid="uid://bk5vaqq5dd4qb" path="res://assets/Misc/Background/Greek Architecture_icon.png" id="19_lbftm"]
-[ext_resource type="Texture2D" uid="uid://ycjp4l1oblh4" path="res://assets/Misc/Background/Renaissance_icon.png" id="20_tvlk0"]
-[ext_resource type="Script" uid="uid://dw27er786317n" path="res://scenes/background.gd" id="22_lbftm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xar1i"]
 
@@ -183,10 +178,16 @@ size_flags_vertical = 4
 theme_override_constants/separation = 15
 alignment = 1
 
+[node name="ThemeButton" type="Button" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1602888471]
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+text = "Theme"
+
 [node name="ModeSelect" type="OptionButton" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1829520821]
 custom_minimum_size = Vector2(140, 44)
-custom_maximum_size = Vector2(80, 50)
+custom_maximum_size = Vector2(85, 50)
 layout_mode = 2
+alignment = 1
 
 [node name="BackButton" type="TextureButton" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1047316697]
 custom_minimum_size = Vector2(50, 50)
@@ -205,35 +206,11 @@ custom_maximum_size = Vector2(-1, 50)
 layout_mode = 2
 text = "play"
 
-[node name="Control" type="Control" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=415067702]
-layout_mode = 2
-
-[node name="Background" type="OptionButton" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1602888471]
-layout_mode = 2
-selected = 0
-item_count = 5
-popup/item_0/text = "Classic"
-popup/item_0/icon = ExtResource("17_m1275")
-popup/item_0/id = 0
-popup/item_1/text = "lvlbackground"
-popup/item_1/icon = ExtResource("17_x7p7o")
-popup/item_1/id = 1
-popup/item_1/disabled = true
-popup/item_2/text = "LENIN"
-popup/item_2/icon = ExtResource("18_m1275")
-popup/item_2/id = 2
-popup/item_2/disabled = true
-popup/item_3/text = "Greek Architecture"
-popup/item_3/icon = ExtResource("19_lbftm")
-popup/item_3/id = 3
-popup/item_3/disabled = true
-popup/item_4/text = "Renaissance"
-popup/item_4/icon = ExtResource("20_tvlk0")
-popup/item_4/id = 4
-popup/item_4/disabled = true
-script = ExtResource("22_lbftm")
+[node name="ThemePicker" parent="." unique_id=978400824 instance=ExtResource("17_theme_picker")]
+layout_mode = 0
+trigger_path = NodePath("../Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup/ThemeButton")
+background_path = NodePath("../Background")
 
 [connection signal="pressed" from="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/LeftGroup/RandomButton" to="." method="_on_random_button_pressed"]
 [connection signal="pressed" from="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="item_selected" from="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup/Background" to="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup/Background" method="_on_item_selected"]

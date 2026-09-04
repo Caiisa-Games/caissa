@@ -27,6 +27,7 @@ const FADE_DURATION = 0.7
 func _ready() -> void:
 	GameState.game_mode = GameState.GameMode.NONE
 	SaveManager.load_save()
+	GameState.apply_saved_preferences(SaveManager.data)
 	if not GameState.intro_played:
 		_prepare_ui_for_intro()
 		_run_intro_sequence()

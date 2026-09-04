@@ -165,6 +165,7 @@ func _save_choice(choice: int) -> void:
 			GameState.back_disable.append(15)
 
 	SaveManager.save()
+	GameState.refresh_background_unlocks(SaveManager.data)
 	BuffManager.apply_stage_buff(current_stage, choice)
 
 func _redirect() -> void:

@@ -23,7 +23,7 @@ var saved_extra_pieces_limit: int = 0
 
 var post_buff_destination: String = "next_stage" 
 
-var back = 1
+var back := 1
 var back_disable: Array = []
 var background = {
 	1: load("res://assets/Misc/Background/Battle-Background.png"),
@@ -48,6 +48,41 @@ func unlock_stage(stage: int) -> void:
 			SaveManager.data.highest_unlocked_level = highest_unlocked_stage
 			if SaveManager.has_method("save"):
 				SaveManager.save()
+
+func apply_saved_preferences(save_data: Dictionary) -> void:
+	refresh_background_unlocks(save_data)
+	var saved_background := clampi(int(save_data.get("selected_background_id", 1)), 1, background.size())
+	back = saved_background if is_background_unlocked(saved_background) else 1
+
+func refresh_background_unlocks(save_data: Dictionary) -> void:
+	back_disable.clear()
+	var chosen_buffs = save_data.get("chosen_buffs", {})
+	if not chosen_buffs is Dictionary:
+		return
+	if int(chosen_buffs.get("level5", 0)) > 0:
+		back_disable.append(5)
+	if int(chosen_buffs.get("level10", 0)) > 0:
+		back_disable.append(10)
+	if int(chosen_buffs.get("level15", 0)) > 0:
+		back_disable.append(15)
+
+func is_background_unlocked(background_id: int) -> bool:
+	match background_id:
+		1:
+			return true
+		2, 3:
+			return 5 in back_disable
+		4:
+			return 10 in back_disable
+		5:
+			return 15 in back_disable
+	return false
+
+func set_background(background_id: int) -> bool:
+	if not background.has(background_id) or not is_background_unlocked(background_id):
+		return false
+	back = background_id
+	return true
 
 func set_current_stage(value: int) -> bool:
 	current_stage = value

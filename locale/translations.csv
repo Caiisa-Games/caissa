@@ -54,6 +54,16 @@ generate,Generate,تولید
 board,board,صفحه
 elevation,Elevation,ارتفاع
 map_select_inspect_prompt,Select a board to inspect its terrain,برای مشاهده زمین یک صفحه را انتخاب کنید
+arena_theme,Background,پس زمینه
+theme_classic,Classic,کلاسیک
+theme_level,Level,مرحله
+theme_lenin,Lenin,لنین
+theme_greek,Greek,یونانی
+theme_renaissance,Renaissance,رنسانس
+theme_locked,Locked,قفل
+theme_unlock_stage_5,Unlock after the stage 5 reward,بعد از پاداش مرحله ۵ باز می‌شود
+theme_unlock_stage_10,Unlock after the stage 10 reward,بعد از پاداش مرحله ۱۰ باز می‌شود
+theme_unlock_stage_15,Unlock after the stage 15 reward,بعد از پاداش مرحله ۱۵ باز می‌شود
 
 win,YOU WIN!,بردی!
 lose,YOU LOSE!,باختی!
