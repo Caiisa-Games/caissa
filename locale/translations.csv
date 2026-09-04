@@ -69,3 +69,7 @@ option1_stage_6,Increase piece attack power by 5 percent,افزایش ۵ درص�
 option2_stage_6,Reduce enemy morale by 10 percent,کاهش ۱۰ درصدی روحیه دشمن
 option1_default,Increase HP of all pieces by 10,افزایش ۱۰ واحدی جان (HP) تمام مهره‌ها
 option2_default,Reduce enemy attack power by 5 percent,کاهش ۵ درصدی قدرت حمله دشمن
+
+
+singleplayer,Singleplayer,تک نفره
+2player,2-Player,دونفره

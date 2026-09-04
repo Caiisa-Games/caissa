@@ -14,8 +14,9 @@ const FADE_DURATION = 0.7
 
 @onready var color_fade: ColorRect = $ColorRect2
 @onready var credits_label: Label = $CreditsLabel
-@onready var start_button: Button = $StartButton
-@onready var exit_button: TextureButton = $ExitButton
+@onready var sp_button: TextureButton = $CenterButtons/SPButton
+@onready var mp_button: TextureButton = $CenterButtons/MPButton
+@onready var exit_button: TextureButton = $CenterButtons/ExitButton
 @onready var settings_button: Button = $HBoxContainer/SettingsButton
 @onready var settings_menu: SettingsMenu = $SettingsMenu
 
@@ -35,9 +36,10 @@ func _ready() -> void:
 func _prepare_ui_for_intro() -> void:
 	$Background.hide()
 	$Title.hide()
-	$StartButton.hide()
+	sp_button.hide()
+	mp_button.hide()
 	$HBoxContainer.hide()
-	$ExitButton.hide()
+	exit_button.hide()
 	
 	color_fade.hide()
 	color_fade.modulate.a = 0
@@ -65,27 +67,16 @@ func _reveal_main_menu() -> void:
 	
 	$Background.show()
 	$Title.show()
-	$StartButton.show()
+	mp_button.show()
+	sp_button.show()
 	$HBoxContainer.show()
-	$ExitButton.show()
+	exit_button.show()
 	
 	color_fade.hide()
 	color_fade.modulate.a = 0
 	
 	$Title.play("default")
-	_play_anim(start_button, "default")
 	AudioManager.play_music(preload("res://assets/sound/music_menu.ogg"))
-
-func _on_texture_button_pressed() -> void:
-	_set_input_enabled(false)
-	AudioManager.play_music(TRANSITION_MUSIC, "Music", false)
-	
-	GameState.game_mode = GameState.GameMode.MULTIPLAYER
-	
-	color_fade.show()
-	var tween = create_tween()
-	tween.tween_property(color_fade, "modulate:a", 1.0, FADE_DURATION)
-	tween.finished.connect(func(): get_tree().change_scene_to_file(MAP_SELECTION_SCENE))
 
 func _on_settings_button_pressed() -> void:
 	if settings_menu.visible: return
@@ -108,12 +99,6 @@ func _on_credits_button_pressed() -> void:
 		_set_input_enabled(true)
 	)
 
-func _on_texture_button_mouse_entered() -> void:
-	_play_anim(start_button, "hover")
-
-func _on_texture_button_mouse_exited() -> void:	
-	_play_anim(start_button, "unhover")
-
 func _on_settings_hover() -> void:
 	_play_anim(settings_button, "hover")
 
@@ -131,12 +116,12 @@ func _play_anim(btn: Node, anim: String) -> void:
 
 func _set_input_enabled(state: bool) -> void:
 	var mode = Control.MOUSE_FILTER_PASS if state else Control.MOUSE_FILTER_IGNORE
-	start_button.mouse_filter = mode
+	sp_button.mouse_filter = mode
+	mp_button.mouse_filter = mode
 	exit_button.mouse_filter = mode
 	settings_button.mouse_filter = mode
 
-
-func _on_singleplayer_button_pressed() -> void:
+func _on_sp_button_pressed() -> void:
 	_set_input_enabled(false)
 	AudioManager.play_music(TRANSITION_MUSIC, "Music", false)
 	
@@ -146,3 +131,14 @@ func _on_singleplayer_button_pressed() -> void:
 	var tween = create_tween()
 	tween.tween_property(color_fade, "modulate:a", 1.0, FADE_DURATION)
 	tween.finished.connect(func(): get_tree().change_scene_to_file(LEVEL_SELECTION_SCENE))
+	
+func _on_mp_button_pressed() -> void:
+	_set_input_enabled(false)
+	AudioManager.play_music(TRANSITION_MUSIC, "Music", false)
+	
+	GameState.game_mode = GameState.GameMode.MULTIPLAYER
+	
+	color_fade.show()
+	var tween = create_tween()
+	tween.tween_property(color_fade, "modulate:a", 1.0, FADE_DURATION)
+	tween.finished.connect(func(): get_tree().change_scene_to_file(MAP_SELECTION_SCENE))

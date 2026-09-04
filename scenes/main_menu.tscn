@@ -12,44 +12,34 @@
 [ext_resource type="Texture2D" uid="uid://dyrktggnqs1af" path="res://assets/buttons/Exit.png" id="7_8egab"]
 [ext_resource type="Texture2D" uid="uid://bc8142fe0vmxk" path="res://assets/sprites/caiisa_logo/Caissa-6.png" id="7_akqfu"]
 [ext_resource type="Texture2D" uid="uid://dl007m0m6j1x5" path="res://assets/sprites/settings_button/Settings-Animation2.png" id="8_dj67d"]
-[ext_resource type="Texture2D" uid="uid://6bnlvqg5mclp" path="res://assets/sprites/play_button/Play(Button)1.png" id="8_hstxw"]
 [ext_resource type="Texture2D" uid="uid://drg32q1bcgaf3" path="res://assets/sprites/caiisa_logo/Caissa-7.png" id="8_mb34c"]
 [ext_resource type="Texture2D" uid="uid://dkq7pppo0dask" path="res://assets/sprites/settings_button/Settings-Animation3.png" id="9_6vcge"]
-[ext_resource type="Texture2D" uid="uid://kl1kyp4sxg3o" path="res://assets/sprites/play_button/Play(Button)2.png" id="9_8egab"]
 [ext_resource type="Texture2D" uid="uid://cojifigapyrc2" path="res://assets/sprites/caiisa_logo/Caissa-8.png" id="9_sgh51"]
-[ext_resource type="Texture2D" uid="uid://cutwci1u0nwkl" path="res://assets/sprites/play_button/Play(Button)11.png" id="10_gw5y6"]
 [ext_resource type="Texture2D" uid="uid://4mh64thflbsy" path="res://assets/sprites/caiisa_logo/Caissa-9.png" id="10_hjv1c"]
 [ext_resource type="Texture2D" uid="uid://mto6gsi0mt7o" path="res://assets/sprites/settings_button/Settings-Animation4.png" id="10_ip0br"]
 [ext_resource type="Texture2D" uid="uid://5a0h78rvpfx6" path="res://assets/sprites/caiisa_logo/Caissa-10.png" id="11_41a2d"]
-[ext_resource type="Texture2D" uid="uid://2keqdmei03sa" path="res://assets/sprites/play_button/Play(Button)12.png" id="11_svtp6"]
 [ext_resource type="Texture2D" uid="uid://dk2ipff2jiwn8" path="res://assets/sprites/settings_button/Settings-Animation5.png" id="11_xyero"]
-[ext_resource type="Texture2D" uid="uid://chiuh8adketey" path="res://assets/sprites/play_button/Play(Button)3.png" id="12_1dfpl"]
 [ext_resource type="Texture2D" uid="uid://dx32rdlufauvi" path="res://assets/sprites/caiisa_logo/Caissa-11.png" id="12_f5cck"]
 [ext_resource type="Texture2D" uid="uid://b06v37q3m64tu" path="res://assets/sprites/settings_button/Settings-Animation6.png" id="12_tcusk"]
 [ext_resource type="Texture2D" uid="uid://ebf6nv8pfje8" path="res://assets/sprites/settings_button/Settings-Animation7.png" id="13_4puye"]
-[ext_resource type="Texture2D" uid="uid://bpwi4x4e5o71k" path="res://assets/sprites/play_button/Play(Button)4.png" id="13_qywvv"]
 [ext_resource type="Texture2D" uid="uid://ca5wrnj0jwff6" path="res://assets/sprites/caiisa_logo/Caissa-12.png" id="13_s4ogs"]
-[ext_resource type="Texture2D" uid="uid://dsumhqioqvrd4" path="res://assets/sprites/play_button/Play(Button)5.png" id="14_3wgol"]
 [ext_resource type="Texture2D" uid="uid://nx8lfggji4q1" path="res://assets/sprites/caiisa_logo/Caissa-13.png" id="14_ew011"]
 [ext_resource type="Texture2D" uid="uid://ddcokh2c5me0y" path="res://assets/sprites/settings_button/Settings-Animation8.png" id="14_q13xq"]
-[ext_resource type="Texture2D" uid="uid://dnu8lymprxu3t" path="res://assets/sprites/play_button/Play(Button)6.png" id="15_1acrt"]
 [ext_resource type="Texture2D" uid="uid://dg1mn6mv0ccw2" path="res://assets/sprites/caiisa_logo/Caissa-14.png" id="15_tcyl8"]
 [ext_resource type="Texture2D" uid="uid://c3qnej6vpclfk" path="res://assets/sprites/settings_button/Settings-Animation9.png" id="15_u43bj"]
 [ext_resource type="Texture2D" uid="uid://7ayqwimeiemk" path="res://assets/sprites/settings_button/Settings-Animation10.png" id="16_jvjdd"]
 [ext_resource type="Texture2D" uid="uid://crj6r0p47uk47" path="res://assets/sprites/caiisa_logo/Caissa-15.png" id="16_tgcit"]
-[ext_resource type="Texture2D" uid="uid://cpebkbn6t08p5" path="res://assets/sprites/play_button/Play(Button)7.png" id="16_vr8o3"]
-[ext_resource type="Texture2D" uid="uid://ru7nhkcy1srm" path="res://assets/sprites/play_button/Play(Button)8.png" id="17_1a85y"]
 [ext_resource type="Texture2D" uid="uid://y0epu578pj21" path="res://assets/sprites/caiisa_logo/Caissa-16.png" id="17_5053t"]
 [ext_resource type="Texture2D" uid="uid://ciuhhnd512wnd" path="res://assets/sprites/settings_button/Settings-Animation11.png" id="17_yxnar"]
 [ext_resource type="Texture2D" uid="uid://bcj7u3o1g7hul" path="res://assets/sprites/caiisa_logo/Caissa-17.png" id="18_2wgix"]
 [ext_resource type="Texture2D" uid="uid://devl0h22pr75o" path="res://assets/sprites/settings_button/Settings-Animation12.png" id="18_eku7s"]
-[ext_resource type="Texture2D" uid="uid://c5it2cof1l553" path="res://assets/sprites/play_button/Play(Button)9.png" id="18_hl5e0"]
 [ext_resource type="Texture2D" uid="uid://dfoeg6ls1g8og" path="res://assets/sprites/caiisa_logo/Caissa-18.png" id="19_b56yx"]
-[ext_resource type="Texture2D" uid="uid://cunteaexyc80f" path="res://assets/sprites/play_button/Play(Button)10.png" id="19_engjn"]
 [ext_resource type="Texture2D" uid="uid://cw11h6w4t6bmp" path="res://assets/Misc/Sprite-0001.png" id="19_ip0br"]
 [ext_resource type="Texture2D" uid="uid://bs2l5b4wcu4gh" path="res://assets/sprites/caiisa_logo/Caissa-19.png" id="20_h5mb6"]
 [ext_resource type="Texture2D" uid="uid://bib7rycbddx5s" path="res://assets/sprites/caiisa_logo/Caissa-20.png" id="21_q1l3m"]
 [ext_resource type="Texture2D" uid="uid://dxfegclyjlxda" path="res://assets/sprites/caiisa_logo/Caissa-21.png" id="22_7u5pb"]
+[ext_resource type="Texture2D" uid="uid://dba6ykdxp1hbv" path="res://assets/buttons/singleplayer_btn.png" id="25_yxnar"]
+[ext_resource type="Texture2D" uid="uid://d0clcfucbc1ay" path="res://assets/buttons/multiplayer_btn.png" id="26_eku7s"]
 [ext_resource type="PackedScene" uid="uid://cgpuuvbgesr4j" path="res://scenes/settings_menu.tscn" id="31_6h3lr"]
 [ext_resource type="PackedScene" uid="uid://gtqgjr1iie1b" path="res://scenes/fade.tscn" id="33_6vcge"]
 
@@ -116,205 +106,6 @@ animations = [{
 "loop": 0,
 "name": &"default",
 "speed": 12.5
-}]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vcge"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ip0br"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyero"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6h3lr"]
-atlas = ExtResource("8_hstxw")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hstxw"]
-atlas = ExtResource("8_hstxw")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8egab"]
-atlas = ExtResource("9_8egab")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gw5y6"]
-atlas = ExtResource("12_1dfpl")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_svtp6"]
-atlas = ExtResource("13_qywvv")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1dfpl"]
-atlas = ExtResource("14_3wgol")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qywvv"]
-atlas = ExtResource("15_1acrt")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3wgol"]
-atlas = ExtResource("16_vr8o3")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1acrt"]
-atlas = ExtResource("17_1a85y")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vr8o3"]
-atlas = ExtResource("18_hl5e0")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1a85y"]
-atlas = ExtResource("19_engjn")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hl5e0"]
-atlas = ExtResource("10_gw5y6")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_engjn"]
-atlas = ExtResource("11_svtp6")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dj67d"]
-atlas = ExtResource("11_svtp6")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6vcge"]
-atlas = ExtResource("10_gw5y6")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ip0br"]
-atlas = ExtResource("19_engjn")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xyero"]
-atlas = ExtResource("18_hl5e0")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tcusk"]
-atlas = ExtResource("17_1a85y")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4puye"]
-atlas = ExtResource("16_vr8o3")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q13xq"]
-atlas = ExtResource("15_1acrt")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u43bj"]
-atlas = ExtResource("14_3wgol")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jvjdd"]
-atlas = ExtResource("13_qywvv")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yxnar"]
-atlas = ExtResource("12_1dfpl")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eku7s"]
-atlas = ExtResource("9_8egab")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c6nra"]
-atlas = ExtResource("8_hstxw")
-region = Rect2(316, 790, 1950, 992)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6h3lr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6h3lr")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hstxw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8egab")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gw5y6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_svtp6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1dfpl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qywvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3wgol")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1acrt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vr8o3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1a85y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hl5e0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_engjn")
-}],
-"loop": 0,
-"name": &"hover",
-"speed": 24.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dj67d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6vcge")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ip0br")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xyero")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tcusk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4puye")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q13xq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u43bj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jvjdd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yxnar")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eku7s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c6nra")
-}],
-"loop": 0,
-"name": &"unhover",
-"speed": 24.0
 }]
 
 [sub_resource type="Image" id="Image_vanrq"]
@@ -602,54 +393,52 @@ sprite_frames = SubResource("SpriteFrames_6vcge")
 frame = 18
 frame_progress = 1.0
 
-[node name="ExitButton" type="TextureButton" parent="." unique_id=297673473]
-layout_mode = 0
-offset_left = 443.00003
-offset_top = 447.00012
-offset_right = 493.0
-offset_bottom = 497.00012
-scale = Vector2(1.5196102, 1.6855116)
+[node name="CenterButtons" type="HBoxContainer" parent="." unique_id=862396302]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.326
+anchor_top = 0.66200006
+anchor_right = 0.674
+anchor_bottom = 0.81000006
+offset_left = -0.052001953
+offset_top = 0.023956299
+offset_right = 0.052001953
+offset_bottom = 0.11993408
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="CenterButtons" unique_id=297673473]
+custom_minimum_size = Vector2(60, 60)
+custom_maximum_size = Vector2(60, 60)
+layout_mode = 2
 texture_normal = ExtResource("7_8egab")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="StartButton" type="Button" parent="." unique_id=969677684]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.45572916
-anchor_top = 0.67700005
-anchor_right = 0.62
-anchor_bottom = 0.832
-offset_top = 0.3039856
-offset_right = 1706.9441
-offset_bottom = 979.66907
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.09967807, 0.09260933)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_6vcge")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_ip0br")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_xyero")
+[node name="SPButton" type="TextureButton" parent="CenterButtons" unique_id=1810730029]
+custom_minimum_size = Vector2(80, 80)
+custom_maximum_size = Vector2(80, 80)
+layout_mode = 2
+tooltip_text = "singleplayer"
+texture_normal = ExtResource("25_yxnar")
+texture_pressed = ExtResource("25_yxnar")
+texture_hover = ExtResource("25_yxnar")
+texture_disabled = ExtResource("25_yxnar")
+texture_focused = ExtResource("25_yxnar")
+stretch_mode = 0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StartButton" unique_id=93832469]
-scale = Vector2(0.9596992, 1.094027)
-sprite_frames = SubResource("SpriteFrames_6h3lr")
-animation = &"hover"
-offset = Vector2(1000, 500)
-
-[node name="SingleplayerButton" type="Button" parent="." unique_id=649129876]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.45700002
-anchor_top = 0.841
-anchor_right = 0.61800003
-anchor_bottom = 0.90400004
-offset_left = 0.53601074
-offset_top = 0.031982422
-offset_right = 0.063964844
-offset_bottom = 0.20794678
-grow_horizontal = 2
-grow_vertical = 2
-text = "Singleplayer"
+[node name="MPButton" type="TextureButton" parent="CenterButtons" unique_id=1325413264]
+custom_minimum_size = Vector2(80, 80)
+custom_maximum_size = Vector2(80, 80)
+layout_mode = 2
+tooltip_text = "2player"
+texture_normal = ExtResource("26_eku7s")
+texture_pressed = ExtResource("26_eku7s")
+texture_hover = ExtResource("26_eku7s")
+texture_disabled = ExtResource("26_eku7s")
+texture_focused = ExtResource("26_eku7s")
+stretch_mode = 0
 
 [node name="CreditsLabel" type="Label" parent="." unique_id=2132204439]
 auto_translate_mode = 1
@@ -725,11 +514,9 @@ visible = false
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="mouse_entered" from="StartButton" to="." method="_on_texture_button_mouse_entered"]
-[connection signal="mouse_exited" from="StartButton" to="." method="_on_texture_button_mouse_exited"]
-[connection signal="pressed" from="StartButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="SingleplayerButton" to="." method="_on_singleplayer_button_pressed"]
+[connection signal="pressed" from="CenterButtons/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CenterButtons/SPButton" to="." method="_on_sp_button_pressed"]
+[connection signal="pressed" from="CenterButtons/MPButton" to="." method="_on_mp_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="mouse_entered" from="HBoxContainer/SettingsButton" to="." method="_on_settings_hover"]
 [connection signal="mouse_exited" from="HBoxContainer/SettingsButton" to="." method="_on_settings_exit"]
