@@ -187,24 +187,11 @@ func _on_card_interacted(card: Card) -> void:
 func _handle_draft_interaction(card: Card) -> void:
 	var hand = _get_current_hand()
 	var max_pieces = _get_current_max_pieces()
-	
+	f
 	if card.is_selected:
 		card.deselect()
 		hand.erase(card.piece_data)
 	else:
-		if GameState.game_mode == GameState.GameMode.MULTIPLAYER:
-			var same_class_piece: PieceData = null
-			
-			for piece in hand:
-				if piece.piece_class == card.piece_data.piece_class:
-					same_class_piece = piece
-					break
-			
-			if same_class_piece != null:
-				hand.erase(same_class_piece)
-				_deselect_card_by_data(selection_grid, same_class_piece)
-
-
 		if hand.size() < max_pieces:
 			card.select()
 			hand.append(card.piece_data)
@@ -366,12 +353,6 @@ func get_valid_placement_tiles(p_idx: int) -> Array[Tile]:
 		var t = board.get_tile_at(Vector2i(x, y))
 		if t and t.occupant.piece_data == null: tiles.append(t)
 	return tiles
-
-func _deselect_card_by_data(container: Control, data: PieceData) -> void:
-	for child in container.get_children():
-		if child is Card and child.piece_data == data:
-			child.deselect()
-			return
 
 func _on_exit_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/map_select_screen.tscn")
