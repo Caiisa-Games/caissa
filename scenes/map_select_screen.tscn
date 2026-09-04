@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://df22irnj3fy3k" path="res://data/boards/x_cross.tres" id="13_2urgw"]
 [ext_resource type="Resource" uid="uid://ceu01b8w2ng85" path="res://data/boards/serpant_coil.tres" id="13_mh7ps"]
 [ext_resource type="Texture2D" uid="uid://dyrktggnqs1af" path="res://assets/Exit.png" id="15_f51cf"]
+[ext_resource type="Texture2D" uid="uid://5ivdrw57xmbt" path="res://assets/Dicet.png" id="16_7hhq3"]
 [ext_resource type="Script" uid="uid://duk0phhixtnej" path="res://scenes/map_preview.gd" id="16_preview"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xar1i"]
@@ -88,14 +89,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 51
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 65
 theme_override_constants/margin_bottom = 10
 
 [node name="Empty" type="Label" parent="Margin/VBoxContainer/MapDetailsPanel/Margin" unique_id=1392785156]
 layout_mode = 2
-text = "Select a board to inspect its terrain"
+text = "map_select_inspect_prompt"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -136,9 +137,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 79
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 20
+theme_override_constants/margin_right = 65
 theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBoxContainer/BottomButtons/Margin" unique_id=1161475754]
@@ -150,15 +151,16 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="RandomButton" type="Button" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/LeftGroup" unique_id=1535190451]
-custom_minimum_size = Vector2(44, 44)
-custom_maximum_size = Vector2(44, 44)
+[node name="RandomButton" type="TextureButton" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/LeftGroup" unique_id=583772716]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-text = "R"
+texture_normal = ExtResource("16_7hhq3")
+stretch_mode = 0
 
 [node name="Button" type="Button" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/LeftGroup" unique_id=584820044]
 custom_minimum_size = Vector2(120, 44)
-custom_maximum_size = Vector2(120, 44)
+custom_maximum_size = Vector2(120, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 disabled = true
@@ -170,11 +172,14 @@ size_flags_horizontal = 3
 
 [node name="RightGroup" type="HBoxContainer" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer" unique_id=578858846]
 layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_constants/separation = 15
+alignment = 1
 
 [node name="ModeSelect" type="OptionButton" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1829520821]
 custom_minimum_size = Vector2(140, 44)
+custom_maximum_size = Vector2(80, 50)
 layout_mode = 2
 
 [node name="BackButton" type="TextureButton" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1047316697]
@@ -190,6 +195,7 @@ stretch_mode = 6
 
 [node name="PlayButton" type="Button" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1590373513]
 custom_minimum_size = Vector2(140, 44)
+custom_maximum_size = Vector2(-1, 50)
 layout_mode = 2
 text = "play"
 

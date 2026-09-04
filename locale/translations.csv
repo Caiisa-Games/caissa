@@ -19,9 +19,9 @@ close,CLOSE,بستن
 Master,Master,صدای کل
 Music,Music,موسیقی
 SFX,SFX,جلوه های صوتی
-camera_effects,Camera Effects,جلوه‌های دوربین
+camera_effects,Camera Effects,جلوه های دوربین
 camera_effects_full,Full,کامل
-camera_effects_reduced,Reduced,کاهش‌یافته
+camera_effects_reduced,Reduced,کاهش یافته
 camera_effects_off,Off,خاموش
 play,Play,شروع
 back,Back,بازگشت
@@ -51,6 +51,9 @@ tip6,"The Rook is a strong and stable fortress against attacks, but it is not he
 
 map_select_title,Select Your Board,صفحه بازی خود را انتخاب کنید
 generate,Generate,تولید
+board,board,صفحه
+elevation,Elevation,ارتفاع
+map_select_inspect_prompt,Select a board to inspect its terrain,برای مشاهده زمین یک صفحه را انتخاب کنید
 
 win,YOU WIN!,بردی!
 lose,YOU LOSE!,باختی!

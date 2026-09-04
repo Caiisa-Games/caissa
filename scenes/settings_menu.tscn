@@ -9,10 +9,6 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_overlay"]
 bg_color = Color(0, 0, 0, 0.470588)
 
-[sub_resource type="Theme" id="Theme_lwwgp"]
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/constants/outline_size = 10
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_labj1"]
 texture = ExtResource("14_x0dr5")
 texture_margin_left = 12.0
@@ -20,6 +16,14 @@ texture_margin_top = 12.0
 texture_margin_right = 12.0
 texture_margin_bottom = 12.0
 region_rect = Rect2(61, 79, 135, 97)
+
+[sub_resource type="Theme" id="Theme_lwwgp"]
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 10
+OptionButton/styles/disabled = SubResource("StyleBoxTexture_labj1")
+OptionButton/styles/hover = SubResource("StyleBoxTexture_labj1")
+OptionButton/styles/normal = SubResource("StyleBoxTexture_labj1")
+OptionButton/styles/pressed = SubResource("StyleBoxTexture_labj1")
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_divider"]
 color = Color(1, 1, 1, 0.196078)

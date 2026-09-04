@@ -21,6 +21,8 @@ func _ready() -> void:
 	overlay.modulate.a = 0
 	tray.scale = Vector2.ZERO
 	_configure_camera_effects_picker()
+	camera_effects_picker.item_selected.connect(_on_camera_effects_selected)
+	SettingsManager.locale_changed.connect(_on_locale_changed)
 	_sync_ui_with_settings()
 
 func _sync_ui_with_settings() -> void:
@@ -33,7 +35,10 @@ func _configure_camera_effects_picker() -> void:
 	camera_effects_picker.add_item(tr("camera_effects_full"), SettingsData.CameraEffectsMode.FULL)
 	camera_effects_picker.add_item(tr("camera_effects_reduced"), SettingsData.CameraEffectsMode.REDUCED)
 	camera_effects_picker.add_item(tr("camera_effects_off"), SettingsData.CameraEffectsMode.OFF)
-	camera_effects_picker.item_selected.connect(_on_camera_effects_selected)
+
+func _on_locale_changed(_locale: String) -> void:
+	_configure_camera_effects_picker()
+	_sync_ui_with_settings()
 
 func _on_camera_effects_selected(index: int) -> void:
 	SettingsManager.set_camera_effects_mode(camera_effects_picker.get_item_id(index))
