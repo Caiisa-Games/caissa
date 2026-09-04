@@ -18,7 +18,7 @@
 [ext_resource type="Resource" uid="uid://btkjhpj0fm5vg" path="res://data/pieces/rook.tres" id="16_3f51o"]
 [ext_resource type="Resource" uid="uid://bk06pb3x532an" path="res://data/pieces/king.tres" id="17_y1smw"]
 [ext_resource type="Resource" uid="uid://b6asab88n3akv" path="res://data/pieces/queen.tres" id="18_84a4j"]
-[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Misc/Battle-Background.png" id="19_s4h3i"]
+[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Misc/Background/Battle-Background.png" id="19_s4h3i"]
 [ext_resource type="PackedScene" uid="uid://b6yyr6n4ljotv" path="res://scenes/board.tscn" id="20_u0v1u"]
 [ext_resource type="Theme" uid="uid://dax6cc1pkfyti" path="res://themes/master.tres" id="21_bvqst"]
 [ext_resource type="FontFile" uid="uid://bdc0kuo02kiop" path="res://assets/fonts/Thin Sans.ttf" id="22_agpf5"]

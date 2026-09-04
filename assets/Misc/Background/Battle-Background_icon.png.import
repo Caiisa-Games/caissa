@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4sjemnkv52a6"
-path="res://.godot/imported/Battle-Background.png-35ce540f76317f9f1d9d23e048e7fd7b.ctex"
+uid="uid://bfoy4qua27u0t"
+path="res://.godot/imported/Battle-Background_icon.png-76a2cd6bbbf542879dbd299aba8aa7d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Misc/Battle-Background.png"
-dest_files=["res://.godot/imported/Battle-Background.png-35ce540f76317f9f1d9d23e048e7fd7b.ctex"]
+source_file="res://assets/Misc/Background/Battle-Background_icon.png"
+dest_files=["res://.godot/imported/Battle-Background_icon.png-76a2cd6bbbf542879dbd299aba8aa7d1.ctex"]
 
 [params]
 
@@ -36,5 +36,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=124
 detect_3d/compress_to=1

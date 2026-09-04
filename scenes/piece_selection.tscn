@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://dhey5alqj4klo" path="res://data/pieces/knight.tres" id="6_knight"]
 [ext_resource type="Resource" uid="uid://btkjhpj0fm5vg" path="res://data/pieces/rook.tres" id="7_rook"]
 [ext_resource type="Resource" uid="uid://425mbxscserg" path="res://data/pieces/bishop.tres" id="8_bishop"]
-[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Misc/Battle-Background.png" id="9_6migr"]
+[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Misc/Background/Battle-Background.png" id="9_6migr"]
 [ext_resource type="Resource" uid="uid://dvlbi4nhupb2m" path="res://data/pieces/pawn.tres" id="9_pawn"]
 [ext_resource type="Texture2D" uid="uid://dyrktggnqs1af" path="res://assets/Misc/Exit.png" id="10_6migr"]
 [ext_resource type="Resource" uid="uid://df22irnj3fy3k" path="res://data/boards/x_cross.tres" id="11_mlgkm"]

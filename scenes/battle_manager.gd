@@ -67,6 +67,7 @@ var ability_failure_message := ""
 var _board_entry_tween: Tween
 
 func _ready() -> void:
+	$UI/Background.texture = GameState.background[GameState.back]
 	if _is_singleplayer():
 		if GameState.current_stage <= 0:
 			GameState.set_current_stage(1)

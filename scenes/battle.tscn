@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b16iclnu8so80" path="res://scenes/battle_manager.gd" id="1_th188"]
 [ext_resource type="Resource" uid="uid://dpanvcxhacvsn" path="res://data/pieces/mini_queen.tres" id="2_6vh42"]
 [ext_resource type="Script" uid="uid://cny50vln1wqld" path="res://scripts/stage_data.gd" id="3_1m01a"]
-[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Misc/Battle-Background.png" id="3_66ngm"]
+[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Misc/Background/Battle-Background.png" id="3_66ngm"]
 [ext_resource type="Theme" uid="uid://dax6cc1pkfyti" path="res://themes/master.tres" id="3_lpir7"]
 [ext_resource type="FontFile" uid="uid://bdc0kuo02kiop" path="res://assets/fonts/Thin Sans.ttf" id="3_p1qf1"]
 [ext_resource type="Resource" uid="uid://dls0np7q1o588" path="res://data/stages/Stage1.tres" id="4_lv4so"]

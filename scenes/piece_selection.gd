@@ -48,6 +48,7 @@ var max_pieces_p2 := 3
 @onready var background_texture: TextureRect = $Background
 
 func _ready() -> void:
+	$Background.texture = GameState.background[GameState.back]
 	if GameState.game_mode == GameState.GameMode.NONE:
 		push_error("Invalid gamemode")
 		return
@@ -191,6 +192,19 @@ func _handle_draft_interaction(card: Card) -> void:
 		card.deselect()
 		hand.erase(card.piece_data)
 	else:
+		if GameState.game_mode == GameState.GameMode.MULTIPLAYER:
+			var same_class_piece: PieceData = null
+			
+			for piece in hand:
+				if piece.piece_class == card.piece_data.piece_class:
+					same_class_piece = piece
+					break
+			
+			if same_class_piece != null:
+				hand.erase(same_class_piece)
+				_deselect_card_by_data(selection_grid, same_class_piece)
+
+
 		if hand.size() < max_pieces:
 			card.select()
 			hand.append(card.piece_data)

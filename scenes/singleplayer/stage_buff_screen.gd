@@ -20,6 +20,20 @@ var option2_original_y: float = 0.0
 var confirm_hidden_y: float = 0.0
 var confirm_original_y: float = 0.0
 
+
+var stage_images_first: Dictionary = {
+	5: preload("res://assets/Misc/Background/lvlbackground.png"),  
+	10: preload("res://assets/Misc/Background/Greek Architecture.png"), 
+	15: preload("res://assets/Misc/Background/Renaissance.png")  
+}
+
+
+var stage_images_second: Dictionary = {
+	5: preload("res://assets/Misc/Background/LENIN.png"),  
+	10: preload("res://assets/icons/Knockback.png"), 
+	15: preload("res://assets/icons/Knockback.png")
+}
+
 func _ready() -> void:
 	_setup_buttons()
 	
@@ -120,9 +134,16 @@ func _show_texture_rect() -> void:
 	texture_rect.modulate.a = 0.0
 	
 	if confirm_click_count == 1:
-		texture_rect.texture = load("res://assets/icons/Attack.png")
+		if stage_images_first.has(current_stage):
+			texture_rect.texture = stage_images_first[current_stage]
+		else:
+			texture_rect.texture = load("res://assets/icons/Attack.png")
+			
 	elif confirm_click_count >= 2:
-		texture_rect.texture = load("res://assets/icons/Class1.png")
+		if stage_images_second.has(current_stage):
+			texture_rect.texture = stage_images_second[current_stage]
+		else:
+			texture_rect.texture = load("res://assets/icons/Class1.png")
 
 	var tween = create_tween()
 	tween.tween_property(texture_rect, "modulate:a", 1.0, 0.5).set_ease(Tween.EASE_OUT)
@@ -132,10 +153,16 @@ func _save_choice(choice: int) -> void:
 
 	if current_stage == 5:
 		SaveManager.data.chosen_buffs.level5 = choice
+		if not GameState.back_disable.has(5):
+			GameState.back_disable.append(5)
 	elif current_stage == 10:
 		SaveManager.data.chosen_buffs.level10 = choice
+		if not GameState.back_disable.has(10):
+			GameState.back_disable.append(10)
 	elif current_stage == 15:
 		SaveManager.data.chosen_buffs.level15 = choice 
+		if not GameState.back_disable.has(15):
+			GameState.back_disable.append(15)
 
 	SaveManager.save()
 	BuffManager.apply_stage_buff(current_stage, choice)

@@ -86,12 +86,16 @@ func _update_stage_buttons() -> void:
 func camera():
 	if GameState.highest_unlocked_stage <= 5:
 		$Camera2D.position.x = 576.0
+		$GridContainer2.position.x = 0
 	elif GameState.highest_unlocked_stage <= 10:
 		$Camera2D.position.x = 1728.0
+		$GridContainer2.position.x = 1152
 	elif GameState.highest_unlocked_stage <= 15:
 		$Camera2D.position.x = 2880
+		$GridContainer2.position.x = 2304
 	else:
-		$Camera2D.position.x = 4032     
+		$Camera2D.position.x = 4032    
+		$GridContainer2.position.x = 3456
 
 func _update_safe_buttons() -> void:
 	var unlocked = GameState.highest_unlocked_stage
@@ -175,3 +179,7 @@ func _on_button_2_pressed() -> void:
 	
 	await tween.finished
 	update_navigation_buttons()
+
+
+func _on_buttonexit_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
