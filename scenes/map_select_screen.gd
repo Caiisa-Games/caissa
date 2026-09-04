@@ -65,8 +65,8 @@ func load_maps() -> void:
 		
 		card_container.add_child(card)
 		
-func select_map(data: BoardData):
-	selected = null if selected == data else data
+func select_map(data: BoardData, allow_deselect := true) -> void:
+	selected = null if allow_deselect and selected == data else data
 
 	for card in card_container.get_children():
 		(card as BoardCard).set_selected(card.board_data == selected)
@@ -87,7 +87,7 @@ func update_details() -> void:
 	var max_height := 0
 	for height in selected.cell_heights:
 		max_height = maxi(max_height, height)
-	details_meta.text = "%d x %d board  |  Elevation 0-%d" % [selected.grid_size.x, selected.grid_size.y, max_height]
+	details_meta.text = "%d x %d %s  |  %s 0-%d" % [selected.grid_size.x, selected.grid_size.y, tr("board"), tr("elevation"), max_height]
 
 
 func _on_play_button_pressed() -> void:
@@ -104,8 +104,7 @@ func _on_back_button_pressed() -> void:
 func _on_random_button_pressed() -> void:
 	if displayed_maps.is_empty():
 		return
-	var chosen_board = displayed_maps.pick_random()
-	select_map(chosen_board)
+	select_map(displayed_maps.pick_random(), false)
 
 func _on_board_size_selected(index: int) -> void:
 	var previous_id := selected.id if selected != null else ""

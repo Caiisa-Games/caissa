@@ -7,9 +7,9 @@ static func calculate_damage(
 ) -> int:
 	
 	var raw_damage = attacker_power
-	
-	var height_bonus = clamp(height_delta, -3, 3) * 3
-	raw_damage += height_bonus
+
+	var height_multiplier = 0.25 * clamp(height_delta, -3, 3)
+	raw_damage *= (1 + height_multiplier)
 	
 	if is_critical:
 		raw_damage = int(raw_damage * 1.5)
