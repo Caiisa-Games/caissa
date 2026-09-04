@@ -28,27 +28,9 @@ func _setup_size_selector() -> void:
 	board_size_select.clear()
 	for size in BOARD_SIZES:
 		board_size_select.add_item("%d x %d" % [size, size])
-		var index = board_size_select.item_count - 1
-		board_size_select.set_item_metadata(index, size)
-		
-		if size != 7:
-			board_size_select.set_item_disabled(index, true)
-
-	if 10 in GameState.back_disable or 10 in GameState.back_disable or 15 in GameState.back_disable:
-		board_size_select.set_item_disabled(1, false)
-		print("Unlocked 8x8")
-
-	if 15 in GameState.back_disable or 15 in GameState.back_disable:
-		board_size_select.set_item_disabled(2, false)
-		print("Unlocked 9x9")
-
-	var default_index = BOARD_SIZES.find(7)
-	if default_index != -1:
-		board_size_select.select(default_index)
-		selected_size = 7
-		
-	if not board_size_select.item_selected.is_connected(_on_board_size_selected):
-		board_size_select.item_selected.connect(_on_board_size_selected)
+		board_size_select.set_item_metadata(board_size_select.item_count - 1, size)
+	board_size_select.select(BOARD_SIZES.find(selected_size))
+	board_size_select.item_selected.connect(_on_board_size_selected)
 
 func load_maps() -> void:
 	for card in card_container.get_children():
