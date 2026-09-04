@@ -187,7 +187,6 @@ func _on_card_interacted(card: Card) -> void:
 func _handle_draft_interaction(card: Card) -> void:
 	var hand = _get_current_hand()
 	var max_pieces = _get_current_max_pieces()
-	f
 	if card.is_selected:
 		card.deselect()
 		hand.erase(card.piece_data)
