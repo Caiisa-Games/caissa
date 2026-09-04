@@ -48,6 +48,7 @@ var max_pieces_p2 := 3
 @onready var background_texture: TextureRect = $Background
 
 func _ready() -> void:
+	$Background.texture = GameState.background[GameState.back]
 	if GameState.game_mode == GameState.GameMode.NONE:
 		push_error("Invalid gamemode")
 		return
@@ -186,7 +187,6 @@ func _on_card_interacted(card: Card) -> void:
 func _handle_draft_interaction(card: Card) -> void:
 	var hand = _get_current_hand()
 	var max_pieces = _get_current_max_pieces()
-	
 	if card.is_selected:
 		card.deselect()
 		hand.erase(card.piece_data)
@@ -352,12 +352,6 @@ func get_valid_placement_tiles(p_idx: int) -> Array[Tile]:
 		var t = board.get_tile_at(Vector2i(x, y))
 		if t and t.occupant.piece_data == null: tiles.append(t)
 	return tiles
-
-func _deselect_card_by_data(container: Control, data: PieceData) -> void:
-	for child in container.get_children():
-		if child is Card and child.piece_data == data:
-			child.deselect()
-			return
 
 func _on_exit_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/map_select_screen.tscn")

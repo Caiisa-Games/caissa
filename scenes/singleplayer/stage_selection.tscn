@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dq4mb7xbb4lmq"]
 
 [ext_resource type="Script" uid="uid://bm1spy1inn1rl" path="res://scenes/singleplayer/stage_selection.gd" id="1_4r8xv"]
-[ext_resource type="Texture2D" uid="uid://bknyae1gfrxoy" path="res://assets/1.png" id="2_du3q0"]
-[ext_resource type="Texture2D" uid="uid://b4sjemnkv52a6" path="res://assets/Battle-Background.png" id="2_v5yhs"]
-[ext_resource type="Texture2D" uid="uid://dm1modu6rtuwc" path="res://assets/2.png" id="3_25w30"]
-[ext_resource type="Texture2D" uid="uid://cvqke8w7y1by3" path="res://assets/3.png" id="4_fjgse"]
+[ext_resource type="Texture2D" uid="uid://d4itjpngkadwv" path="res://assets/Misc/Background/lvlbackground_icon.png" id="2_du3q0"]
+[ext_resource type="Texture2D" uid="uid://b318w5cvpxr1s" path="res://assets/Misc/Background/LENIN_icon.png" id="3_25w30"]
+[ext_resource type="Texture2D" uid="uid://bk5vaqq5dd4qb" path="res://assets/Misc/Background/Greek Architecture_icon.png" id="4_fjgse"]
+[ext_resource type="Texture2D" uid="uid://ycjp4l1oblh4" path="res://assets/Misc/Background/Renaissance_icon.png" id="5_gf23c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yhwb"]
 
@@ -35,8 +35,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1152.0
-offset_right = 1152.0
+offset_left = -1152.0
+offset_right = -1152.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_25w30")
@@ -47,8 +47,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2304.0
-offset_right = 2304.0
+offset_left = -2304.0
+offset_right = -2304.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_fjgse")
@@ -59,22 +59,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3456.0
-offset_right = 3456.0
+offset_left = -3456.0
+offset_right = -3456.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_fjgse")
-expand_mode = 1
-
-[node name="Background" type="TextureRect" parent="." unique_id=1731686621]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_v5yhs")
+texture = ExtResource("5_gf23c")
 expand_mode = 1
 
 [node name="Button1" type="Button" parent="." unique_id=1681347680]
@@ -227,6 +216,56 @@ offset_bottom = 599.0
 theme_override_font_sizes/font_size = 40
 text = "15"
 
+[node name="Button16" type="Button" parent="." unique_id=2109176614]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = -216.0
+offset_top = 36.0
+offset_right = -86.0
+offset_bottom = 166.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button17" type="Button" parent="." unique_id=278892016]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = -363.0
+offset_top = 53.0
+offset_right = -233.0
+offset_bottom = 183.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button18" type="Button" parent="." unique_id=1030311792]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = -559.0
+offset_top = 73.0
+offset_right = -429.0
+offset_bottom = 203.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button19" type="Button" parent="." unique_id=1729434280]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = -762.0
+offset_top = 55.0
+offset_right = -632.0
+offset_bottom = 185.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
+[node name="Button20" type="Button" parent="." unique_id=204283389]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 0
+offset_left = -1003.0
+offset_top = 60.0
+offset_right = -873.0
+offset_bottom = 190.0
+theme_override_font_sizes/font_size = 40
+text = "15"
+
 [node name="GridContainer2" type="GridContainer" parent="." unique_id=1798550761]
 layout_mode = 1
 anchors_preset = 8
@@ -256,5 +295,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_io58t")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=507406233]
 position = Vector2(576, 324)
 
+[node name="Buttonexit" type="Button" parent="." unique_id=1147910306]
+layout_mode = 0
+offset_left = -263.0
+offset_top = 468.0
+offset_right = -70.0
+offset_bottom = 592.0
+
 [connection signal="pressed" from="GridContainer2/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GridContainer2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Buttonexit" to="." method="_on_buttonexit_pressed"]

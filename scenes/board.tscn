@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://okylwii1cp6s" path="res://scenes/board.gd" id="1_bw3vb"]
 [ext_resource type="PackedScene" uid="uid://5aapoewew0nq" path="res://scenes/tile.tscn" id="2_tx6nw"]
 [ext_resource type="Texture2D" uid="uid://djbxh1ff7n5mr" path="res://assets/ambient/fog.png" id="4_dxjtj"]
-[ext_resource type="Texture2D" uid="uid://j8o3jaaw8q51" path="res://assets/BoardBase.png" id="4_fv4ni"]
+[ext_resource type="Texture2D" uid="uid://j8o3jaaw8q51" path="res://assets/Misc/BoardBase.png" id="4_fv4ni"]
 [ext_resource type="Texture2D" uid="uid://ciknop7jpnpep" path="res://assets/ambient/dust.png" id="5_dxjtj"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fog"]

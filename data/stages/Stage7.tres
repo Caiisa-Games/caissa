@@ -4,12 +4,11 @@
 [ext_resource type="Script" uid="uid://xwf6c7g6kkff" path="res://scripts/wave_data.gd" id="2_p5mxj"]
 [ext_resource type="Script" uid="uid://divct8m8b0k67" path="res://scripts/piece_data.gd" id="3_4lbd2"]
 [ext_resource type="Resource" uid="uid://btkjhpj0fm5vg" path="res://data/pieces/rook.tres" id="4_4lbd2"]
-[ext_resource type="Resource" uid="uid://dvlbi4nhupb2m" path="res://data/pieces/pawn.tres" id="5_fofuq"]
-[ext_resource type="Resource" uid="uid://dhey5alqj4klo" path="res://data/pieces/knight.tres" id="6_5efqk"]
+[ext_resource type="Resource" uid="uid://425mbxscserg" path="res://data/pieces/bishop.tres" id="5_kxk6l"]
 
 [sub_resource type="Resource" id="Resource_2ey5x"]
 script = ExtResource("2_p5mxj")
-zombies = Array[ExtResource("3_4lbd2")]([ExtResource("4_4lbd2"), ExtResource("5_fofuq"), ExtResource("6_5efqk")])
+zombies = Array[ExtResource("3_4lbd2")]([ExtResource("4_4lbd2"), ExtResource("4_4lbd2"), ExtResource("5_kxk6l")])
 metadata/_custom_type_script = "uid://xwf6c7g6kkff"
 
 [resource]

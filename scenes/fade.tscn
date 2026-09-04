@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://gtqgjr1iie1b"]
+[gd_scene format=3 uid="uid://gtqgjr1iie1b"]
 
-[ext_resource type="Texture2D" uid="uid://djtwy4upv31ax" path="res://assets/Background-6.png" id="1_76d3x"]
-[ext_resource type="Texture2D" uid="uid://bn6hnfsc5dhtq" path="res://assets/Caissa.png" id="2_76d3x"]
+[ext_resource type="Texture2D" uid="uid://djtwy4upv31ax" path="res://assets/Misc/Background/Background-6.png" id="1_76d3x"]
+[ext_resource type="Texture2D" uid="uid://bn6hnfsc5dhtq" path="res://assets/Misc/Caissa.png" id="2_76d3x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nukjo"]
 bg_color = Color(1, 1, 1, 1)

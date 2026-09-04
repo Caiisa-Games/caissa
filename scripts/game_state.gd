@@ -21,6 +21,18 @@ var highest_unlocked_stage: int = 1
 
 var saved_extra_pieces_limit: int = 0
 
+var post_buff_destination: String = "next_stage" 
+
+var back = 1
+var back_disable: Array = []
+var background = {
+	1: load("res://assets/Misc/Background/Battle-Background.png"),
+	2: load("res://assets/Misc/Background/lvlbackground.png"),
+	3: load("res://assets/Misc/Background/LENIN.png"),
+	4: load("res://assets/Misc/Background/Greek Architecture.png"),
+	5: load("res://assets/Misc/Background/Renaissance.png")
+}
+
 func reset() -> void:
 	player_1_pieces.clear()
 	player_2_pieces.clear()

@@ -10,7 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_2ey5x"]
 script = ExtResource("2_cn7jh")
-zombies = Array[ExtResource("3_6yia0")]([ExtResource("4_hn8ao"), ExtResource("5_wxj3n"), ExtResource("6_lyfb6"), ExtResource("7_15m4r"), ExtResource("6_lyfb6"), ExtResource("6_lyfb6")])
+zombies = Array[ExtResource("3_6yia0")]([ExtResource("4_hn8ao"), ExtResource("5_wxj3n"), ExtResource("7_15m4r"), ExtResource("6_lyfb6"), ExtResource("5_wxj3n")])
 metadata/_custom_type_script = "uid://xwf6c7g6kkff"
 
 [resource]

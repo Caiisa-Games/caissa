@@ -121,16 +121,15 @@ func _deselect() -> void:
 	current_state = State.IDLE
 
 func _move_occupant(from_tile: Tile, to_tile: Tile) -> bool:
-	var occupant = from_tile.occupant.piece_data
-	if not from_tile.occupant:
+	if from_tile == null or to_tile == null or from_tile.occupant == null or from_tile.occupant.piece_data == null:
 		return false
 		
-	#_animate_occupant(from_tile.occupant, to_tile)
-	
+	var occupant = from_tile.occupant.piece_data
 	var show_health = current_mode == Mode.BATTLE
 	
 	var player = from_tile.occupant.player
 	var hp = from_tile.occupant.current_hp
+	
 	from_tile.occupant.clear_data()
 	to_tile.occupant.set_data(occupant, player, hp, show_health)
 	

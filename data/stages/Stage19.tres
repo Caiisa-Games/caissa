@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="StageData" format=3 uid="uid://qd6x15rvnt34"]
+
+[ext_resource type="Script" uid="uid://cny50vln1wqld" path="res://scripts/stage_data.gd" id="1_imgj5"]
+[ext_resource type="Script" uid="uid://xwf6c7g6kkff" path="res://scripts/wave_data.gd" id="2_qfpqu"]
+[ext_resource type="Script" uid="uid://divct8m8b0k67" path="res://scripts/piece_data.gd" id="3_ps2la"]
+[ext_resource type="Resource" uid="uid://bk06pb3x532an" path="res://data/pieces/king.tres" id="4_t85ck"]
+[ext_resource type="Resource" uid="uid://b6asab88n3akv" path="res://data/pieces/queen.tres" id="5_w365x"]
+[ext_resource type="Resource" uid="uid://dhey5alqj4klo" path="res://data/pieces/knight.tres" id="6_fkbdg"]
+[ext_resource type="Resource" uid="uid://btkjhpj0fm5vg" path="res://data/pieces/rook.tres" id="7_j1sox"]
+[ext_resource type="Resource" uid="uid://425mbxscserg" path="res://data/pieces/bishop.tres" id="8_qfpqu"]
+
+[sub_resource type="Resource" id="Resource_5tbfk"]
+script = ExtResource("2_qfpqu")
+zombies = Array[ExtResource("3_ps2la")]([ExtResource("4_t85ck"), ExtResource("5_w365x"), ExtResource("6_fkbdg"), ExtResource("7_j1sox"), ExtResource("7_j1sox"), ExtResource("8_qfpqu")])
+metadata/_custom_type_script = "uid://xwf6c7g6kkff"
+
+[resource]
+script = ExtResource("1_imgj5")
+waves = Array[ExtResource("2_qfpqu")]([SubResource("Resource_5tbfk")])
+metadata/_custom_type_script = "uid://cny50vln1wqld"
