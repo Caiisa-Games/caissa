@@ -15,7 +15,7 @@ func take_turn(board: BoardManager) -> void:
 	var enemies: Array[Tile] = []
 
 	for tile in board.tiles.values():
-		if tile.occupant and tile.occupant.piece_data and tile.occupant.player == 2:
+		if tile.occupant and tile.occupant.piece_data and tile.occupant.player == 2 and not tile.occupant.has_status("stunned"):
 			enemies.append(tile)
 
 	if enemies.is_empty():

@@ -22,6 +22,8 @@ var piece_data: PieceData
 var is_selected: bool = false
 var is_disabled: bool = false
 var original_scale: Vector2
+var _selection_tween: Tween
+var _selection_animation_token := 0
 
 func _ready() -> void:
 	original_scale = scale
@@ -64,57 +66,35 @@ func _get_class_icon() -> Texture2D:
 var is_animating: bool = false
 
 func select() -> void:
-	if is_disabled or is_animating or is_selected: return
+	if is_disabled or is_selected: return
 	is_selected = true
-	is_animating = true
-	
-	var tween = create_tween()
-	tween.tween_property(texture_rect, "rotation", texture_rect.rotation + (2 * PI), 0.8)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
-	await tween.finished
-
-	var scale_tween = create_tween().set_parallel(true)
-	scale_tween.tween_property(self, "scale", original_scale * 1.15, 0.3)\
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	scale_tween.tween_property(texture_rect, "scale", Vector2(1.2, 1.2), 0.3)\
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-
-	await scale_tween.finished
-
-	await get_tree().create_timer(0.5).timeout
-
-	var reset_tween = create_tween().set_parallel(true)
-	reset_tween.tween_property(self, "scale", original_scale * 1.05, 0.3)\
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	reset_tween.tween_property(texture_rect, "scale", Vector2(1.05, 1.05), 0.3)\
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-
-	await reset_tween.finished
-	is_animating = false
+	_play_selection_animation(true)
 
 func deselect() -> void:
-	if is_disabled or is_animating or not is_selected: return
+	if is_disabled or not is_selected: return
 	is_selected = false
+	_play_selection_animation(false)
+
+func _play_selection_animation(is_selecting: bool) -> void:
+	_cancel_selection_animation()
 	is_animating = true
-	
-	var tween = create_tween().set_parallel(true)
-	tween.tween_property(self, "scale", original_scale * 0.9, 0.2)\
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	tween.tween_property(texture_rect, "scale", Vector2(0.8, 0.8), 0.2)\
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	var animation_token := _selection_animation_token
+	_selection_tween = create_tween().set_parallel(true)
+	var target_scale := original_scale * (1.05 if is_selecting else 1.0)
+	var target_icon_scale := Vector2.ONE * (1.05 if is_selecting else 1.0)
+	_selection_tween.tween_property(self, "scale", target_scale, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	_selection_tween.tween_property(texture_rect, "scale", target_icon_scale, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	if is_selecting:
+		_selection_tween.tween_property(texture_rect, "rotation", texture_rect.rotation + (2 * PI), 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_selection_tween.finished.connect(func():
+		if animation_token == _selection_animation_token:
+			is_animating = false
+	)
 
-	await tween.finished
-
-	await get_tree().create_timer(0.5).timeout
-
-	var back_tween = create_tween().set_parallel(true)
-	back_tween.tween_property(self, "scale", original_scale, 0.2)\
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	back_tween.tween_property(texture_rect, "scale", Vector2(1.0, 1.0), 0.2)\
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-
-	await back_tween.finished
+func _cancel_selection_animation() -> void:
+	_selection_animation_token += 1
+	if _selection_tween and _selection_tween.is_valid():
+		_selection_tween.kill()
 	is_animating = false
 
 func _on_mouse_entered() -> void:

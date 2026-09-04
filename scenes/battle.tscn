@@ -35,38 +35,14 @@
 [ext_resource type="Shader" uid="uid://bg5fcxi10vmwb" path="res://shader/Victory scene background/shader_2.gdshader" id="27_eivww"]
 [ext_resource type="Texture2D" uid="uid://yumenwffyoul" path="res://assets/icons/Attack.png" id="28_rwtbh"]
 [ext_resource type="Script" uid="uid://8p4p22avn8ra" path="res://scripts/camera_effects.gd" id="29_camera"]
+[ext_resource type="Texture2D" uid="uid://bji3hcqod3xq6" path="res://assets/Misc/progress_bar/under.png" id="31_ikjs2"]
+[ext_resource type="Texture2D" uid="uid://f80dn4a08uh3" path="res://assets/Misc/progress_bar/energy_bar.png" id="32_1rdfn"]
+[ext_resource type="Texture2D" uid="uid://casvch1pjtspj" path="res://assets/Misc/progress_bar/progress_day.png" id="33_r0ctv"]
+[ext_resource type="Texture2D" uid="uid://cq1vtnalabcdu" path="res://assets/Misc/progress_bar/progress_night.png" id="34_1rdfn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4k1nj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gam43"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ni85"]
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22uqi"]
-bg_color = Color(0.26786566, 0.6048218, 0.99999994, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vceff"]
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f0g0v"]
 shader = ExtResource("27_eivww")
@@ -184,15 +160,15 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "E"
 
-[node name="EnergyBar" type="ProgressBar" parent="UI/BottomPanel/P1Box" unique_id=1516234563]
-custom_minimum_size = Vector2(50, 200)
+[node name="EnergyBar" type="TextureProgressBar" parent="UI/BottomPanel/P1Box" unique_id=675486704]
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_6ni85")
-theme_override_styles/fill = SubResource("StyleBoxFlat_22uqi")
+size_flags_horizontal = 4
+size_flags_vertical = 6
 value = 50.0
 fill_mode = 3
-show_percentage = false
+texture_under = ExtResource("31_ikjs2")
+texture_over = ExtResource("32_1rdfn")
+texture_progress = ExtResource("33_r0ctv")
 
 [node name="P2Box" type="VBoxContainer" parent="UI/BottomPanel" unique_id=2110599022]
 layout_mode = 1
@@ -213,15 +189,15 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "E"
 
-[node name="EnergyBar" type="ProgressBar" parent="UI/BottomPanel/P2Box" unique_id=1375992409]
-custom_minimum_size = Vector2(50, 200)
+[node name="EnergyBar" type="TextureProgressBar" parent="UI/BottomPanel/P2Box" unique_id=1387067650]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_vceff")
-theme_override_styles/fill = SubResource("StyleBoxFlat_22uqi")
 value = 50.0
 fill_mode = 3
-show_percentage = false
+texture_under = ExtResource("31_ikjs2")
+texture_over = ExtResource("32_1rdfn")
+texture_progress = ExtResource("34_1rdfn")
 
 [node name="BoardLayer" type="CanvasLayer" parent="." unique_id=562889155]
 

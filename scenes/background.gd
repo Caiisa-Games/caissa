@@ -19,8 +19,6 @@ func dis():
 		#$"../ModeSelect".set_item_disabled(2, false)
 		set_item_disabled(4, false)
 		print(5)
-	else:
-		print(9999999)
 
 func _ready() -> void:
 	dis()

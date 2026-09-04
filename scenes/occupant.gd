@@ -282,7 +282,7 @@ func execute_active_ability(target_tile: Tile, board: BoardManager) -> bool:
 
 func play_aseprite_ability(ability: AbilityResource) -> void:
 	if not ability or ability_sprite == null:
-		cast_impact_reached.emit()
+		_emit_cast_impact_deferred()
 		return
 
 	var frames: SpriteFrames = ability.anim_frames_white if player == 1 else ability.anim_frames_black
@@ -291,7 +291,7 @@ func play_aseprite_ability(ability: AbilityResource) -> void:
 		frames = ability.anim_frames_white if ability.anim_frames_white else ability.anim_frames_black
 
 	if frames == null or not frames.has_animation("cast"):
-		cast_impact_reached.emit()
+		_emit_cast_impact_deferred()
 		return
 
 	ability_sprite.sprite_frames = frames
@@ -328,3 +328,9 @@ func play_aseprite_ability(ability: AbilityResource) -> void:
 
 	ability_sprite.hide()
 	sprite.show()
+
+func _emit_cast_impact_deferred() -> void:
+	call_deferred("_emit_cast_impact")
+
+func _emit_cast_impact() -> void:
+	cast_impact_reached.emit()

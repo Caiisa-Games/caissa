@@ -346,7 +346,7 @@ animations = [{
 }]
 
 [node name="MainMenu" type="Control" unique_id=1367474016]
-auto_translate_mode = 2
+auto_translate_mode = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

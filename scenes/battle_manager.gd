@@ -18,8 +18,8 @@ enum Turn { PLAYER_1, PLAYER_2 }
 @onready var end_turn_btn: Button = $UI/TopBar/EndTurnButton
 @onready var top_menu_btn: Button = $UI/TopBar/MenuButton
 
-@onready var player_1_energybar: ProgressBar = $UI/BottomPanel/P1Box/EnergyBar
-@onready var player_2_energybar: ProgressBar = $UI/BottomPanel/P2Box/EnergyBar
+@onready var player_1_energybar: TextureProgressBar = $UI/BottomPanel/P1Box/EnergyBar
+@onready var player_2_energybar: TextureProgressBar = $UI/BottomPanel/P2Box/EnergyBar
 @onready var player_1_ability_btn: Button = $UI/BottomPanel/P1Box/AbilityBtn
 @onready var player_2_ability_btn: Button = $UI/BottomPanel/P2Box/AbilityBtn
 
@@ -612,8 +612,9 @@ func _end_turn() -> void:
 	if winner != 0:
 		return
 	_clear_selection()
+	var active_player := 1 if current_turn == Turn.PLAYER_1 else 2
 	for tile in board.tiles.values():
-		if tile.occupant and tile.occupant.player == current_turn:
+		if tile.occupant and tile.occupant.player == active_player:
 			tile.occupant.tick_statuses()
 			
 	if extra_turn_pending:
@@ -629,7 +630,7 @@ func _end_turn() -> void:
 			turn_locked = false
 			return
 		for tile in board.tiles.values():
-			if tile.occupant and tile.occupant.piece_data and tile.occupant.player == Turn.PLAYER_2:
+			if tile.occupant and tile.occupant.piece_data and tile.occupant.player == 2:
 				tile.occupant.tick_statuses()
 		current_turn = Turn.PLAYER_1
 		round_number += 1
@@ -640,8 +641,22 @@ func _end_turn() -> void:
 		else:
 			current_turn = Turn.PLAYER_1
 			round_number += 1
+		if _all_current_turn_pieces_stunned():
+			await get_tree().process_frame
+			await _end_turn()
+			return
 	
 	_update_ui()
+
+func _all_current_turn_pieces_stunned() -> bool:
+	var player := 1 if current_turn == Turn.PLAYER_1 else 2
+	var has_piece := false
+	for tile in board.tiles.values():
+		if tile.occupant and tile.occupant.piece_data and tile.occupant.player == player:
+			has_piece = true
+			if not tile.occupant.has_status("stunned"):
+				return false
+	return has_piece
 
 func _clear_selection() -> void:
 	if selected_piece and selected_piece.occupant:
