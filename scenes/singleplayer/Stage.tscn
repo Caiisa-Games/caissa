@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://nwnp102iuwa3"]
+[gd_scene format=3 uid="uid://dn8sncadcnyqy"]
 
 [ext_resource type="Script" path="res://scenes/singleplayer/stage.gd" id="1_cngqf"]
 [ext_resource type="Script" uid="uid://dx7eqwrwq2vjk" path="res://scripts/board_data.gd" id="2_xl3lm"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b6yyr6n4ljotv" path="res://scenes/board.tscn" id="20_u0v1u"]
 [ext_resource type="Theme" uid="uid://dax6cc1pkfyti" path="res://themes/master.tres" id="21_bvqst"]
 [ext_resource type="FontFile" uid="uid://bdc0kuo02kiop" path="res://assets/fonts/Thin Sans.ttf" id="22_agpf5"]
-[ext_resource type="Texture2D" uid="uid://dyrktggnqs1af" path="res://assets/Misc/Exit.png" id="23_53c82"]
+[ext_resource type="Texture2D" uid="uid://dyrktggnqs1af" path="res://assets/buttons/Exit.png" id="23_53c82"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mpvpx"]
 

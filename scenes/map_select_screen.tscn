@@ -14,10 +14,10 @@
 [ext_resource type="Resource" uid="uid://cv3dexuawbi0y" path="res://data/boards/twin_bastions.tres" id="12_7hhq3"]
 [ext_resource type="Resource" uid="uid://df22irnj3fy3k" path="res://data/boards/x_cross.tres" id="13_2urgw"]
 [ext_resource type="Resource" uid="uid://ceu01b8w2ng85" path="res://data/boards/serpant_coil.tres" id="13_mh7ps"]
-[ext_resource type="Texture2D" uid="uid://dyrktggnqs1af" path="res://assets/Exit.png" id="15_f51cf"]
-[ext_resource type="Texture2D" uid="uid://5ivdrw57xmbt" path="res://assets/Dicet.png" id="16_7hhq3"]
+[ext_resource type="Texture2D" uid="uid://5ivdrw57xmbt" path="res://assets/buttons/Dicet.png" id="16_7hhq3"]
 [ext_resource type="Script" uid="uid://duk0phhixtnej" path="res://scenes/map_preview.gd" id="16_preview"]
 [ext_resource type="Texture2D" uid="uid://bfoy4qua27u0t" path="res://assets/Misc/Background/Battle-Background_icon.png" id="17_m1275"]
+[ext_resource type="Texture2D" uid="uid://bt8sh46qn7r5m" path="res://assets/buttons/Back.png" id="17_tvlk0"]
 [ext_resource type="Texture2D" uid="uid://d4itjpngkadwv" path="res://assets/Misc/Background/lvlbackground_icon.png" id="17_x7p7o"]
 [ext_resource type="Texture2D" uid="uid://b318w5cvpxr1s" path="res://assets/Misc/Background/LENIN_icon.png" id="18_m1275"]
 [ext_resource type="Texture2D" uid="uid://bk5vaqq5dd4qb" path="res://assets/Misc/Background/Greek Architecture_icon.png" id="19_lbftm"]
@@ -192,11 +192,11 @@ layout_mode = 2
 custom_minimum_size = Vector2(50, 50)
 custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("15_f51cf")
-texture_pressed = ExtResource("15_f51cf")
-texture_hover = ExtResource("15_f51cf")
-texture_disabled = ExtResource("15_f51cf")
-texture_focused = ExtResource("15_f51cf")
+texture_normal = ExtResource("17_tvlk0")
+texture_pressed = ExtResource("17_tvlk0")
+texture_hover = ExtResource("17_tvlk0")
+texture_disabled = ExtResource("17_tvlk0")
+texture_focused = ExtResource("17_tvlk0")
 stretch_mode = 6
 
 [node name="PlayButton" type="Button" parent="Margin/VBoxContainer/BottomButtons/Margin/HBoxContainer/RightGroup" unique_id=1590373513]

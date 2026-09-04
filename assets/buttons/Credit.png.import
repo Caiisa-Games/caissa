@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5ivdrw57xmbt"
-path="res://.godot/imported/Dicet.png-b4cc151651791119c37aaed5b67cb895.ctex"
+uid="uid://joxiu01wkl58"
+path="res://.godot/imported/Credit.png-7cd86f6a9265c4919aa5c44b73936a7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Dicet.png"
-dest_files=["res://.godot/imported/Dicet.png-b4cc151651791119c37aaed5b67cb895.ctex"]
+source_file="res://assets/buttons/Credit.png"
+dest_files=["res://.godot/imported/Credit.png-7cd86f6a9265c4919aa5c44b73936a7d.ctex"]
 
 [params]
 
